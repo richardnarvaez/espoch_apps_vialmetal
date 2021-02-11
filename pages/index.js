@@ -13,7 +13,7 @@ export default function Home() {
          <Nav />
          <main>
             <h1>VIALMETAL</h1>
-            <p>This is an example project </p>
+            <p>Esto es un ejemplo de proyecto </p>
             <p>PANTALLA INICIAL </p>
          </main>
          <Footer />

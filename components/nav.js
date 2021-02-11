@@ -11,7 +11,13 @@ const Nav = () => {
             {!session && (
                <>
                   <span className="notSignedIn">Not signed in</span>
-                  <a href="/auth/login">
+                  <a
+                     href={`/auth/login`}
+                     onClick={(e) => {
+                        e.preventDefault()
+                        signin()
+                     }}
+                  >
                      <button className="signinButton">Sign in</button>
                   </a>
                </>

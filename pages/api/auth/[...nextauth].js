@@ -30,8 +30,16 @@ const options = {
    ],
 
    // @link https://next-auth.js.org/configuration/databases
-   database: process.env.NEXTAUTH_DATABASE_URL,
-
+   // database: process.env.NEXTAUTH_DATABASE_URL,
+   database: {
+      type: 'mssql',
+      host: 'serverandres.database.windows.net',
+      port: 1433,
+      username: 'andresadmin',
+      password: 'p@ssw0rd',
+      database: 'BddVialMetal'
+    },
+   //mssql://andresadmin:p@ssw0rd@serverandres.database.windows.net:1433/BddVialMetal
    // @link https://next-auth.js.org/configuration/options#session
    session: {
       // Use JSON Web Tokens for session instead of database sessions.

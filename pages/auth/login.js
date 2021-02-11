@@ -1,6 +1,6 @@
-import { providers, signIn } from 'next-auth/client'
+import { providers, signIn, getSession, csrfToken } from 'next-auth/client'
 
-export default function SignIn({ providers }) {
+export default function SignIn({ providers, csrfToken }) {
    return (
       <>
          {Object.values(providers).map((provider) => (
@@ -13,7 +13,18 @@ export default function SignIn({ providers }) {
 }
 
 SignIn.getInitialProps = async (context) => {
+   const { req, res } = context
+   const session = await getSession({ req })
+   console.log(session)
+   if (session && res && session.accessToken) {
+      res.writeHead(302, {
+         Location: '/',
+      })
+      res.end()
+      return
+   }
    return {
       providers: await providers(context),
+      csrfToken: await csrfToken(context),
    }
 }

@@ -21,10 +21,9 @@ SignIn.getInitialProps = async (context) => {
       })
       res.end()
       return
-   } else {
-      return {
-         providers: await providers(context),
-         csrfToken: await csrfToken(context),
-      }
+   }
+   return {
+      providers: await providers(context),
+      //  csrfToken: await csrfToken(context),
    }
 }

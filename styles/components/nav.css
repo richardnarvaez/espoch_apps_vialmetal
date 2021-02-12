@@ -1,37 +1,46 @@
-.loading,
+.toolbar {
+   height: 52px;
+   padding: 0 16px;
+   background-color: #fff;
+   box-shadow: 0 2px 5px #00000030;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.loading-view {
+   display: flex;
+   align-items: center;
+}
+
+/* .loading,
 .loaded {
    position: relative;
    top: 0;
    opacity: 1;
    overflow: auto;
-   border-radius: 0 0 0.6rem 0.6rem;
    padding: 0.4rem 0.8rem;
    margin: 0;
-   background-color: #f5f5f5;
-   transition: all 0.2s ease-in-out;
-}
+} */
 
-.loading {
+/* .loading {
    top: -2rem;
    opacity: 0;
-}
+} */
 
-.signedIn,
-.notSignedIn {
-   position: absolute;
+/* .signedIn {
    padding: 0.6rem 0 0.4rem 0;
    left: 1rem;
    right: 7rem;
    white-space: nowrap;
    text-overflow: ellipsis;
    overflow: hidden;
-   display: inherit;
    z-index: 1;
-}
+} */
 
-.signedIn {
+/* .signedIn {
    left: 3.8rem;
-}
+} */
 
 .avatar {
    border-radius: 2rem;
@@ -41,12 +50,12 @@
    background-color: white;
    background-size: cover;
    border: 2px solid #ddd;
+   margin-right: 8px;
 }
 
 .signinButton,
 .signoutButton {
    float: right;
-   margin-right: -0.4rem;
    font-weight: 500;
    background-color: #1eb1fc;
    color: #fff;

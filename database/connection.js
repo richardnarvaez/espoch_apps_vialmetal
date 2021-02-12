@@ -2,11 +2,10 @@ const sql = require('mssql')
 import { dbConfig } from '../config/constants'
 
 const connect = async () => {
-   const pool = new sql.ConnectionPool(dbConfig)
    try {
-      await pool.connect()
+      await sql.connect(dbConfig)
       console.log('Connected to database')
-      return pool
+      return new sql.Request()
    } catch (err) {
       console.log('Database connection failed!', err)
 

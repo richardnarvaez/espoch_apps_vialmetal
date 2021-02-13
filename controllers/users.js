@@ -3,7 +3,7 @@ import connect from '../database/connection'
 export async function getAllUsers() {
    const db = await connect()
    const result = await db.query(`select * from users`)
-   return result.recordsets
+   return result.recordsets[0]
 }
 export async function getUserById(id){
    const db = await connect()

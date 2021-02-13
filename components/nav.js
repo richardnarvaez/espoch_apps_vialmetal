@@ -1,5 +1,5 @@
 import { signin, signout, useSession } from 'next-auth/client'
-import Link from "next/link";
+import Link from 'next/link'
 const Nav = () => {
    const [session, loading] = useSession()
 
@@ -17,13 +17,7 @@ const Nav = () => {
             <div className={`loading-view nojs-show ${!session && loading ? 'loading' : 'loaded'}`}>
                {!session ? (
                   <>
-                     <a
-                        href={`/auth/login`}
-                        onClick={(e) => {
-                           e.preventDefault()
-                           signin()
-                        }}
-                     >
+                     <a href="/auth/login">
                         <button className="signinButton">Sign in</button>
                      </a>
                   </>

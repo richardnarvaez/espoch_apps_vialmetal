@@ -8,7 +8,7 @@ export default function Admin() {
 
    useEffect(() => {
       const fetchData = async () => {
-         const res = await fetch('/api/users')
+         const res = await fetch('/api/data/users')
          const result = await res.json()
          setUsers(result)
       }

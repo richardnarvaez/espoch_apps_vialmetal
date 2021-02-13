@@ -11,7 +11,7 @@ const Footer = () => (
             </Link>
          </li>
          <li className="navigationItem">
-            <a href="/api/users">Lista de usuarios API</a>
+            <a href="/api/data/users">Lista de usuarios API</a>
          </li>
       </ul>
    </div>

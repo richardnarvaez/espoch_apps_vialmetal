@@ -1,18 +1,8 @@
-import { getAllUsers, getUserById, insertUser, updateUser, deleteUser } from '../../controllers/users'
+import { getAllUsers, getUserById, insertUser, updateUser, deleteUser } from '../../../controllers/users'
 
 export default async (req, res) => {
    try {
      const result = await getAllUsers()
-      res.status(200).json(result)
-   } catch (err) {
-      console.log(err)
-      res.status(500).json({ success: false })
-   }
-}
-const buscarUsuario = async (req, res) => {
-   try {
-      const {id} = req.params
-      const result = await getUserById(id)
       res.status(200).json(result)
    } catch (err) {
       console.log(err)
@@ -48,6 +38,7 @@ const actualizarUsuario = async (req, res) => {
       res.status(500).json({ success: false })
    }
 }
+
 const borrarUsuario = async (req, res) => {
    try {
       const {id} = req.params

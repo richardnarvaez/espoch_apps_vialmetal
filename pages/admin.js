@@ -1,9 +1,16 @@
 import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/client'
+import dynamic from 'next/dynamic'
+
 import Nav from '../components/nav'
 
+const UnAuthenticated = dynamic(() => import('../layouts/unauthenticated'))
+// const AuthenticatedComponent = dynamic(() =>
+//   import('../components/authenticated')
+// )
+
 export default function Admin() {
-   const [session, loading] = useSession()
+   const [session, sessionLoading] = useSession()
    const [users, setUsers] = useState()
 
    useEffect(() => {
@@ -15,65 +22,58 @@ export default function Admin() {
       fetchData()
    }, [])
 
-   if (typeof window !== 'undefined' && loading) return null
+   if (typeof window !== 'undefined' && sessionLoading) return <p>Loading...</p>
+   if (!session && !sessionLoading) return <UnAuthenticated />
+   return (
+      <div>
+         <Nav />
+         {session && !sessionLoading && !session.user?.roles?.includes('Verified') && (
+            <p>Access Denied - Unverified ESTAS LOGUEADO PERO NO TIENES PERMISO PARA VER ESTO</p>
+         )}
+         {session && !sessionLoading && session.user?.roles?.includes('Verified') && (
+            <>
+               <p>Stuff for verified users</p>
+               {session.user.roles && session.user.roles.includes('Admin') && (
+                  <>
+                     <button id="doSomething">Admin Only</button>
+                  </>
+               )}
+               <p>More stuff for verified users</p>
+            </>
+         )}
+      </div>
+   )
+}
 
-   if (!session) {
-      return <NotLogin />
-   } else {
-      return (
+function NotLogin() {
+   return (
+      <div>
+         <Nav />
          <div>
-            <Nav />
-            <div>
-               <h1> Pagina protegida con LOGIN</h1>
-               {/* PODEMOS RENDERIZAR UNA LISTA */}
-               <ul>
-                  {users &&
-                     users.map((item, i) => {
-                        return (
-                           <li key={i}>
-                              <p>Hola: {item.name}</p>
-                           </li>
-                        )
-                     })}
-               </ul>
-            </div>
+            <h1>Necesitas iniciar sesion para aceder a esta pagina</h1>
          </div>
-      )
+      </div>
+   )
+}
 
-      // {
-      //    !session && sessionLoading && <p>Loading...</p>
-      // }
-      // {
-      //    !session && !sessionLoading && <p>Access Denied - Not logged in</p>
-      // }
-      // {
-      //    session && !sessionLoading && !session.user?.roles?.includes('Verified') && (
-      //       <p>Access Denied - Unverified</p>
-      //    )
-      // }
-      // {
-      //    session && !sessionLoading && session.user?.roles?.includes('Verified') && (
-      //       <>
-      //          <p>Stuff for verified users</p>
-      //          {session.user.roles && session.user.roles.includes('Admin') && (
-      //             <>
-      //                <button id="doSomething">Admin Only</button>
-      //             </>
-      //          )}
-      //          <p>More stuff for verified users</p>
-      //       </>
-      //    )
-      // }
-   }
-
-   function NotLogin() {
-      return (
+function Login() {
+   return (
+      <div>
+         <Nav />
          <div>
-            <Nav />
-            <div>
-               <h1>Necesitas iniciar sesion para aceder a esta pagina</h1>
-            </div>
+            <h1> Pagina protegida con LOGIN</h1>
+            {/* PODEMOS RENDERIZAR UNA LISTA */}
+            <ul>
+               {users &&
+                  users.map((item, i) => {
+                     return (
+                        <li key={i}>
+                           <p>Hola: {item.name}</p>
+                        </li>
+                     )
+                  })}
+            </ul>
          </div>
-      )
-   }
+      </div>
+   )
 }

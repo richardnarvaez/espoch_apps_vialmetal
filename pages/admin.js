@@ -39,6 +39,31 @@ export default function Admin() {
             </div>
          </div>
       )
+
+      // {
+      //    !session && sessionLoading && <p>Loading...</p>
+      // }
+      // {
+      //    !session && !sessionLoading && <p>Access Denied - Not logged in</p>
+      // }
+      // {
+      //    session && !sessionLoading && !session.user?.roles?.includes('Verified') && (
+      //       <p>Access Denied - Unverified</p>
+      //    )
+      // }
+      // {
+      //    session && !sessionLoading && session.user?.roles?.includes('Verified') && (
+      //       <>
+      //          <p>Stuff for verified users</p>
+      //          {session.user.roles && session.user.roles.includes('Admin') && (
+      //             <>
+      //                <button id="doSomething">Admin Only</button>
+      //             </>
+      //          )}
+      //          <p>More stuff for verified users</p>
+      //       </>
+      //    )
+      // }
    }
 
    function NotLogin() {

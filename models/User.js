@@ -1,6 +1,5 @@
 import Adapters from "next-auth/adapters"
 
-// Extend the built-in models using class inheritance
 export default class User extends Adapters.TypeORM.Models.User.model {
   constructor(name, email, image, emailVerified, roles) {
     super(name, email, image, emailVerified)

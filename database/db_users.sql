@@ -31,6 +31,7 @@ CREATE TABLE users
     email           varchar(255) NULL,
     email_verified  datetime NULL,
     image           varchar(255) NULL,
+    roles           varchar NULL,
     created_at      datetime NOT NULL DEFAULT getdate(),
     updated_at      datetime NOT NULL DEFAULT getdate()
   );

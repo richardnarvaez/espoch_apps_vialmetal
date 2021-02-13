@@ -11,15 +11,6 @@ const options = {
          clientSecret: 'BncxEbSC_r2EboCUHphTq2JV', //process.env.NEXTAUTH_GOOGLE_SECRET,
       }),
    ],
-   // database: process.env.NEXTAUTH_DATABASE_URL,
-   // database: {
-   //    type: 'mssql',
-   //    host: 'serverandres.database.windows.net',
-   //    port: 1433,
-   //    username: 'andresadmin',
-   //    password: 'p@ssw0rd',
-   //    database: 'BddVialMetal',
-   // },
    adapter: Adapters.TypeORM.Adapter(
       {
          type: 'mssql',

@@ -9,7 +9,7 @@ export default async (req, res) => {
       res.status(500).json({ success: false })
    }
 }
-export default async (req, res) => {
+const buscarUsuario = async (req, res) => {
    try {
       const {id} = req.params
       const result = await getUserById(id)

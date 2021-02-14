@@ -6,7 +6,9 @@ export default function NewForm() {
          <header>
             <h1>Ingreso de datos</h1>
          </header>
-         <div class="main"></div>
+         <div class="main">
+            <h1 class="title">BIENBENIDO</h1>
+         </div>
          <center>
             <form name="Datos">
                <div class="datos">

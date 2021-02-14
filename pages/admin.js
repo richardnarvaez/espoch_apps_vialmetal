@@ -4,10 +4,9 @@ import dynamic from 'next/dynamic'
 
 import Nav from '../components/nav'
 
-const UnAuthenticated = dynamic(() => import('../layouts/unauthenticated'))
-// const AuthenticatedComponent = dynamic(() =>
-//   import('../components/authenticated')
-// )
+const UnAuthenticated = dynamic(() => import('../layouts/unauthenticated'), {
+   loading: () => <p>Cargando mensaje...</p>,
+})
 
 export default function Admin() {
    const [session, sessionLoading] = useSession()

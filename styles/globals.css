@@ -16,5 +16,6 @@ a {
    box-sizing: border-box;
 }
 
+@import './estilo.css';
 @import './components/footer.css';
 @import './components/nav.css';

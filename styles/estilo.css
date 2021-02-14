@@ -1,0 +1,41 @@
+.html {
+   margin: 0;
+   padding: 0;
+}
+.body {
+   margin: 0;
+   padding: 0;
+}
+
+.main {
+   background-image: url(https://data.1freewallpapers.com/detail/city-street-movement-buildings-markup-new-york.jpg);
+   background-position: bottom;
+   background-size: cover;
+   overflow: auto;
+   height: 70vh;
+   left: 71vh;
+}
+.footer {
+   /* background-image: url(https://data.1freewallpapers.com/detail/city-street-movement-buildings-markup-new-york.jpg); */
+   height: 30vh;
+   background-color: #ccc;
+}
+
+.main .title {
+   border: 1px solid #fff;
+   width: 300px;
+   height: 50px;
+   text-align: center;
+   color: #fff;
+   top: calc(80vh - 45%);
+   left: 50%;
+   position: absolute;
+   margin-left: -150px;
+}
+.div {
+   background-image: url(https://i.pinimg.com/originals/00/36/c5/0036c56729db8e22e15a7563cf3275ec.png);
+   background-position: bottom;
+   overflow: auto;
+   height: 70vh;
+   left: 71vh;
+}

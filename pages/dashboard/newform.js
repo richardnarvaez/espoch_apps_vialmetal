@@ -3,10 +3,12 @@ import { Head } from 'next/document'
 export default function NewForm() {
    return (
       <>
+      <center>
          <header>
             <h1>Ingreso de datos</h1>
          </header>
          <div class="main"></div>
+      </center>
          <center>
             <form name="Datos">
                <div class="datos">

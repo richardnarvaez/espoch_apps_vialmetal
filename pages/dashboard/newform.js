@@ -3,9 +3,6 @@ import { Head } from 'next/document'
 export default function NewForm() {
    return (
       <>
-         <header>
-            <h1>Ingreso de datos</h1>
-         </header>
          <div class="main">
             <h1 class="title">BIENBENIDO</h1>
          </div>

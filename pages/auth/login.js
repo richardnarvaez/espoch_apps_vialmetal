@@ -8,7 +8,6 @@ export default function SignIn({ providers, csrfToken }) {
             <h2>Inicio</h2>
             <div>
                <div class=" w3l-form-group">
-                  <label>Email :</label>
                   <div class="group">
                      <i class="fas fa-user"></i>
                      <input
@@ -35,7 +34,7 @@ export default function SignIn({ providers, csrfToken }) {
                   </div> */}
                <div class="separation">
                   <div class="b"></div>
-                  <p>tambien puedes</p>
+                  <p>Tambien puedes</p>
                   <div class="a"></div>
                </div>
                {/* {Object.values(providers).map((provider) => (
@@ -47,9 +46,9 @@ export default function SignIn({ providers, csrfToken }) {
                ))} */}
             </div>
             <p class=" w3l-register-p">
-               Usted no tiene cuenta
+               Usted no tiene cuenta  
                <a href="#" class="register">
-                  Registrese
+                   Registrese
                </a>
             </p>
          </div>

@@ -2,7 +2,7 @@ import { getSession, providers, signIn } from 'next-auth/client'
 
 export default function SignIn({ providers, csrfToken }) {
    return (
-      <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <div class="body-home" style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
          {/* <h1>Inicio de secion </h1> */}
          <div class=" w3l-login-form">
             <h2>Inicio</h2>
@@ -38,13 +38,13 @@ export default function SignIn({ providers, csrfToken }) {
                   <p>tambien puedes</p>
                   <div class="a"></div>
                </div>
-               {Object.values(providers).map((provider) => (
+               {/* {Object.values(providers).map((provider) => (
                   <div key={provider.name}>
                      <button onClick={() => signIn(provider.id)}>
                         Sign in with {provider.name}
                      </button>
                   </div>
-               ))}
+               ))} */}
             </div>
             <p class=" w3l-register-p">
                Usted no tiene cuenta

@@ -3,6 +3,8 @@ import { useSession } from 'next-auth/client'
 import dynamic from 'next/dynamic'
 
 import Nav from '../components/nav'
+import AdminLayout from '../layouts/admin'
+
 
 const UnAuthenticated = dynamic(() => import('../layouts/unauthenticated'), {
    loading: () => <p>Cargando mensaje...</p>,
@@ -22,14 +24,14 @@ export default function Admin() {
    }, [])
 
    if (typeof window !== 'undefined' && sessionLoading) return <p>Loading...</p>
-   if (!session && !sessionLoading) return <UnAuthenticated />
+   // if (!session && !sessionLoading) return <UnAuthenticated />
    return (
       <div>
          <Nav />
-         {session && !sessionLoading && !session.user?.roles?.includes('Verified') && (
+         {/* {session && !sessionLoading && !session.user?.roles?.includes('Verified') && (
             <p>Access Denied - Unverified ESTAS LOGUEADO PERO NO TIENES PERMISO PARA VER ESTO</p>
-         )}
-         {session && !sessionLoading && session.user?.roles?.includes('Verified') && (
+         )} */}
+         {/* {session && !sessionLoading && session.user?.roles?.includes('Verified') && (
             <>
                <p>Stuff for verified users</p>
                {session.user.roles && session.user.roles.includes('Admin') && (
@@ -39,7 +41,8 @@ export default function Admin() {
                )}
                <p>More stuff for verified users</p>
             </>
-         )}
+         )} */}
+         <AdminLayout />
       </div>
    )
 }

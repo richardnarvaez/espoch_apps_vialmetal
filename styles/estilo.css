@@ -12,9 +12,10 @@
    background-position: bottom;
    background-size: cover;
    overflow: auto;
-   height: 70vh;
-   left: 71vh;
+   height: 20vh;
+   left: 20vh;
 }
+
 .footer {
    /* background-image: url(https://data.1freewallpapers.com/detail/city-street-movement-buildings-markup-new-york.jpg); */
    height: 30vh;
@@ -32,6 +33,7 @@
    position: absolute;
    margin-left: -150px;
 }
+
 .div {
    background-image: url(https://i.pinimg.com/originals/00/36/c5/0036c56729db8e22e15a7563cf3275ec.png);
    background-position: bottom;
@@ -40,11 +42,16 @@
    left: 71vh;
 }
 
-body {
-   margin: 0;
-   padding: 0;
+.body-home {
+   font-family: 'Raleway', sans-serif;
    background: url(https://data.1freewallpapers.com/detail/city-street-movement-buildings-markup-new-york.jpg)
       no-repeat 0px 0px;
+}
+
+body,
+.body-home {
+   margin: 0;
+   padding: 0;
    min-height: 100vh;
    background-size: cover;
    font-family: 'Raleway', sans-serif;
@@ -58,6 +65,25 @@ h1 {
    font-weight: 500;
    letter-spacing: 2px;
    padding: 50px 0;
+}
+
+.card {
+   box-shadow: 2px 2px 5px #999;
+}
+
+.tarjeta {
+   padding-bottom: 16px;
+}
+
+.tarjeta-lista {
+   display: flex;
+}
+.tarjeta-imagen{
+   background: red;
+   vertical-align: middel;
+   border-radius: 50%;
+   width: 50px;
+   height: 50px;
 }
 
 h2 {

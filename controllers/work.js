@@ -7,7 +7,7 @@ export async function getAllWorks() {
  }
  export async function getWorkById(id){
     const db = await connect()
-    const result = await db.query(`select * from work where =`+ id_work)
+    const result = await db.query(`select * from work where  id_work =`+ id)
     return result.recordsets
  }
  export async function insertWork(dataWork){

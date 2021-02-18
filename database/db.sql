@@ -302,6 +302,7 @@ ALTER TABLE work_vehicles
 GO
 ALTER TABLE work_vehicles
     ADD CONSTRAINT FK_Vehicle_WorkVehicles FOREIGN KEY(id_vehicle) REFERENCES vehicles(id_vehicle)
+GO
 --------------------------------------------------------------------------
 -- Create a new table called '[work_tools]' in schema '[dbo]'
 -- Drop the table if it already exists

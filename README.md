@@ -22,7 +22,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 ## EQUIPO
 - [Michael Figueroa ](https://github.com/07MichaelF)
 - [Andres Gavino ](https://github.com/AndresGav)
-- [Nombre ](https://github.com/username)
+- [Jhoset Pazmiño ](https://github.com/Jhosetp96)
 - [Nombre ](https://github.com/username)
 - [Nombre ](https://github.com/username)
 - [Nombre ](https://github.com/username)

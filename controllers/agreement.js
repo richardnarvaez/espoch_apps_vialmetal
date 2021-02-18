@@ -8,7 +8,7 @@ export async function getAllAgreements() {
 export async function getAgreementById(id){
    const db = await connect()
    const result = await db.query(`select * from agreements where id_agreement =`+ id)
-   return result.recordsets
+   return result.recordsets[0]
 }
 export async function insertAgreement(dataAgreement){
    const db = await connect()

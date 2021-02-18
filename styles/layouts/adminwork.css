@@ -1,3 +1,53 @@
-h1{
+.body-adminwork{
+    margin: 0%;
+    width: 100%;
+    height: 100%;
+}
+.content-newwork{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.new-work{
+    width: 65%;
     background-color: aqua;
+}
+
+.list-work{
+    width: 30%;
+    background-color: bisque;
+}
+
+/*CONTENIDO OPCIONES*/
+.content-work{
+    width: 90%;
+    background-color: black;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+.item-work{
+    width: 80px;
+    height: 80px;
+    margin: 3px;
+    background-image: url(https://image.freepik.com/vector-gratis/tractor-icono-estilo-plano_147754-131.jpg);
+    background-size: cover;
+}
+
+/*CONTENIDO OPCIONES ELEJIDAS*/
+.content-list{
+    width: 90%;
+    background-color: white;
+    margin: auto;
+    display: flexbox;
+}
+
+/*BOTON AGREGAR*/
+.btn-agregar{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 10px;
 }

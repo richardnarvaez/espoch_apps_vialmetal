@@ -1,13 +1,34 @@
 import Nav from '../components/nav'
-
 export default function AdminWork() {
     return (
         <div className="body-adminwork">
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"></link>
+
+            <Nav />
 
             <div className="content-newwork">
                 <div className="new-work">
-                    <h1>Nueva Obra</h1>
+                    <h2>Nueva Obra</h2>
+                    <ul className="nav nav-tabs" id="myTab" role="tablist">
+                    <li className="nav-item">
+                        <a className="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" 
+                            aria-controls="home" aria-selected="false">
+                            Transporte
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" 
+                            aria-controls="home" aria-selected="false">
+                            Material
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" 
+                            aria-controls="home" aria-selected="false">
+                            Detalles
+                        </a>
+                    </li>
+
+                </ul>
                     <div className="content-work">
                         <div className="item-work"></div>
                         <div className="item-work"></div>
@@ -18,19 +39,23 @@ export default function AdminWork() {
                     </div>
                 </div>
                 <div className="list-work">
-                    <h1>Lista</h1>
+                    <h2>Lista</h2>
                     <div className="content-list">
                         <div className="item-list">
-                            <h5>Tsdfsdf</h5>
+                            <h5>Transporte</h5>
+                            <p>x2</p>
                         </div>
                         <div className="item-list">
-                            <h5>Tsdfsdf</h5>
+                            <h5>Material</h5>
+                            <p>x2</p>
                         </div>
                         <div className="item-list">
-                            <h5>Tsdfsdf</h5>
+                            <h5>Pintura</h5>
+                            <p>3 litros</p>
                         </div>
                         <div className="item-list">
-                            <h5>Tsdfsdf</h5>
+                            <h5>Tiñer</h5>
+                            <p>1000 litros</p>
                         </div>
                     </div>
                     <div className="btn-agregar">

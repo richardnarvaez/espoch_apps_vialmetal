@@ -4,34 +4,42 @@
     height: 100%;
 }
 .content-newwork{
+    margin-top: 50px;
     width: 100%;
     display: flex;
     justify-content: space-around;
+    border-radius: 50%;
+}
+.content-newwork h2{
+    color: black;
 }
 
 .new-work{
-    width: 65%;
-    background-color: aqua;
+    width: 50%;
+    background-color: #f7f7f7;
+    border-radius: 20px ;
 }
 
 .list-work{
-    width: 30%;
-    background-color: bisque;
+    width: 45%;
+    background-color: #f7f7f7;
+    border-radius: 20px ;
 }
 
 /*CONTENIDO OPCIONES*/
 .content-work{
     width: 90%;
-    background-color: black;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     margin-bottom: 10px;
 }
+
+
 .item-work{
-    width: 80px;
-    height: 80px;
+    width: 150px;
+    height: 150px;
     margin: 3px;
     background-image: url(https://image.freepik.com/vector-gratis/tractor-icono-estilo-plano_147754-131.jpg);
     background-size: cover;
@@ -45,9 +53,14 @@
     display: flexbox;
 }
 
+.item-list{
+    text-align: center;
+}
+
 /*BOTON AGREGAR*/
 .btn-agregar{
-    width: 90%;
+    width: 80%;
     margin: auto;
     margin-bottom: 10px;
+   
 }

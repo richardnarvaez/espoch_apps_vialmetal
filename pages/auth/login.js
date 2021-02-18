@@ -1,6 +1,6 @@
 import { getSession, providers, signIn } from 'next-auth/client'
 
-export default function SignIn({ providers, csrfToken }) {
+export default function SignIn({ providers }) {
    return (
       <div class="body-home" style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
          {/* <h1>Inicio de secion </h1> */}
@@ -37,18 +37,18 @@ export default function SignIn({ providers, csrfToken }) {
                   <p>Tambien puedes</p>
                   <div class="a"></div>
                </div>
-               {/* {Object.values(providers).map((provider) => (
+               {Object.values(providers).map((provider) => (
                   <div key={provider.name}>
                      <button onClick={() => signIn(provider.id)}>
                         Sign in with {provider.name}
                      </button>
                   </div>
-               ))} */}
+               ))}
             </div>
             <p class=" w3l-register-p">
-               Usted no tiene cuenta  
+               Usted no tiene cuenta
                <a href="#" class="register">
-                   Registrese
+                  Registrese
                </a>
             </p>
          </div>

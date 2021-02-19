@@ -27,3 +27,4 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 - [Daniel Molina](https://github.com/gatodante12)
 - [Carlos Diaz ](https://github.com/username)
 - [Richard Vinueza](https://github.com/richardnarvaez)
+- [Nixon Ramos](https://github.com/NRamosD)

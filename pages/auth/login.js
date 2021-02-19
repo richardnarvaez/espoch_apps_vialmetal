@@ -34,13 +34,13 @@ export default function SignIn({ providers }) {
                   </div> */}
                <div class="separation">
                   <div class="b"></div>
-                  <p>Tambien puedes</p>
+                  <p>o inicia sesión con</p>
                   <div class="a"></div>
                </div>
                {Object.values(providers).map((provider) => (
                   <div key={provider.name}>
                      <button onClick={() => signIn(provider.id)}>
-                        Sign in with {provider.name}
+                      {provider.name}
                      </button>
                   </div>
                ))}

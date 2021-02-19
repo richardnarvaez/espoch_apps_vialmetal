@@ -7,32 +7,61 @@ export default function Home() {
    return (
       <>
          <Head>
-            <title>Create Next App</title>
+            <title>VialMetal</title>
             <link rel="icon" href="/favicon.ico" />
          </Head>
-
          <Nav />
          <main>
-            <h1>VIALMETAL</h1>
-            <p>Esto es un ejemplo de proyecto en la rama DEV</p>
-            <p>PANTALLA INICIAL </p>
+            <section id="hero" class="text-white tm-font-big tm-parallax">
+               <div class="back-black"></div>
+               <nav class="navbar navbar-expand-md tm-navbar" id="tmNav">
+                  <div class="container">
+                     <div class="tm-next">
+                        <a href="#hero" class="navbar-brand"><b>SIGN IN</b></a>
+                     </div>
 
-            <ul className="navigation">
-               <li><strong>Lista de paginas</strong></li>
-               <li className="navigationItem">
-                  <Link href="/admin">
-                     <a>Admin Vista protegida</a>
-                  </Link>
-               </li>
-               <li className="navigationItem">
-                  <a href="/api/data/users">Lista de usuarios API</a>
-               </li>
-               <li className="navigationItem">
-                  <a href="/dashboard/newform">Fromulario</a>
-               </li>
-            </ul>
+                     <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                     >
+                        <i class="fas fa-bars navbar-toggler-icon"></i>
+                     </button>
+                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                           <li class="nav-item">
+                              <a class="nav-link tm-nav-link" href="/admin"><b>Admin</b></a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link tm-nav-link" href=""><b>Usuarios</b></a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link tm-nav-link" href=""><b>Formularios</b></a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </nav>
+
+               <div class="text-center tm-hero-text-container">
+                  <div class="tm-hero-text-container-inner">
+                     <h2 class="tm-hero-title">VIALMETAL</h2>
+                     <p class="tm-hero-subtitle">
+                        SISTEMA DE GESTIÓN DE MATERIALES
+                  <br />Pantalla de Inicio
+               </p>
+                  </div>
+               </div>
+
+               <footer class="text-center small tm-footer">
+                  <p class="mb-0">Copyright &copy; 2021 VIALMETAL</p>
+               </footer>
+            </section>
          </main>
-         <Footer />
       </>
    )
 }

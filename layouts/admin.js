@@ -1,29 +1,18 @@
 import Card from '../components/card'
+import Footer from '../components/footer'
 
 export default function Admin() {
    const datos = [
       {
-         title: 'Hola',
-         description: 'Descripcion 3',
-         price: '$21',
-      },
-      {
-         title: 'Hola22312',
-         description: 'Descripcion 3',
-         price: '$21',
-      },
-      {
-         title: 'Hola',
-         description: 'da;;sdlfgk; 3',
-         price: '$21',
+         title: 'Aqui va el titulo',
+         description: 'Una breve descripcion',
+         price: '$00',
       },
    ]
 
    return (
       <div class="container">
-           <div class="main">
-      
-  </div>
+         <div class="main"></div>
          {/* BOOSTRAP */}
          <br />
          <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -75,7 +64,7 @@ export default function Admin() {
                aria-labelledby="home-tab"
             >
                {/* BOSTRAP */}
-               <div class="dropdown show">
+               <div class="dropdown show combobox">
                   <a
                      class="btn btn-secondary dropdown-toggle"
                      href="#"
@@ -85,23 +74,26 @@ export default function Admin() {
                      aria-haspopup="true"
                      aria-expanded="false"
                   >
-                     Dropdown link
+                     Ordenar
                   </a>
 
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                      <a class="dropdown-item" href="#">
-                        Action
+                        A-Z
                      </a>
                      <a class="dropdown-item" href="#">
-                        Another action
+                        Z-A
                      </a>
                      <a class="dropdown-item" href="#">
-                        Something else here
+                        Actual-Antiguo
+                     </a>
+                     <a class="dropdown-item" href="#">
+                        Antiguo-Actual
                      </a>
                   </div>
                </div>
-               <h1>PANTALLA 1</h1>
-               <div class="row">
+               <h1>Obras</h1>
+               <div class="div" class="row">
                   {datos.map((item, i) => {
                      return (
                         <>
@@ -162,7 +154,15 @@ export default function Admin() {
                      role="tabpanel"
                      aria-labelledby="pills-home-tab"
                   >
-                     ...
+                     <div class="div" class="row">
+                        {datos.map((item, i) => {
+                           return (
+                              <>
+                                 <Card data={item} />
+                              </>
+                           )
+                        })}
+                     </div>
                   </div>
                   <div
                      class="tab-pane fade"
@@ -170,7 +170,15 @@ export default function Admin() {
                      role="tabpanel"
                      aria-labelledby="pills-profile-tab"
                   >
-                     ...
+                     <div class="div" class="row">
+                        {datos.map((item, i) => {
+                           return (
+                              <>
+                                 <Card data={item} />
+                              </>
+                           )
+                        })}
+                     </div>
                   </div>
                   <div
                      class="tab-pane fade"
@@ -178,14 +186,32 @@ export default function Admin() {
                      role="tabpanel"
                      aria-labelledby="pills-contact-tab"
                   >
-                     ...
+                     <div class="div" class="row">
+                        {datos.map((item, i) => {
+                           return (
+                              <>
+                                 <Card data={item} />
+                              </>
+                           )
+                        })}
+                     </div>
                   </div>
                </div>
             </div>
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-               COMO ESTANS
+               <h1>Contratistas</h1>
+               <div class="div" class="row">
+                  {datos.map((item, i) => {
+                     return (
+                        <>
+                           <Card data={item} />
+                        </>
+                     )
+                  })}
+               </div>
             </div>
          </div>
+         <Footer />
       </div>
    )
 }

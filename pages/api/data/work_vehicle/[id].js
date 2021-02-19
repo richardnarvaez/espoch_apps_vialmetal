@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/client'
-import { getAllAgreements, getAgreementById, insertAgreement, updateAgreement, deleteAgreement } from '../../../../controllers/agreement'
+import { getAllWork_Vehicles, getWork_VehicleById, insertWork_Vehicle, updateWork_Vehicle, deleteWork_Vehicle } from '../../../../controllers/work_vehicles'
 
 
 export default async (req, res) => {
@@ -16,12 +16,12 @@ export default async (req, res) => {
             try {
                 if (id == "all") {
 
-                    const result = await getAllAgreements()
+                    const result = await getAllWork_Vehicles()
                     res.status(200).json(result)
 
                 } else {
 
-                    const result = await getAgreementById(id)
+                    const result = await getWork_VehicleById(id)
                     res.status(200).json(result)
                 }
             } catch (err) {
@@ -31,7 +31,7 @@ export default async (req, res) => {
 
         case 'PUT': /*Actulizar */
             try {
-                const result = await updateAgreement(id,body)
+                const result = await updateWork_Vehicle(id,body)
                 res.status(200).json(body)
             } catch (err) {
                 res.status(500).json({ success: false, error: err })
@@ -40,7 +40,7 @@ export default async (req, res) => {
 
         case 'POST': /*Insert*/  /*O CUALQUIER ACCION secreta*/
             try {
-                const result = await insertAgreement(body)
+                const result = await insertWork_Vehicle(body)
                 res.status(200).json(body)
             } catch (err) {
                 res.status(500).json({ success: false, error: err })
@@ -49,7 +49,7 @@ export default async (req, res) => {
 
         case 'DELETE':
             try{
-                const result = await deleteAgreement(id)
+                const result = await deleteWork_Vehicle(id)
                 res.status(200).json(body)
             }catch{
                 res.status(500).json({ success: false, error: err })
@@ -61,4 +61,3 @@ export default async (req, res) => {
             res.status(405).end(`Method ${method} Not Allowed`)
     }
 }
-

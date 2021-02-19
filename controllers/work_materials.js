@@ -7,7 +7,7 @@ export async function getAllWork_Materials() {
 }
 export async function getWork_MaterialId(id){
    const db = await connect()
-   const result = await db.query(`select * from work_materials where id_work_materials =`+ id)
+   const result = await db.query(`select * from work_materials where id_work_material =`+ id)
    return result.recordsets
 }
 export async function insertWork_Material(dataWorkM){
@@ -18,11 +18,11 @@ export async function insertWork_Material(dataWorkM){
 }
 export async function updateWork_Material(id, dataWorkM){
    const db = await connect()
-   const result = await db.query(`UPDATE work_materials SET material_begin = ${dataWorkM.material_begin}, material_end = ${dataWorkM.material_end}, date = ${dataWorkM.date} WHERE id_work_materials = ${id}`)
+   const result = await db.query(`UPDATE work_materials SET material_begin = ${dataWorkM.material_begin}, material_end = ${dataWorkM.material_end}, date = ${dataWorkM.date} WHERE id_work_material = ${id}`)
    return result.recordsets
 }
 export async function deleteWork_Material(id){
    const db = await connect()
-   const result = await db.query(`DELETE FROM work_materials WHERE id_work_materials = ${id}`)
+   const result = await db.query(`DELETE FROM work_materials WHERE id_work_material = ${id}`)
    return result.recordsets
 }

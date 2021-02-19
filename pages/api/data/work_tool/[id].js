@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/client'
-import { getAllAgreements, getAgreementById, insertAgreement, updateAgreement, deleteAgreement } from '../../../../controllers/agreement'
+import { getAllWork_Tools, getWork_ToolById, insertWork_Tool, updateWork_Tool, deleteWork_Tool } from '../../../../controllers/work_tools'
 
 
 export default async (req, res) => {
@@ -16,12 +16,12 @@ export default async (req, res) => {
             try {
                 if (id == "all") {
 
-                    const result = await getAllAgreements()
+                    const result = await getAllWork_Tools()
                     res.status(200).json(result)
 
                 } else {
 
-                    const result = await getAgreementById(id)
+                    const result = await getWork_ToolById(id)
                     res.status(200).json(result)
                 }
             } catch (err) {
@@ -31,7 +31,7 @@ export default async (req, res) => {
 
         case 'PUT': /*Actulizar */
             try {
-                const result = await updateAgreement(id,body)
+                const result = await updateWork_Tool(id,body)
                 res.status(200).json(body)
             } catch (err) {
                 res.status(500).json({ success: false, error: err })
@@ -40,7 +40,7 @@ export default async (req, res) => {
 
         case 'POST': /*Insert*/  /*O CUALQUIER ACCION secreta*/
             try {
-                const result = await insertAgreement(body)
+                const result = await insertWork_Tool(body)
                 res.status(200).json(body)
             } catch (err) {
                 res.status(500).json({ success: false, error: err })
@@ -49,7 +49,7 @@ export default async (req, res) => {
 
         case 'DELETE':
             try{
-                const result = await deleteAgreement(id)
+                const result = await deleteWork_Tool(id)
                 res.status(200).json(body)
             }catch{
                 res.status(500).json({ success: false, error: err })
@@ -61,4 +61,3 @@ export default async (req, res) => {
             res.status(405).end(`Method ${method} Not Allowed`)
     }
 }
-

@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/client'
-import { getAllContractors, getContractorById, insertContractor } from '../../../../controllers/contractor'
+import { getAllContractors, getContractorById, insertContractor, updateContractor, deleteContractor } from '../../../../controllers/contractor'
 
 
 export default async (req, res) => {
@@ -30,11 +30,15 @@ export default async (req, res) => {
             break
 
         case 'PUT': /*Actulizar */
-            
+            try {
+                const result = await updateContractor(id,body)
+                res.status(200).json(body)
+            } catch (err) {
+                res.status(500).json({ success: false, error: err })
+            }
             break
 
         case 'POST': /*Insert*/  /*O CUALQUIER ACCION secreta*/
-            console.log(body);
             try{
                 const result = await insertContractor(body)
                 res.status(200).json(result)
@@ -42,7 +46,15 @@ export default async (req, res) => {
                 res.status(500).json({ success: false, error: err })
             }
             break
-
+        case 'DELETE':
+            try{
+                const result = await deleteContractor(id)
+                res.status(200).json(body)
+            }catch{
+                res.status(500).json({ success: false, error: err })
+            }
+            break
+    
         default:
             res.setHeader('Allow', ['GET', 'PUT'])
             res.status(405).end(`Method ${method} Not Allowed`)

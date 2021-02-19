@@ -2,6 +2,7 @@ import { getSession } from 'next-auth/client'
 import { getAllVehicles, getVehicleById, updateVehicle, insertVehicle, deleteVehicle } from '../../../../controllers/vehicle'
 
 
+
 export default async (req, res) => {
 
     const {
@@ -9,7 +10,6 @@ export default async (req, res) => {
         query: { id, name },
         method,
     } = req
-
     switch (method) {
         case 'GET': /*SELECT*/
 
@@ -61,3 +61,4 @@ export default async (req, res) => {
             res.status(405).end(`Method ${method} Not Allowed`)
     }
 }
+

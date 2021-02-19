@@ -8,7 +8,11 @@ export async function getAllVehicles() {
 export async function getVehicleById(id){
    const db = await connect()
    const result = await db.query(`select * from vehicles where id_vehicle =`+ id)
+<<<<<<< HEAD
    return result.recordsets
+=======
+   return result.recordsets[0]
+>>>>>>> 6fa7937f48d08ef74acae15fd7ea80634402b160
 }
 export async function insertVehicle(dataVehicle){
    const db = await connect()

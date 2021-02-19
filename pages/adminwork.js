@@ -39,7 +39,7 @@ export default function AdminWork() {
                     </div>
                 </div>
                 <div className="list-work">
-                    <h2>Lista</h2>
+                    <h2>Resumen</h2>
                     <div className="content-list">
                         <div className="item-list">
                             <h5>Transporte</h5>

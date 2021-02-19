@@ -1,4 +1,3 @@
-
 -- Create a new table called '[accounts]' in schema '[dbo]'
 -- Drop the table if it already exists
 IF OBJECT_ID('[dbo].[accounts]', 'U') IS NOT NULL
@@ -48,7 +47,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE [dbo].[users]
 (
-    [id_user] INT IDENTITY(1,1) NOT NULL, -- PK
+    [id] INT IDENTITY(1,1) NOT NULL, -- PK
     [name] NVARCHAR(255) NULL,
     [email] NVARCHAR(255) NULL,
     [email_verified] DATETIME NULL,
@@ -60,7 +59,7 @@ CREATE TABLE [dbo].[users]
 );
 GO
 ALTER TABLE users 
-    ADD CONSTRAINT PK_Users PRIMARY KEY NONCLUSTERED(id_user)
+    ADD CONSTRAINT PK_Users PRIMARY KEY NONCLUSTERED(id)
 GO
 -- Create a new table called '[verification_requests]' in schema '[dbo]'
 -- Drop the table if it already exists
@@ -94,7 +93,7 @@ CREATE INDEX user_id
 GO
 CREATE UNIQUE INDEX session_token
   ON [sessions](session_token);
-GO
+
 CREATE UNIQUE INDEX access_token
   ON [sessions](access_token);
 GO
@@ -177,7 +176,7 @@ ALTER TABLE works
     ADD CONSTRAINT PK_Work PRIMARY KEY NONCLUSTERED(id_work)
 GO
 ALTER TABLE works
-    ADD CONSTRAINT FK_UserWork FOREIGN KEY (id_user) REFERENCES users(id_user)
+    ADD CONSTRAINT FK_UserWork FOREIGN KEY (id_user) REFERENCES users(id)
 GO
 ALTER TABLE works
     ADD CONSTRAINT FK_AgreementWork FOREIGN KEY (id_agreement) REFERENCES agreements(id_agreement)
@@ -302,6 +301,7 @@ ALTER TABLE work_vehicles
 GO
 ALTER TABLE work_vehicles
     ADD CONSTRAINT FK_Vehicle_WorkVehicles FOREIGN KEY(id_vehicle) REFERENCES vehicles(id_vehicle)
+GO
 --------------------------------------------------------------------------
 -- Create a new table called '[work_tools]' in schema '[dbo]'
 -- Drop the table if it already exists

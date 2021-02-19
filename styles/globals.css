@@ -19,6 +19,7 @@ a {
 @import './estilo.css';
 @import './components/footer.css';
 @import './components/nav.css';
+@import './layouts/adminwork.css';
 
 /* INDEX */
 .back-black {

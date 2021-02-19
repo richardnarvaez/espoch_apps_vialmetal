@@ -7,8 +7,8 @@ export async function getAllTools() {
 }
 export async function getToolById(id){
    const db = await connect()
-   const result = await db.query(`select * from tools where = id_tool`+ id)
-   return result.recordsets
+   const result = await db.query(`select * from tools where id_tool = `+ id)
+   return result.recordsets[0]
 }
 export async function insertTool(dataTool){
    const db = await connect()

@@ -1,4 +1,4 @@
-export default function Card({ data }) {
+export default function CardW({ data }) {
    return (
       <>
          <div class="col-sm-6 tarjeta">

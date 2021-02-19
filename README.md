@@ -23,7 +23,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 - [Michael Figueroa ](https://github.com/07MichaelF)
 - [Andres Gavino ](https://github.com/AndresGav)
 - [Jhoset Pazmiño ](https://github.com/Jhosetp96)
-- [Gamerpain ](https://github.com/username)
+- [Johnny Gaona](https://github.com/Gamerpain)
 - [Nombre ](https://github.com/username)
 - [Carlos Diaz ](https://github.com/username)
 - [Richard Vinueza](https://github.com/richardnarvaez)

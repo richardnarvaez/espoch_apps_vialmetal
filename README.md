@@ -25,5 +25,5 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 - [Jhoset Pazmiño ](https://github.com/Jhosetp96)
 - [Nombre ](https://github.com/username)
 - [Nombre ](https://github.com/username)
-- [Nombre ](https://github.com/username)
+- [Carlos Diaz ](https://github.com/username)
 - [Richard Vinueza](https://github.com/richardnarvaez)

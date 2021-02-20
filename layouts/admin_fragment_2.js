@@ -6,7 +6,15 @@ export default function AdminF2() {
          title: 'Esto es un dato de ADmin2 ',
          description: 'Una breve descripcion',
          price: '$00',
-      },
+      },   {
+         title: 'Esto es un dato de ADmin2 ',
+         description: 'Una breve descripcion',
+         price: '$00',
+      },   {
+         title: 'Esto es un dato de ADmin2 ',
+         description: 'Una breve descripcion',
+         price: '$00',
+      }
    ]
 
    return (

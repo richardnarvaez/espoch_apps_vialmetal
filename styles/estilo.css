@@ -1,12 +1,4 @@
-.html {
-   margin: 0;
-   padding: 0;
-}
-.body {
-   margin: 0;
-   padding: 0;
-}
-.mainhome{
+.mainhome {
    background-image: url(https://data.1freewallpapers.com/detail/city-street-movement-buildings-markup-new-york.jpg);
    background-position: bottom;
    overflow: auto;
@@ -21,22 +13,20 @@
    height: 20vh;
    left: 20vh;
 }
-.paragraph-home
-{ 
-   font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
-color: #ffffff; 
-font-size: 20px; 
-font-weight: 400; 
-text-align: center; 
-background: #030303; 
-margin: 0 0 25px; 
-overflow: hidden; 
-padding: 20px; 
-border-radius: 35px 0px 35px 0px; 
--moz-border-radius: 35px 0px 35px 0px; 
--webkit-border-radius: 35px 0px 35px 0px; 
-border: 2px solid #000000;
-
+.paragraph-home {
+   font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+   color: #ffffff;
+   font-size: 20px;
+   font-weight: 400;
+   text-align: center;
+   background: #030303;
+   margin: 0 0 25px;
+   overflow: hidden;
+   padding: 20px;
+   border-radius: 35px 0px 35px 0px;
+   -moz-border-radius: 35px 0px 35px 0px;
+   -webkit-border-radius: 35px 0px 35px 0px;
+   border: 2px solid #000000;
 }
 
 .body-home {
@@ -54,7 +44,6 @@ body,
    font-family: 'Raleway', sans-serif;
 }
 
-
 h1 {
    margin: 0;
    color: #000000;
@@ -64,14 +53,44 @@ h1 {
    letter-spacing: 2px;
    padding: 50px 0;
 }
-.combobox{
-padding-top: 16px;
-padding-left: 100px;
+.combobox {
+   padding-top: 50px;
+   padding-bottom: 50px;
+   padding-right: 16px;
+}
+
+.combobox a {
+   border-radius: 99px;
+}
+
+.list-combo {
+   display: flex;
 }
 
 .card {
-   box-shadow: 2px 2px 5px #999;
-   background-image: url(https://i.pinimg.com/originals/91/31/0b/91310beb99746bd215c35c16cffc4a06.png); 
+   box-shadow: 0px 2px 10px #00000040;
+   border: none;
+   border-radius: 12px;
+   display: flex;
+   flex-direction: row;
+   padding: 16px;
+}
+
+.card-imagen {
+   background: #0692a532;
+   color: #0692a5;
+   border-radius: 99px;
+   width: 42px;
+   height: 42px;
+   display: flex;
+}
+
+.card-imagen p {
+   margin: auto;
+}
+
+.card-body-right {
+   margin-left: 16px;
 }
 
 .tarjeta {
@@ -237,6 +256,24 @@ footer {
    padding: 2em 0;
    text-align: center;
 }
+
+.bt-new-work {
+   position: fixed;
+   background: rgb(255, 196, 0);
+   border-radius: 99px;
+   bottom: 32px;
+   right: 32px;
+   padding: 8px 16px;
+   box-shadow: 0 2px 5px #00000032;
+   /* Edicion nueva prueba*/
+   display: flex;
+   width: 150px;
+   height: 50px;
+}
+
+.bt-new-work h5 {
+   margin: auto;
+}
 /*--//footer--*/
 
 /*-- /responsive design --*/
@@ -308,5 +345,3 @@ footer {
 }
 
 /*-- /responsive design --*/
-
-

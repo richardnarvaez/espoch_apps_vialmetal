@@ -6,6 +6,7 @@ import Nav from '../components/nav'
 import AdminLayout from '../layouts/admin'
 
 
+
 const UnAuthenticated = dynamic(() => import('../layouts/unauthenticated'), {
    loading: () => <p>Cargando mensaje...</p>,
 })
@@ -43,6 +44,11 @@ export default function Admin() {
             </>
          )} */}
          <AdminLayout />
+         {/* PUS ESTE BOTON PARA CREAR LA NUEVA OBRA VA A LA OTRA VISTA */}
+
+         <a class="bt-new-work" href="/adminwork">
+            <h5>Nueva Obra</h5> 
+      </a>
       </div>
    )
 }

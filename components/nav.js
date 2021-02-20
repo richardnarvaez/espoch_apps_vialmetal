@@ -11,7 +11,9 @@ const Nav = () => {
 
          <nav className="toolbar">
             <Link href="/">
-               <p>VIALMETAL</p>
+               <a>
+                  <p>VIALMETAL</p>
+               </a>
             </Link>
 
             <div className={`loading-view nojs-show ${!session && loading ? 'loading' : 'loaded'}`}>

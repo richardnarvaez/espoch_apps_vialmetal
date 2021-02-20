@@ -1,5 +1,6 @@
 import { signin, signout, useSession } from 'next-auth/client'
 import Link from 'next/link'
+import Logo from './logo'
 const Nav = () => {
    const [session, loading] = useSession()
 
@@ -11,9 +12,7 @@ const Nav = () => {
 
          <nav className="toolbar">
             <Link href="/">
-               <a>
-                  <p>VIALMETAL</p>
-               </a>
+               <Logo />
             </Link>
 
             <div className={`loading-view nojs-show ${!session && loading ? 'loading' : 'loaded'}`}>

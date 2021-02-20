@@ -1,10 +1,14 @@
+import Link from 'next/link'
+
 export default function Card({ data }) {
    return (
-      <>
+      <Link href="/details">
          <div class="col-sm-6 tarjeta">
             <div class="card">
                <div class="card-imagen">
-                  <p> <strong>A</strong></p>
+                  <p>
+                     <strong>A</strong>
+                  </p>
                </div>
                <div class="card-body-right">
                   <h5 class="card-title">{data.title}</h5>
@@ -13,6 +17,6 @@ export default function Card({ data }) {
                </div>
             </div>
          </div>
-      </>
+      </Link>
    )
 }

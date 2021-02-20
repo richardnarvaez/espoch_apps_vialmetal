@@ -6,7 +6,7 @@ export default function AdminF1() {
          title: 'Aqui va el titulo',
          description: 'Una breve descripcion',
          price: '$00',
-      },
+      }   
    ]
 
    return (

@@ -111,7 +111,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE [dbo].[contractors]
 (
-    [id_contractor] INT IDENTITY(1,1) NOT NULL, --PK
+    [id_contractor] INT IDENTITY(1,1) NOT NULL, -- PK
     [ruc] NVARCHAR(50) NOT NULL, --U
     [business_name] NVARCHAR(50) NOT NULL,
     [description] NVARCHAR(100) NULL
@@ -134,7 +134,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE [dbo].[agreements]
 (
-    [id_agreement] INT IDENTITY(1,1) NOT NULL, -- Primary Key column
+    [id_agreement] INT IDENTITY(1,1) NOT NULL, -- PK
     [id_contractor] INT NOT NULL,
     [location] NVARCHAR(50) NOT NULL,
     [location_reference] NVARCHAR(50) NULL,
@@ -160,7 +160,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE [dbo].[works]
 (
-    [id_work] INT NOT NULL, -- PK
+    [id_work] INT IDENTITY(1,1) NOT NULL, -- PK
     [id_user] INT NOT NULL, -- FK
     [id_agreement] INT NOT NULL, -- FK
     [description] NVARCHAR(50) NULL,
@@ -190,7 +190,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE [dbo].[materials]
 (
-    [id_material] INT NOT NULL, -- PK
+    [id_material] INT IDENTITY(1,1) NOT NULL, -- PK
     [name] NVARCHAR(50) NOT NULL,
     [image] NVARCHAR(255) NULL,
     [quantity] INT NOT NULL,
@@ -211,7 +211,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE [dbo].[vehicles]
 (
-    [id_vehicle] INT NOT NULL, -- PK
+    [id_vehicle] INT IDENTITY(1,1) NOT NULL, -- PK
     [license] NVARCHAR(50) NOT NULL, -- U
     [name] NVARCHAR(50) NOT NULL,
     [image] NVARCHAR(255) NULL,
@@ -236,7 +236,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE [dbo].[tools]
 (
-    [id_tool] INT NOT NULL, -- PK
+    [id_tool] INT IDENTITY(1,1) NOT NULL, -- PK
     [name] NVARCHAR(50) NOT NULL,
     [image] NVARCHAR(255) NULL,
     [quantity] INT NOT NULL,
@@ -257,7 +257,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE [dbo].[work_materials]
 (
-    [id_work_material] INT NOT NULL, -- PK
+    [id_work_material] INT IDENTITY(1,1) NOT NULL, -- PK
     [id_work] INT NOT NULL, -- FK
     [id_material] INT NOT NULL, -- FK
     [material_begin] INT NOT NULL,
@@ -284,7 +284,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE [dbo].[work_vehicles]
 (
-    [id_work_vehicle] INT NOT NULL, -- PK
+    [id_work_vehicle] INT IDENTITY(1,1) NOT NULL, -- PK
     [id_work] INT NOT NULL, -- FK
     [id_vehicle] INT NOT NULL, -- FK
     [km_begin] INT NOT NULL,
@@ -311,7 +311,7 @@ GO
 -- Create the table in the specified schema
 CREATE TABLE [dbo].[work_tools]
 (
-    [id_work_tool] INT NOT NULL, -- PK
+    [id_work_tool] INT IDENTITY(1,1) NOT NULL, -- PK
     [id_work] INT NOT NULL, -- FK
     [id_tool] INT NOT NULL, -- FK
     [tool_begin] INT NOT NULL,

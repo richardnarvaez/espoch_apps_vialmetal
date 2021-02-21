@@ -20,6 +20,7 @@ a {
 @import './components/footer.css';
 @import './components/nav.css';
 @import './layouts/adminwork.css';
+@import './layouts/admin_endwork.css';
 
 /* INDEX */
 .back-black {

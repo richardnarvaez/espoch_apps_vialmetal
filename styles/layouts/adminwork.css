@@ -69,6 +69,10 @@
 .item-work{
    margin-bottom: 25px;
 }
+.img-transport:hover{
+   cursor: pointer;
+}
+
 .img-transport img{
    width: 70%;
    border-radius: 10px;

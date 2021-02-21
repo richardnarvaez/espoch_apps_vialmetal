@@ -19,7 +19,7 @@ export default function Card({ data, onClick }) {
                
                <div className="details-transport">
                   <h5 className="trasnport-name">{data.name}</h5>
-                  <h5 className="trasnport-status" >{data.name}</h5>
+                  <h5 className="trasnport-status" >{data.status}</h5>
                </div>
                
             </div>

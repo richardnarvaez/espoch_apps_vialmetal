@@ -46,9 +46,7 @@ export default function Admin() {
          <AdminLayout />
          {/* PUS ESTE BOTON PARA CREAR LA NUEVA OBRA VA A LA OTRA VISTA */}
 
-         <a class="bt-new-work" href="/adminwork">
-            <h5>Nueva Obra</h5> 
-      </a>
+       
       </div>
    )
 }

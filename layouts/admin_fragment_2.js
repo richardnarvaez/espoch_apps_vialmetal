@@ -19,6 +19,7 @@ export default function AdminF2() {
 
    return (
       <>
+         
          <h1>Inventario</h1>
          {/* PRUEBA */}
          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -69,6 +70,9 @@ export default function AdminF2() {
                role="tabpanel"
                aria-labelledby="pills-home-tab"
             >
+            <a class="bt-new-work" href="/adminwork">
+            <h5>Nueva material</h5> 
+         </a>
                <div class="div" class="row">
                   {datos.map((item, i) => {
                      return (
@@ -85,6 +89,9 @@ export default function AdminF2() {
                role="tabpanel"
                aria-labelledby="pills-profile-tab"
             >
+            <a class="bt-new-work" href="/adminwork">
+            <h5>Nuevaheerramienta</h5> 
+         </a>
                <div class="div" class="row">
                   {datos.map((item, i) => {
                      return (
@@ -101,6 +108,9 @@ export default function AdminF2() {
                role="tabpanel"
                aria-labelledby="pills-contact-tab"
             >
+            <a class="bt-new-work" href="/adminwork">
+            <h5>Nuevo veihiuuclo</h5> 
+         </a>
                <div class="div" class="row">
                   {datos.map((item, i) => {
                      return (

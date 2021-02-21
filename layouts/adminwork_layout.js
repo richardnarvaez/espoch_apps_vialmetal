@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'
 import CardW from '../components/card_work'
 
+import AdminWorkTransport from '../layouts/adminwork_transport'
+import AdminWorkTool from '../layouts/adminwork_tools'
+import AdminWorkDetails from '../layouts/adminwork_details'
+
 
 export default function Admin() {
    const [users, setUsers] = useState()
@@ -42,7 +46,7 @@ export default function Admin() {
                               aria-controls="pills-home"
                               aria-selected="true"
                            >
-                              Transporte
+                              Detalles
                            </a>
                         </li>
                         <li class="nav-item">
@@ -55,7 +59,7 @@ export default function Admin() {
                               aria-controls="pills-profile"
                               aria-selected="false"
                            >
-                              Herramientas
+                              Material
                            </a>
                         </li>
                         <li class="nav-item">
@@ -68,7 +72,20 @@ export default function Admin() {
                               aria-controls="pills-contact"
                               aria-selected="false"
                            >
-                              Detalles
+                              Herrameintas
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a
+                              class="nav-link"
+                              id="pills-transport-tab"
+                              data-toggle="pill"
+                              href="#pills-transport"
+                              role="tab"
+                              aria-controls="pills-transport"
+                              aria-selected="false"
+                           >
+                              Transporte
                            </a>
                         </li>
                      </ul>
@@ -80,24 +97,8 @@ export default function Admin() {
                            role="tabpanel"
                            aria-labelledby="pills-home-tab"
                         >
-                           <div class="row"> {/*TRANSPORTE*/}
-                              {!users ? (
-                                 <>
-                                    <div class="spinner-border" role="status">
-                                       <span class="sr-only">Loading...</span>
-                                    </div>
-                                 </>
-                              ) : (
-                                 
-                                 users.map((item, i) => {
-                                    return (
-                                       <>
-                                          <CardW data={item} onClick={setListado} />
-                                       </>
-                                    )
-                                 })
-                              )}
-                           </div>
+                           {/*DETALLES */}
+                           <AdminWorkDetails users={users}  setListado={setListado}/>
                         </div>
 
                         <div
@@ -106,61 +107,41 @@ export default function Admin() {
                            role="tabpanel"
                            aria-labelledby="pills-profile-tab"
                         >
-                           <div class="row"> {/*HERRAMIENTAS*/}
-                              {!users ? (
-                                 <>
-                                    <div class="spinner-border" role="status">
-                                       <span class="sr-only">Loading...</span>
-                                    </div>
-                                 </>
-                              ) : (
-                                 
-                                 users.map((item, i) => {
-                                    return (
-                                       <>
-                                          <CardW data={item} onClick={setListado} />
-                                       </>
-                                    )
-                                 })
-                              )}
-                           </div>
+                           {/*MATERIAL */}
+                           {/* <AdminWorkTransport users={users}  setListado={setListado}/> */}
 
                         </div>
+
                         <div
                            class="tab-pane fade"
                            id="pills-contact"
                            role="tabpanel"
                            aria-labelledby="pills-contact-tab"
                         >
-                           <div class="row"> {/*DETALLES*/}
-                              {!users ? (
-                                 <>
-                                    <div class="spinner-border" role="status">
-                                       <span class="sr-only">Loading...</span>
-                                    </div>
-                                 </>
-                              ) : (
-                                 
-                                 users.map((item, i) => {
-                                    return (
-                                       <>
-                                          <CardW data={item} onClick={setListado} />
-                                       </>
-                                    )
-                                 })
-                              )}
-                           </div>
+                           {/*HERRAMIENTA */}
+                           <AdminWorkTool  setListado={setListado}/> 
+                        </div>
+
+                        <div
+                           class="tab-pane fade"
+                           id="pills-transport"
+                           role="tabpanel"
+                           aria-labelledby="pills-transport-tab"
+                        >
+                           {/*TRANSPORTE */}
+                           <AdminWorkTransport  setListado={setListado}/>
                         </div>
                      </div>
                   </div>
                   
                </div>
-
+               
+               {/*LISTA DE RESUMEN*/}
                <div className="list-work">
                   <h2>Resumen</h2>
                   <div className="content-list">
                      <div className="item-list">
-                        <h5>Transporte</h5>
+                        <h5>Detalles</h5>
 
                         {!list ? (
                            <>No hay elementos</>
@@ -204,7 +185,7 @@ export default function Admin() {
                      </div>
 
                      <div className="item-list">
-                        <h5>Pintura</h5>
+                        <h5>Herrameintas</h5>
                         <div style={{ borderBottom: 'solid 0.5px #ececec', padding: 8 }}>
                            <p>
                               <span>
@@ -216,7 +197,7 @@ export default function Admin() {
                         </div>
                      </div>
                      <div className="item-list">
-                        <h5>Tiñer</h5>
+                        <h5>Transporte</h5>
                         <div style={{ borderBottom: 'solid 0.5px #ececec', padding: 8 }}>
                            <p>
                               <span>

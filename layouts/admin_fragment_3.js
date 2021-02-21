@@ -8,7 +8,9 @@ export default function AdminF3 (){
         },
      ]
     return (<> 
-    
+    <a class="bt-new-work" href="/adminwork">
+            <h5>Nueva contra</h5> 
+         </a>
     <h1>Contratistas</h1>
                <div class="div" class="row">
                   {datos.map((item, i) => {

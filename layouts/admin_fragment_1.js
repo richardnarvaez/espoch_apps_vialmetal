@@ -11,6 +11,10 @@ export default function AdminF1() {
 
    return (
       <>
+         <a class="bt-new-work" href="/adminwork">
+            <h5>Nueva Obra</h5> 
+         </a>
+         
          <div class="list-combo">
             <div class="dropdown show combobox">
                <a
@@ -79,6 +83,7 @@ export default function AdminF1() {
                )
             })}
          </div>
+      
       </>
    )
 }

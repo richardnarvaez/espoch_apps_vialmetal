@@ -18,7 +18,7 @@ export default function Admin() {
    const setListado = (a) => {
       setList((old) => [...old, a])
    }
-
+ 
    return (
       <>
          <div className="body-adminwork">
@@ -73,13 +73,14 @@ export default function Admin() {
                         </li>
                      </ul>
                      <div class="tab-content" id="pills-tabContent">
+
                         <div
                            class="tab-pane fade show active"
                            id="pills-home"
                            role="tabpanel"
                            aria-labelledby="pills-home-tab"
                         >
-                           <div class="row">
+                           <div class="row"> {/*TRANSPORTE*/}
                               {!users ? (
                                  <>
                                     <div class="spinner-border" role="status">
@@ -98,13 +99,32 @@ export default function Admin() {
                               )}
                            </div>
                         </div>
+
                         <div
                            class="tab-pane fade"
                            id="pills-profile"
                            role="tabpanel"
                            aria-labelledby="pills-profile-tab"
                         >
-                           ...
+                           <div class="row"> {/*HERRAMIENTAS*/}
+                              {!users ? (
+                                 <>
+                                    <div class="spinner-border" role="status">
+                                       <span class="sr-only">Loading...</span>
+                                    </div>
+                                 </>
+                              ) : (
+                                 
+                                 users.map((item, i) => {
+                                    return (
+                                       <>
+                                          <CardW data={item} onClick={setListado} />
+                                       </>
+                                    )
+                                 })
+                              )}
+                           </div>
+
                         </div>
                         <div
                            class="tab-pane fade"
@@ -112,7 +132,24 @@ export default function Admin() {
                            role="tabpanel"
                            aria-labelledby="pills-contact-tab"
                         >
-                           ...
+                           <div class="row"> {/*DETALLES*/}
+                              {!users ? (
+                                 <>
+                                    <div class="spinner-border" role="status">
+                                       <span class="sr-only">Loading...</span>
+                                    </div>
+                                 </>
+                              ) : (
+                                 
+                                 users.map((item, i) => {
+                                    return (
+                                       <>
+                                          <CardW data={item} onClick={setListado} />
+                                       </>
+                                    )
+                                 })
+                              )}
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -120,7 +157,7 @@ export default function Admin() {
                </div>
 
                <div className="list-work">
-                  <h2>Lista</h2>
+                  <h2>Resumen</h2>
                   <div className="content-list">
                      <div className="item-list">
                         <h5>Transporte</h5>

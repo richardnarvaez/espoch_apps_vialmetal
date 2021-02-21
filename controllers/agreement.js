@@ -13,7 +13,7 @@ export async function getAgreementById(id){
 export async function insertAgreement(dataAgreement){
    const db = await connect()
    const result = await db.query(`INSERT INTO agreements (id_contractor, location, location_reference, description, date_begin, date_end)
-   VALUES( ${dataAgreement.id_contractor},	${dataAgreement.location} , ${dataAgreement.location_reference}, ${dataAgreement.description}, ${dataAgreement.date_begin}, ${dataAgreement.date_end})`)
+   VALUES( '${dataAgreement.id_contractor}',	'${dataAgreement.location}' , '${dataAgreement.location_reference}', '${dataAgreement.description}', '${dataAgreement.date_begin}', '${dataAgreement.date_end}')`)
    return result.recordsets
 }
 export async function updateAgreement(id, dataAgreement){

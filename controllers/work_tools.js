@@ -12,8 +12,8 @@ export async function getWork_ToolById(id){
 }
 export async function insertWork_Tool(dataUser){
    const db = await connect()
-   const result = await db.query(`INSERT INTO work_tools (id_work, id_tool, tool_begin, tool_end, date)
-   VALUES( ${dataUser.id_work}, ${dataUser.id_tool} , ${dataUser.tool_begin},	${dataUser.tool_end} , ${dataUser.date})`)
+   const result = await db.query(`INSERT INTO work_tools (id_work_tool, id_work, id_tool, tool_begin, tool_end, date)
+   VALUES(${dataUser.id_work_tool}, ${dataUser.id_work}, ${dataUser.id_tool} , ${dataUser.tool_begin},	${dataUser.tool_end} , '${dataUser.date}')`)
    return result.recordsets
 }
 export async function updateWork_Tool(id, dataUser){

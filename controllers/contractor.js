@@ -18,7 +18,7 @@ export async function insertContractor({ ruc, business_name, description }) { /*
 }
 export async function updateContractor(id, dataContractor) {
    const db = await connect()
-   const result = await db.query(`UPDATE contractors SET ruc = ${dataContractor.ruc}, business_name = ${dataContractor.business_name}, description = ${dataContractor.description} WHERE id_contractor = ${id}`)
+   const result = await db.query(`UPDATE contractors SET ruc = '${dataContractor.ruc}', business_name = '${dataContractor.business_name}', description = '${dataContractor.description}' WHERE id_contractor = '${id}'`)
    return result.recordsets
 }
 export async function deleteContractor(id) {

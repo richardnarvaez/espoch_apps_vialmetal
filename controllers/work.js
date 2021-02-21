@@ -12,8 +12,8 @@ export async function getAllWorks() {
  }
  export async function insertWork(dataWork){
     const db = await connect()
-    const result = await db.query(`INSERT INTO works (id_responsable, id_agreement, description, created_at, finished_at, update_at, price_work, status)
-    VALUES( ${dataWork.id_responsable},	${dataWork.id_agreement} , ${dataWork.description}, ${dataWork.created_at}, ${dataWork.finished_at}, ${dataWork.update_at}, ${dataWork.price_work}, ${dataWork.status})`) 
+    const result = await db.query(`INSERT INTO works (id_work, id_user, id_agreement, description, created_at, updated_at, finished_at, price_work, status)
+    VALUES(${dataWork.id_work}, '${dataWork.id_user}',	'${dataWork.id_agreement}' , '${dataWork.description}', '${dataWork.created_at}', '${dataWork.updated_at}', '${dataWork.finished_at}', '${dataWork.price_work}', '${dataWork.status}')`) 
     return result.recordsets
  }
  export async function updateWork(id, dataUser){

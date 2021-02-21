@@ -12,8 +12,8 @@ export async function getWork_MaterialId(id){
 }
 export async function insertWork_Material(dataWorkM){
    const db = await connect()
-   const result = await db.query(`INSERT INTO work_materials (id_work, id_material, material_begin, material_end, date)
-   VALUES( ${dataWorkM.id_work}, ${dataWorkM.material} , ${dataWorkM.material_begin},	${dataWorkM.material_end} , ${dataWorkM.date})`)
+   const result = await db.query(`INSERT INTO work_materials (id_work_material, id_work, id_material, material_begin, material_end, date)
+   VALUES(${dataWorkM.id_work_material}, ${dataWorkM.id_work}, ${dataWorkM.id_material} , ${dataWorkM.material_begin},	${dataWorkM.material_end} , '${dataWorkM.date}')`)
    return result.recordsets
 }
 export async function updateWork_Material(id, dataWorkM){

@@ -12,8 +12,8 @@ export async function getMaterialById(id){
 }
 export async function insertMaterial(dataMaterial){
    const db = await connect()
-   const result = await db.query(`INSERT INTO materials (name, image, quantity, price_liter)
-   VALUES( ${dataMaterial.name}, ${dataMaterial.image} , ${dataMaterial.quantity}, ${dataMaterial.price_liter})`)
+   const result = await db.query(`INSERT INTO materials (id_material, name, image, quantity, price_liter)
+   VALUES(${dataMaterial.id_material}, '${dataMaterial.name}', '${dataMaterial.image}' , '${dataMaterial.quantity}', '${dataMaterial.price_liter}')`)
    return result.recordsets
 }
 export async function updateMaterial(id, dataMaterial){

@@ -4,6 +4,7 @@ import CardW from '../components/card_work'
 import AdminWorkTransport from '../layouts/adminwork_transport'
 import AdminWorkTool from '../layouts/adminwork_tools'
 import AdminWorkDetails from '../layouts/adminwork_details'
+import AdminWorkMaterial from '../layouts/adminwork_material'
 
 
 export default function Admin() {
@@ -98,7 +99,7 @@ export default function Admin() {
                            aria-labelledby="pills-home-tab"
                         >
                            {/*DETALLES */}
-                           <AdminWorkDetails users={users}  setListado={setListado}/>
+                           <AdminWorkDetails  setListado={setListado}/>
                         </div>
 
                         <div
@@ -108,7 +109,7 @@ export default function Admin() {
                            aria-labelledby="pills-profile-tab"
                         >
                            {/*MATERIAL */}
-                           {/* <AdminWorkTransport users={users}  setListado={setListado}/> */}
+                           <AdminWorkMaterial  setListado={setListado}/> 
 
                         </div>
 

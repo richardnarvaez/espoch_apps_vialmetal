@@ -1,20 +1,27 @@
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+
 import Card from '../components/card'
 
 export default function AdminF1() {
-   const datos = [
-      {
-         title: 'Aqui va el titulo',
-         description: 'Una breve descripcion',
-         price: '$00',
-      }   
-   ]
+
+   // VARIABLES "ESTADO"
+   const [list_obras, setListObras] = useState()
+
+   // FETCH DATOS DE LA API
+   // LOS DATOS PASAN A LA VARIABLE list_obras como LISTA []
+   useEffect(() => {
+      fetch('/api/data/work/all')
+         .then(res => res.json())
+         .then(result => setListObras(result))
+   }, [])
 
    return (
       <>
          <a class="bt-new-work" href="/adminwork">
-            <h5>Nueva Obra</h5> 
+            <h5>Nueva Obra</h5>
          </a>
-         
+
          <div class="list-combo">
             <div class="dropdown show combobox">
                <a
@@ -75,15 +82,16 @@ export default function AdminF1() {
          </div>
 
          <div class="div" class="row">
-            {datos.map((item, i) => {
-               return (
-                  <>
-                     <Card data={item} />
-                  </>
-               )
-            })}
+            {
+               !list_obras ? (<>CARGANDO DATO...</>) :
+                  list_obras.map((item, i) => {
+                     return (
+                        <Card data={item} href={"/details/" + item.id_work} />
+                     )
+                  })
+            }
          </div>
-      
+
       </>
    )
 }

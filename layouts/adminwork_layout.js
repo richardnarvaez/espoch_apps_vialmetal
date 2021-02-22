@@ -128,7 +128,7 @@ export default function Admin() {
 
                   <div className="work-options">
                      
-                     {/*DE AQUI VA FUNCION STTEP */}
+                     {/*DE AQUI VA FUNCION STEP */}
 
                      <div className={classes.root}>
                         <Stepper activeStep={activeStep}>

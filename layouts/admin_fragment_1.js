@@ -51,33 +51,12 @@ export default function AdminF1() {
                   </a>
                </div>
             </div>
-            <div className="dropdown show combobox">
+            <div className="combobox">
                <a
-                  className="btn btn-secondary dropdown-toggle"
-                  href="#"
-                  role="button"
-                  id="dropdownMenuLink"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
+                  className="btn btn-secondary"
                >
-                  Ordenar
+                  Activo
                </a>
-
-               <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a className="dropdown-item" href="#">
-                     A-Z
-                  </a>
-                  <a className="dropdown-item" href="#">
-                     Z-A
-                  </a>
-                  <a className="dropdown-item" href="#">
-                     Actual-Antiguo
-                  </a>
-                  <a className="dropdown-item" href="#">
-                     Antiguo-Actual
-                  </a>
-               </div>
             </div>
          </div>
 

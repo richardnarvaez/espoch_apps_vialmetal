@@ -77,7 +77,7 @@ export default function AdminF2() {
                   {datos.map((item, i) => {
                      return (
                         <>
-                           <Card data={item} />
+                           <Card key={i} data={item} />
                         </>
                      )
                   })}
@@ -96,7 +96,7 @@ export default function AdminF2() {
                   {datos.map((item, i) => {
                      return (
                         <>
-                           <Card data={item} />
+                           <Card key={i} data={item} />
                         </>
                      )
                   })}
@@ -115,7 +115,7 @@ export default function AdminF2() {
                   {datos.map((item, i) => {
                      return (
                         <>
-                           <Card data={item} />
+                           <Card  key={i} data={item} />
                         </>
                      )
                   })}

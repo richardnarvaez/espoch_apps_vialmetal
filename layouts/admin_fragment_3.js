@@ -16,7 +16,7 @@ export default function AdminF3 (){
                   {datos.map((item, i) => {
                      return (
                         <>
-                           <Card data={item} />
+                           <Card key={i} data={item} />
                         </>
                      )
                   })} 

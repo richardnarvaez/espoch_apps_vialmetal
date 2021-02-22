@@ -7,136 +7,193 @@ import AdminWorkDetails from '../layouts/adminwork_details'
 import AdminWorkMaterial from '../layouts/adminwork_material'
 
 
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles((theme) => ({
+   root: {
+      width: '100%',
+   },
+   button: {
+      marginRight: theme.spacing(1),
+   },
+   instructions: {
+      marginTop: theme.spacing(1),
+      marginBottom: theme.spacing(1),
+   },
+}));
+
+function getSteps() {
+   return ['Detalles', 'Material', 'Herramientas', 'Transporte'];
+}
+
+
+
 export default function Admin() {
+
+   
    const [users, setUsers] = useState()
    const [list, setList] = useState([])
+   
+   const classes = useStyles();
+   const [activeStep, setActiveStep] = useState(0);
+   const [skipped, setSkipped] = useState(new Set());
+   const steps = getSteps();
 
-   useEffect(() => {
-      const fetchData = async () => {
-         const res = await fetch('/api/data/vehicle/all')
-         const result = await res.json()
-         setUsers(result)
+
+   function getStepContent(step) {
+
+   switch (step) {
+      case 0:
+         return <AdminWorkDetails setListado={setListado}/>;
+      case 1:
+         return <AdminWorkMaterial setListado={setListado} />;
+      case 2:
+         return <AdminWorkTool setListado={setListado} />;
+      case 3:
+         return <AdminWorkTransport setListado={setListado} />;
+
+      default:
+         return 'Unknown step';
+   }
+}
+
+   const isStepOptional = (step) => {
+      return step === 1;
+   };
+
+   const isStepSkipped = (step) => {
+      return skipped.has(step);
+   };
+
+   const handleNext = () => {
+      let newSkipped = skipped;
+      if (isStepSkipped(activeStep)) {
+         newSkipped = new Set(newSkipped.values());
+         newSkipped.delete(activeStep);
       }
-      fetchData()
-   }, [])
+
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      setSkipped(newSkipped);
+   };
+
+   const handleBack = () => {
+      setActiveStep((prevActiveStep) => prevActiveStep - 1);
+   };
+
+   const handleSkip = () => {
+      if (!isStepOptional(activeStep)) {
+         // You probably want to guard against something like this,
+         // it should never occur unless someone's actively trying to break something.
+         throw new Error("You can't skip a step that isn't optional.");
+      }
+
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      setSkipped((prevSkipped) => {
+         const newSkipped = new Set(prevSkipped.values());
+         newSkipped.add(activeStep);
+         return newSkipped;
+      });
+   };
+
+   const handleReset = () => {
+      setActiveStep(0);
+   };
+
+   
 
    const setListado = (a) => {
       setList((old) => [...old, a])
    }
- 
+
+
+
+
    return (
       <>
+
          <div className="body-adminwork">
 
             <h1 className="title-page">Nueva Obra</h1>
 
             <div className="content-newwork">
-               
+
                <div className="new-work">
                   <h2>Material de trabajo</h2>
-                  
+
                   <div className="work-options">
-                     <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                        <li className="nav-item">
-                           <a
-                              className="nav-link active"
-                              id="pills-home-tab"
-                              data-toggle="pill"
-                              href="#pills-home"
-                              role="tab"
-                              aria-controls="pills-home"
-                              aria-selected="true"
-                           >
-                              Detalles
-                           </a>
-                        </li>
-                        <li className="nav-item">
-                           <a
-                              className="nav-link"
-                              id="pills-profile-tab"
-                              data-toggle="pill"
-                              href="#pills-profile"
-                              role="tab"
-                              aria-controls="pills-profile"
-                              aria-selected="false"
-                           >
-                              Material
-                           </a>
-                        </li>
-                        <li className="nav-item">
-                           <a
-                              className="nav-link"
-                              id="pills-contact-tab"
-                              data-toggle="pill"
-                              href="#pills-contact"
-                              role="tab"
-                              aria-controls="pills-contact"
-                              aria-selected="false"
-                           >
-                              Herrameintas
-                           </a>
-                        </li>
-                        <li className="nav-item">
-                           <a
-                              className="nav-link"
-                              id="pills-transport-tab"
-                              data-toggle="pill"
-                              href="#pills-transport"
-                              role="tab"
-                              aria-controls="pills-transport"
-                              aria-selected="false"
-                           >
-                              Transporte
-                           </a>
-                        </li>
-                     </ul>
-                     <div className="tab-content" id="pills-tabContent">
+                     
+                     {/*DE AQUI VA FUNCION STTEP */}
 
-                        <div
-                           className="tab-pane fade show active"
-                           id="pills-home"
-                           role="tabpanel"
-                           aria-labelledby="pills-home-tab"
-                        >
-                           {/*DETALLES */}
-                           <AdminWorkDetails  setListado={setListado}/>
-                        </div>
+                     <div className={classes.root}>
+                        <Stepper activeStep={activeStep}>
+                           {steps.map((label, index) => {
+                              const stepProps = {};
+                              const labelProps = {};
+                              if (isStepOptional(index)) {
+                                 labelProps.optional = <Typography variant="caption">Optional</Typography>;
+                              }
+                              if (isStepSkipped(index)) {
+                                 stepProps.completed = false;
+                              }
+                              return (
+                                 <Step key={label} {...stepProps}>
+                                    <StepLabel {...labelProps}>{label}</StepLabel>
+                                    HOL
+                                 </Step>
+                              );
+                           })}
+                        </Stepper>
+                        <div>
+                           {activeStep === steps.length ? (
+                              <div>
+                                 <Typography className={classes.instructions}>
+                                    Has completado todo el formulario
+                                 </Typography>
+                                 <Button onClick={handleReset} className={classes.button}>
+                                    Reset
+                                 </Button>
+                              </div>
+                           ) : (
+                                 <div>
+                                    <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+                                    <div>
+                                       <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
+                                          Back
+                                           </Button>
+                                       {isStepOptional(activeStep) && (
+                                          <Button
+                                             variant="contained"
+                                             color="primary"
+                                             onClick={handleSkip}
+                                             className={classes.button}
+                                          >
+                                             Skip
+                                          </Button>
+                                       )}
 
-                        <div
-                           className="tab-pane fade"
-                           id="pills-profile"
-                           role="tabpanel"
-                           aria-labelledby="pills-profile-tab"
-                        >
-                           {/*MATERIAL */}
-                           <AdminWorkMaterial  setListado={setListado}/> 
-
-                        </div>
-
-                        <div
-                           className="tab-pane fade"
-                           id="pills-contact"
-                           role="tabpanel"
-                           aria-labelledby="pills-contact-tab"
-                        >
-                           {/*HERRAMIENTA */}
-                           <AdminWorkTool  setListado={setListado}/> 
-                        </div>
-
-                        <div
-                           className="tab-pane fade"
-                           id="pills-transport"
-                           role="tabpanel"
-                           aria-labelledby="pills-transport-tab"
-                        >
-                           {/*TRANSPORTE */}
-                           <AdminWorkTransport  setListado={setListado}/>
+                                       <Button
+                                          variant="contained"
+                                          color="primary"
+                                          onClick={handleNext}
+                                          className={classes.button}
+                                       >
+                                          {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                                       </Button>
+                                    </div>
+                                 </div>
+                              )}
                         </div>
                      </div>
                   </div>
-                  
+
                </div>
-               
+
                {/*LISTA DE RESUMEN*/}
                <div className="list-work">
                   <h2>Resumen</h2>
@@ -147,20 +204,20 @@ export default function Admin() {
                         {!list ? (
                            <>No hay elementos</>
                         ) : (
-                           list.map((item, i) => {
-                              return (
-                                 <div style={{ borderBottom: 'solid 0.5px #ececec', padding: 8 }}>
-                                    <p>
-                                       <span>
-                                          <strong>3</strong>
-                                       </span>
+                              list.map((item, i) => {
+                                 return (
+                                    <div style={{ borderBottom: 'solid 0.5px #ececec', padding: 8 }}>
+                                       <p>
+                                          <span>
+                                             <strong>3</strong>
+                                          </span>
                                        Texto de prueba
                                     </p>
-                                    <p>12$</p>
-                                 </div>
-                              )
-                           })
-                        )}
+                                       <p>12$</p>
+                                    </div>
+                                 )
+                              })
+                           )}
                      </div>
 
                      <div className="item-list">
@@ -216,7 +273,7 @@ export default function Admin() {
                         Crear Obra
                      </button>
                   </div>
-                  
+
                </div>
             </div>
          </div>

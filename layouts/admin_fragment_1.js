@@ -8,7 +8,7 @@ export default function AdminF1() {
    // VARIABLES "ESTADO"
    const [list_obras, setListObras] = useState([])
 
-   // FETCH DATOS DE LA API
+   // FETCH DATOS DE LA API sdfsdf
    // LOS DATOS PASAN A LA VARIABLE list_obras como LISTA []
    useEffect(() => {
       fetch('/api/data/work/active')

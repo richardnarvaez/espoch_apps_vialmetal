@@ -6,16 +6,16 @@ import AdminF3 from '../layouts/admin_fragment_3'
 export default function Admin() {
   
    return (
-      <div class="container">
-         <div class="main"></div>
+      <div className="container">
+         <div className="main"></div>
 
          <br />
 
          {/* MENU NAV */}
-         <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
+         <ul className="nav nav-tabs" id="myTab" role="tablist">
+            <li className="nav-item">
                <a
-                  class="nav-link active"
+                  className="nav-link active"
                   id="home-tab"
                   data-toggle="tab"
                   href="#home"
@@ -26,9 +26,9 @@ export default function Admin() {
                   Lista de obras
                </a>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
                <a
-                  class="nav-link"
+                  className="nav-link"
                   id="profile-tab"
                   data-toggle="tab"
                   href="#profile"
@@ -39,9 +39,9 @@ export default function Admin() {
                   Inventario
                </a>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
                <a
-                  class="nav-link"
+                  className="nav-link"
                   id="contact-tab"
                   data-toggle="tab"
                   href="#contact"
@@ -55,10 +55,10 @@ export default function Admin() {
          </ul>
 
          {/* FRAGMENTOS CADA VISTA */}
-         <div class="tab-content" id="myTabContent">
+         <div className="tab-content" id="myTabContent">
             {/* FRAGEMNTO 1 */}
             <div
-               class="tab-pane fade show active"
+               className="tab-pane fade show active"
                id="home"
                role="tabpanel"
                aria-labelledby="home-tab"
@@ -67,12 +67,12 @@ export default function Admin() {
             </div>
 
             {/* FRAGEMNTO 2 */}
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                <AdminF2 />
             </div>
 
             {/* FRAGEMNTO 3 */}
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                <AdminF3 />
             </div>
          </div>

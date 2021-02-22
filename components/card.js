@@ -3,20 +3,20 @@ import Link from 'next/link'
 export default function Card({ data, href }) {
    return (
       <Link href={href ? href : "/"}>
-         <div class="col-sm-6 tarjeta">
-            <div class="card">
-               <div class="card-imagen">
+         <div className="col-sm-6 tarjeta">
+            <div className="card">
+               <div className="card-imagen">
                   <p>
                      <strong>A</strong>
                   </p>
                </div>
-               <div class="card-body-right">
-                  <h5 class="card-title">{data.title}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">{data.price}</h6>
-                  <p class="card-text">{data.id_work}</p>
-                  <p class="card-text">{data.id_user}</p>
-                  <p class="card-text">{data.description}</p>
-                  <p class="card-text">{data.status}</p>
+               <div className="card-body-right">
+                  <h5 className="card-title">{data.title}</h5>
+                  <h6 className="card-subtitle mb-2 text-muted">{data.price}</h6>
+                  <p className="card-text">{data.id_work}</p>
+                  <p className="card-text">{data.id_user}</p>
+                  <p className="card-text">{data.description}</p>
+                  <p className="card-text">{data.status}</p>
                </div>
             </div>
          </div>

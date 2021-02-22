@@ -18,14 +18,14 @@ export default function AdminF1() {
 
    return (
       <>
-         <a class="bt-new-work" href="/adminwork">
+         <a className="bt-new-work" href="/adminwork">
             <h5>Nueva Obra</h5>
          </a>
 
-         <div class="list-combo">
-            <div class="dropdown show combobox">
+         <div className="list-combo">
+            <div className="dropdown show combobox">
                <a
-                  class="btn btn-secondary dropdown-toggle"
+                  className="btn btn-secondary dropdown-toggle"
                   href="#"
                   role="button"
                   id="dropdownMenuLink"
@@ -36,24 +36,24 @@ export default function AdminF1() {
                   Ordenar
                </a>
 
-               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="#">
+               <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a className="dropdown-item" href="#">
                      A-Z
                   </a>
-                  <a class="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                      Z-A
                   </a>
-                  <a class="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                      Actual-Antiguo
                   </a>
-                  <a class="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                      Antiguo-Actual
                   </a>
                </div>
             </div>
-            <div class="dropdown show combobox">
+            <div className="dropdown show combobox">
                <a
-                  class="btn btn-secondary dropdown-toggle"
+                  className="btn btn-secondary dropdown-toggle"
                   href="#"
                   role="button"
                   id="dropdownMenuLink"
@@ -64,29 +64,29 @@ export default function AdminF1() {
                   Ordenar
                </a>
 
-               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="#">
+               <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a className="dropdown-item" href="#">
                      A-Z
                   </a>
-                  <a class="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                      Z-A
                   </a>
-                  <a class="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                      Actual-Antiguo
                   </a>
-                  <a class="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                      Antiguo-Actual
                   </a>
                </div>
             </div>
          </div>
 
-         <div class="div" class="row">
+         <div className="div" className="row">
             {
                !list_obras ? (<>CARGANDO DATO...</>) :
                   list_obras.map((item, i) => {
                      return (
-                        <Card data={item} href={"/details/" + item.id_work} />
+                        <Card key={i} data={item} href={"/details/" + item.id_work} />
                      )
                   })
             }

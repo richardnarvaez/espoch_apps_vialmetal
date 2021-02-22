@@ -36,10 +36,10 @@ export default function Admin() {
                   <h2>Material de trabajo</h2>
                   
                   <div className="work-options">
-                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                        <li class="nav-item">
+                     <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li className="nav-item">
                            <a
-                              class="nav-link active"
+                              className="nav-link active"
                               id="pills-home-tab"
                               data-toggle="pill"
                               href="#pills-home"
@@ -50,9 +50,9 @@ export default function Admin() {
                               Detalles
                            </a>
                         </li>
-                        <li class="nav-item">
+                        <li className="nav-item">
                            <a
-                              class="nav-link"
+                              className="nav-link"
                               id="pills-profile-tab"
                               data-toggle="pill"
                               href="#pills-profile"
@@ -63,9 +63,9 @@ export default function Admin() {
                               Material
                            </a>
                         </li>
-                        <li class="nav-item">
+                        <li className="nav-item">
                            <a
-                              class="nav-link"
+                              className="nav-link"
                               id="pills-contact-tab"
                               data-toggle="pill"
                               href="#pills-contact"
@@ -76,9 +76,9 @@ export default function Admin() {
                               Herrameintas
                            </a>
                         </li>
-                        <li class="nav-item">
+                        <li className="nav-item">
                            <a
-                              class="nav-link"
+                              className="nav-link"
                               id="pills-transport-tab"
                               data-toggle="pill"
                               href="#pills-transport"
@@ -90,10 +90,10 @@ export default function Admin() {
                            </a>
                         </li>
                      </ul>
-                     <div class="tab-content" id="pills-tabContent">
+                     <div className="tab-content" id="pills-tabContent">
 
                         <div
-                           class="tab-pane fade show active"
+                           className="tab-pane fade show active"
                            id="pills-home"
                            role="tabpanel"
                            aria-labelledby="pills-home-tab"
@@ -103,7 +103,7 @@ export default function Admin() {
                         </div>
 
                         <div
-                           class="tab-pane fade"
+                           className="tab-pane fade"
                            id="pills-profile"
                            role="tabpanel"
                            aria-labelledby="pills-profile-tab"
@@ -114,7 +114,7 @@ export default function Admin() {
                         </div>
 
                         <div
-                           class="tab-pane fade"
+                           className="tab-pane fade"
                            id="pills-contact"
                            role="tabpanel"
                            aria-labelledby="pills-contact-tab"
@@ -124,7 +124,7 @@ export default function Admin() {
                         </div>
 
                         <div
-                           class="tab-pane fade"
+                           className="tab-pane fade"
                            id="pills-transport"
                            role="tabpanel"
                            aria-labelledby="pills-transport-tab"
@@ -212,7 +212,7 @@ export default function Admin() {
                   </div>
 
                   <div className="btn-agregar">
-                     <button class="" type="button">
+                     <button className="" type="button">
                         Crear Obra
                      </button>
                   </div>

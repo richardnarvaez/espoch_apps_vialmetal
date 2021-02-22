@@ -3,19 +3,19 @@ import { Head } from 'next/document'
 export default function NewForm() {
    return (
       <>
-         <div class="main">
-            <h1 class="title">BIENBENIDO</h1>
+         <div className="main">
+            <h1 className="title">BIENBENIDO</h1>
          </div>
          <center>
             <form name="Datos">
-               <div class="datos">
+               <div className="datos">
                   <h2>Datos de ubicación</h2>
                   <form name="ubicacion">
-                     <div class="datoUno">
-                        <div class="label">
+                     <div className="datoUno">
+                        <div className="label">
                            <label>Ubicación:</label>
                         </div>
-                        <div class="ingreso-ubicacion">
+                        <div className="ingreso-ubicacion">
                            <input
                               type="text"
                               placeholder="Dónde realizó el trabajo"
@@ -24,29 +24,29 @@ export default function NewForm() {
                         </div>
                      </div>
 
-                     <div class="datoDos">
-                        <div class="label">
+                     <div className="datoDos">
+                        <div className="label">
                            <label>Fecha:</label>
                         </div>
-                        <div class="ingreso-fecha">
+                        <div className="ingreso-fecha">
                            <input type="date" id="fecha" />
                         </div>
                      </div>
 
-                     <div class="datoTres">
-                        <div class="label">
+                     <div className="datoTres">
+                        <div className="label">
                            <label>Hora:</label>
                         </div>
-                        <div class="ingreso-hora">
+                        <div className="ingreso-hora">
                            <input type="time" id="hora" />
                         </div>
                      </div>
 
-                     <div class="datoCuatro">
-                        <div class="label">
+                     <div className="datoCuatro">
+                        <div className="label">
                            <label>Distancia:</label>
                         </div>
-                        <div class="ingreso-distancia" />
+                        <div className="ingreso-distancia" />
                         <input type="number" id="distancia" min="0" />
                         <select>
                            <option id="km2">Kilometros cuadrados</option>
@@ -57,11 +57,11 @@ export default function NewForm() {
 
                   <h2>Datos de transporte</h2>
                   <form name="vehiculo">
-                     <div class="datoCinco">
-                        <div class="label">
+                     <div className="datoCinco">
+                        <div className="label">
                            <label>Transporte:</label>
                         </div>
-                        <div class="ingreso-vehiculo">
+                        <div className="ingreso-vehiculo">
                            <select name="transporte" id="transporte">
                               <option id="vehiculo-uno">Camioneta FORD N1</option>
                               <option id="vehiculo-dos">Camioneta DIM N3</option>
@@ -74,11 +74,11 @@ export default function NewForm() {
                         </div>
                      </div>
 
-                     <div class="datoSeis">
-                        <div class="label">
+                     <div className="datoSeis">
+                        <div className="label">
                            <label>KM antes de salir:</label>
                         </div>
-                        <div class="ingreso-km-salida">
+                        <div className="ingreso-km-salida">
                            <input
                               type="number"
                               placeholder="KM antes de salir"
@@ -88,11 +88,11 @@ export default function NewForm() {
                         </div>
                      </div>
 
-                     <div class="datoSiete">
-                        <div class="label">
+                     <div className="datoSiete">
+                        <div className="label">
                            <label>KM al retornar:</label>
                         </div>
-                        <div class="ingreso-km-entrada">
+                        <div className="ingreso-km-entrada">
                            <input
                               type="number"
                               placeholder="KM al retornar"
@@ -105,30 +105,30 @@ export default function NewForm() {
 
                   <h2>Datos de equipo</h2>
                   <form name="equipo">
-                     <div class="datoOcho">
-                        <div class="label">
+                     <div className="datoOcho">
+                        <div className="label">
                            <label>Pintura</label>
                         </div>
-                        <div class="ingreso-pintura">
+                        <div className="ingreso-pintura">
                            <input type="number" placeholder="Canecas" id="pintura" min="0" />
                         </div>
                      </div>
 
-                     <div class="datoNueve">
-                        <div class="label">
+                     <div className="datoNueve">
+                        <div className="label">
                            <label>Tiñer:</label>
                         </div>
 
-                        <div class="ingreso-tinier">
+                        <div className="ingreso-tinier">
                            <input type="number" placeholder="Litros" id="tinier" min="0" />
                         </div>
                      </div>
 
-                     <div class="datoDiez">
-                        <div class="label">
+                     <div className="datoDiez">
+                        <div className="label">
                            <label>Numero de sopladores</label>
                         </div>
-                        <div class="ingreso-soplador">
+                        <div className="ingreso-soplador">
                            <input type="number" id="soplador" min="0" placeholder="Sopladores" />
                         </div>
                      </div>

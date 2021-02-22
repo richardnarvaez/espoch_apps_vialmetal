@@ -53,12 +53,12 @@ export default function Admin() {
 
             <div className="button-container">    
                 <div className="btn btn-editar">
-                    <button class="" type="button">
+                    <button className="" type="button">
                         Editar Obra
                     </button>
                 </div>
                 <div className="btn btn-terminar">
-                    <button class="" type="button">
+                    <button className="" type="button">
                         Finalizar Obra
                     </button>
                 </div>

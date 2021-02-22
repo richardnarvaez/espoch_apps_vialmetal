@@ -22,10 +22,10 @@ export default function AdminF2() {
          
          <h1>Inventario</h1>
          {/* PRUEBA */}
-         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item">
+         <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li className="nav-item">
                <a
-                  class="nav-link active"
+                  className="nav-link active"
                   id="pills-home-tab"
                   data-toggle="pill"
                   href="#pills-home"
@@ -36,9 +36,9 @@ export default function AdminF2() {
                   Materiales
                </a>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
                <a
-                  class="nav-link"
+                  className="nav-link"
                   id="pills-profile-tab"
                   data-toggle="pill"
                   href="#pills-profile"
@@ -49,9 +49,9 @@ export default function AdminF2() {
                   Herramientas
                </a>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
                <a
-                  class="nav-link"
+                  className="nav-link"
                   id="pills-contact-tab"
                   data-toggle="pill"
                   href="#pills-contact"
@@ -63,17 +63,17 @@ export default function AdminF2() {
                </a>
             </li>
          </ul>
-         <div class="tab-content" id="pills-tabContent">
+         <div className="tab-content" id="pills-tabContent">
             <div
-               class="tab-pane fade show active"
+               className="tab-pane fade show active"
                id="pills-home"
                role="tabpanel"
                aria-labelledby="pills-home-tab"
             >
-            <a class="bt-new-work" href="/adminwork">
+            <a className="bt-new-work" href="/adminwork">
             <h5>Nueva material</h5> 
          </a>
-               <div class="div" class="row">
+               <div className="div" className="row">
                   {datos.map((item, i) => {
                      return (
                         <>
@@ -84,15 +84,15 @@ export default function AdminF2() {
                </div>
             </div>
             <div
-               class="tab-pane fade"
+               className="tab-pane fade"
                id="pills-profile"
                role="tabpanel"
                aria-labelledby="pills-profile-tab"
             >
-            <a class="bt-new-work" href="/adminwork">
+            <a className="bt-new-work" href="/adminwork">
             <h5>Nuevaheerramienta</h5> 
          </a>
-               <div class="div" class="row">
+               <div className="div" className="row">
                   {datos.map((item, i) => {
                      return (
                         <>
@@ -103,15 +103,15 @@ export default function AdminF2() {
                </div>
             </div>
             <div
-               class="tab-pane fade"
+               className="tab-pane fade"
                id="pills-contact"
                role="tabpanel"
                aria-labelledby="pills-contact-tab"
             >
-            <a class="bt-new-work" href="/adminwork">
+            <a className="bt-new-work" href="/adminwork">
             <h5>Nuevo veihiuuclo</h5> 
          </a>
-               <div class="div" class="row">
+               <div className="div" className="row">
                   {datos.map((item, i) => {
                      return (
                         <>

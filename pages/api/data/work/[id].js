@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/client'
-import { getAllWorks, getWorkById, insertWork, updateWork, deleteWork } from '../../../../controllers/work'
+import { getAllWorks, getWorkById, insertWork, updateWork, deleteWork, getActiveWorks } from '../../../../controllers/work'
 
 
 export default async (req, res) => {
@@ -13,17 +13,28 @@ export default async (req, res) => {
     switch (method) {
         case 'GET': /*SELECT*/
 
+            let result;
+
             try {
-                if (id == "all") {
 
-                    const result = await getAllWorks()
-                    res.status(200).json(result)
+                switch (id) {
+                    
+                    case 'all':
+                        result = await getAllWorks()
+                        res.status(200).json(result)
+                        break
 
-                } else {
+                    case 'active':
+                        result = await getActiveWorks()
+                        res.status(200).json(result)
+                        break
 
-                    const result = await getWorkById(id)
-                    res.status(200).json(result)
+                    default:
+                        result = await getWorkById(id)
+                        res.status(200).json(result)
+                        break
                 }
+
             } catch (err) {
                 res.status(500).json({ success: false, error: err })
             }
@@ -31,7 +42,7 @@ export default async (req, res) => {
 
         case 'PUT': /*Actulizar */
             try {
-                const result = await updateWork(id,body)
+                const result = await updateWork(id, body)
                 res.status(200).json(body)
             } catch (err) {
                 res.status(500).json({ success: false, error: err })
@@ -48,10 +59,10 @@ export default async (req, res) => {
             break
 
         case 'DELETE':
-            try{
+            try {
                 const result = await deleteWork(id)
                 res.status(200).json(body)
-            }catch{
+            } catch {
                 res.status(500).json({ success: false, error: err })
             }
             break

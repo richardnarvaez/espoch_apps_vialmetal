@@ -6,12 +6,10 @@ import AdminWorkTool from '../layouts/adminwork_tools'
 import AdminWorkDetails from '../layouts/adminwork_details'
 import AdminWorkMaterial from '../layouts/adminwork_material'
 
-
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
 
@@ -36,10 +34,10 @@ function getSteps() {
 
 export default function Admin() {
 
-   
+
    const [users, setUsers] = useState()
    const [list, setList] = useState([])
-   
+
    const classes = useStyles();
    const [activeStep, setActiveStep] = useState(0);
    const [skipped, setSkipped] = useState(new Set());
@@ -48,20 +46,20 @@ export default function Admin() {
 
    function getStepContent(step) {
 
-   switch (step) {
-      case 0:
-         return <AdminWorkDetails setListado={setListado}/>;
-      case 1:
-         return <AdminWorkMaterial setListado={setListado} />;
-      case 2:
-         return <AdminWorkTool setListado={setListado} />;
-      case 3:
-         return <AdminWorkTransport setListado={setListado} />;
+      switch (step) {
+         case 0:  
+            return <AdminWorkDetails setListado={setListado} />;
+         case 1:
+            return <AdminWorkMaterial setListado={setListado} />;
+         case 2:
+            return <AdminWorkTool setListado={setListado} />;
+         case 3:
+            return <AdminWorkTransport setListado={setListado} />;
 
-      default:
-         return 'Unknown step';
+         default:
+            return 'Unknown step';
+      }
    }
-}
 
    const isStepOptional = (step) => {
       return step === 1;
@@ -105,13 +103,10 @@ export default function Admin() {
       setActiveStep(0);
    };
 
-   
 
    const setListado = (a) => {
       setList((old) => [...old, a])
    }
-
-
 
 
    return (
@@ -127,7 +122,7 @@ export default function Admin() {
                   <h2>Material de trabajo</h2>
 
                   <div className="work-options">
-                     
+
                      {/*DE AQUI VA FUNCION STEP */}
 
                      <div className={classes.root}>
@@ -135,9 +130,7 @@ export default function Admin() {
                            {steps.map((label, index) => {
                               const stepProps = {};
                               const labelProps = {};
-                              if (isStepOptional(index)) {
-                                 labelProps.optional = <Typography variant="caption">Optional</Typography>;
-                              }
+                              
                               if (isStepSkipped(index)) {
                                  stepProps.completed = false;
                               }
@@ -148,34 +141,26 @@ export default function Admin() {
                                  </Step>
                               );
                            })}
+
                         </Stepper>
                         <div>
                            {activeStep === steps.length ? (
                               <div>
-                                 <Typography className={classes.instructions}>
+                                 <p className={classes.instructions}>
                                     Has completado todo el formulario
-                                 </Typography>
+                                 </p>
                                  <Button onClick={handleReset} className={classes.button}>
-                                    Reset
+                                    Llenar de nuevo
                                  </Button>
                               </div>
                            ) : (
                                  <div>
-                                    <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+                                    <p className={classes.instructions}>{getStepContent(activeStep)}</p>
                                     <div>
                                        <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                                           Back
-                                           </Button>
-                                       {isStepOptional(activeStep) && (
-                                          <Button
-                                             variant="contained"
-                                             color="primary"
-                                             onClick={handleSkip}
-                                             className={classes.button}
-                                          >
-                                             Skip
-                                          </Button>
-                                       )}
+                                       </Button>
+                                       
 
                                        <Button
                                           variant="contained"

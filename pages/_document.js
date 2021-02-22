@@ -32,6 +32,13 @@ class MyDocument extends Document {
                   integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
                   crossOrigin="anonymous"
                />
+               
+               <link /* FAVICON*/
+                  rel="icon"
+                  href="https://upload.wikimedia.org/wikipedia/commons/9/93/Yellow_stop_sign.svg"
+               />
+               
+
             </Head>
             <body>
                <Main />

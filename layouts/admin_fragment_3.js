@@ -1,26 +1,44 @@
+import { useState, useEffect } from 'react'
+
 import Card from '../components/card'
-export default function AdminF3 (){
-    const datos = [
-        {
-           title: 'Aqui va el titulo',
-           description: 'Una breve descripcion',
-           price: '$00',
-        },
-     ]
-    return (<> 
-    <a className="bt-new-work" href="/adminwork">
-            <h5>Nueva contra</h5> 
+
+export default function AdminF3() {
+   // VARIABLES "ESTADO"
+   const [list_obras, setListObras] = useState()
+   const [error, setError] = useState(false)
+
+   // FETCH DATOS DE LA API
+   // LOS DATOS PASAN A LA VARIABLE list_obras como LISTA []
+   useEffect(() => {
+      fetch('/api/data/contractor/all')
+         .then((res) => res.json())
+         .then((result) => {
+            setListObras(result)
+         })
+         .catch((e) => {
+            console.log('ERRPR: >>>>', e)
+         })
+   }, [])
+
+   return (
+      <>
+         <a className="bt-new-work" href="/adminwork">
+            <h5>Nuevo Contratista</h5>
          </a>
-    <h1>Contratistas</h1>
-               <div className="div" className="row">
-                  {datos.map((item, i) => {
-                     return (
-                        <>
-                           <Card key={i} data={item} />
-                        </>
-                     )
-                  })} 
-               </div>
-        
-        </>)
+
+         {error ? (
+            <>Error de conexion</>
+         ) : (
+            <div className="div" className="row">
+               {!list_obras ? (
+                  <>CARGANDO CONTRATISTAS...</>
+               ) : (
+                  list_obras.map((item, i) => {
+                     return <Card key={i} data={item} href={'/contractor/' + item.id_contractor} />
+                  })
+               )}
+            </div>
+         )}
+      </>
+   )
 }

@@ -1,30 +1,46 @@
+import { useState, useEffect } from 'react'
+
+import CardW from '../components/card_work'
+
 export default function AdminWorkMaterial() {
+
+
+    // VARIABLES "ESTADO"
+   const [material, setMaterial] = useState()
+   const [error, setError] = useState(false)
+
+   // FETCH DATOS DE LA API
+   // LOS DATOS PASAN A LA VARIABLE list_obras como LISTA []
+   useEffect(() => {
+      fetch('/api/data/material/all')
+         .then((res) => res.json())
+         .then((result) => {
+            setMaterial(result)
+         })
+         .catch((e) => {
+            console.log('ERRPR: >>>>', e)
+         })
+   }, [])
+
     return (
 
-        <div>
-            <div className="form-group">
-                <label for="exampleInputEmail1">Contratista</label>
-                <div> <p >Esperando contratista</p>
-                <span><button>Buscar</button></span></div>
-               
-                <small id="emailHelp" className="form-text text-muted">Elija Contratista</small>
-            </div>
-            <div className="form-group">
-                <label for="exampleInputEmail1">Descripcion</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div className="form-group">
-                <label for="exampleInputEmail1">Fecha de inicio</label>
-                <input type="date" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div className="form-group">
-                <label for="exampleInputEmail1">Fecha Tentativa Fin</label>
-                <input type="date" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-           
+        <div className="row"> {/*HERRAMIENTAS*/}
+            {!material ? (
+                <>
+                    <div className="spinner-border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </>
+            ) : (
+
+                    material.map((item, i) => {
+                        return (
+                            <>
+                                <CardW data={item}  />
+                            </>
+                        )
+                    })
+                )}
         </div>
 
     )

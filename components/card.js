@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function Card({ data }) {
    return (
-      <Link href="/details">
+      <Link href="/endwork">
          <div class="col-sm-6 tarjeta">
             <div class="card">
                <div class="card-imagen">

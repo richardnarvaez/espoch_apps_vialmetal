@@ -69,6 +69,13 @@ input{
     display: flex;
     justify-content: center;
 }
+.btn-volver button{
+    font-size: 15px;
+    width: 200px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    margin: 10px;
+}
 
 .btn{
     margin: auto;

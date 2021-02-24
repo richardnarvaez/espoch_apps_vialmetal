@@ -114,7 +114,6 @@ a {
    color: #3496d8;
 }
 
-
 .tm-hero-text-container {
    width: 100%;
    height: 100%;
@@ -192,4 +191,12 @@ a {
    color: red;
    text-decoration: none;
    text-shadow: 3px 3px 3px #d7ae8d;
+}
+
+.close {
+   width: auto !important;
+}
+
+.card-pendding{
+   background: #fff493;
 }

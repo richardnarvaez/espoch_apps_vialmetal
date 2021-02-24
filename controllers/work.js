@@ -12,9 +12,11 @@ export async function getAllWorks() {
  }
  export async function insertWork(dataWork){
     const db = await connect()
-    const result = await db.query(`INSERT INTO works (id_work, id_user, id_agreement, description, created_at, updated_at, finished_at, price_work, status)
-    VALUES(${dataWork.id_work}, '${dataWork.id_user}',	'${dataWork.id_agreement}' , '${dataWork.description}', '${dataWork.created_at}', '${dataWork.updated_at}', '${dataWork.finished_at}', '${dataWork.price_work}', '${dataWork.status}')`) 
-    return result.recordsets
+    console.log(dataWork)
+    const result = await db.query(`INSERT INTO works (id_contractor, responsable, description, location, finished_at, price_work, status)
+    VALUES(${parseInt(dataWork.id_contractor)},'${dataWork.responsable}','${dataWork.description}','${dataWork.location}', ${dataWork.finished_at},'${dataWork.price_work}', 'P')`) 
+    console.log(result)
+    return result.recordsets[0]
  }
  export async function updateWork(id, dataUser){
     const db = await connect()
@@ -29,9 +31,12 @@ export async function getAllWorks() {
 
 
  /*GET LISTA DE OBRAS ACTIVAS*/
- export async function getActiveWorks() {
+ export async function getActiveWorks(id) {
    const db = await connect()
-   const result = await db.query(`select * from view_activework order by created_at DESC`)
+   const result = await db.query(`SELECT w.id_work,w.responsable, c.business_name, w.description, w.location, w.created_at, w.status
+   FROM works w INNER JOIN contractors c
+   ON w.id_contractor = c.id_contractor
+   WHERE w.status <> 'F' AND w.id_contractor = ${id}`)
    return result.recordsets[0]
 }
 

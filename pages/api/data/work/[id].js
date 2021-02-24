@@ -25,12 +25,11 @@ export default async (req, res) => {
                         break
 
                     case 'active':
-                        result = await getActiveWorks()
+                        result = await getActiveWorks(id)
                         res.status(200).json(result)
                         break
-
                     default:
-                        result = await getWorkById(id)
+                        result = await getActiveWorks(id)
                         res.status(200).json(result)
                         break
                 }
@@ -52,7 +51,7 @@ export default async (req, res) => {
         case 'POST': /*Insert*/  /*O CUALQUIER ACCION secreta*/
             try {
                 const result = await insertWork(body)
-                res.status(200).json(body)
+                res.status(200).json(result)
             } catch (err) {
                 res.status(500).json({ success: false, error: err })
             }

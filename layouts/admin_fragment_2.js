@@ -1,27 +1,20 @@
-import Card from '../components/card'
+import CardInventory from '../components/card_inventory'
+
+import GetInventoryMaterial from '../layouts/inventory_materials'
+import GetInventoryTool from '../layouts/inventory_tools'
+import GetInventoryVehicle from '../layouts/inventory_vehicles'
+
+import NewMaterial from '../layouts/inventory_materials'
 
 export default function AdminF2() {
-   const datos = [
-      {
-         title: 'Esto es un dato de ADmin2 ',
-         description: 'Una breve descripcion',
-         price: '$00',
-      },   {
-         title: 'Esto es un dato de ADmin2 ',
-         description: 'Una breve descripcion',
-         price: '$00',
-      },   {
-         title: 'Esto es un dato de ADmin2 ',
-         description: 'Una breve descripcion',
-         price: '$00',
-      }
-   ]
+   const setListado = (a) => {
+      setList((old) => [...old, a])
+   }
 
    return (
       <>
-         
          <h1>Inventario</h1>
-         {/* PRUEBA */}
+
          <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li className="nav-item">
                <a
@@ -70,17 +63,48 @@ export default function AdminF2() {
                role="tabpanel"
                aria-labelledby="pills-home-tab"
             >
-            <a className="bt-new-work" href="/adminwork">
-            <h5>Nueva material</h5> 
-         </a>
+               <a className="bt-new-work" data-toggle="modal" data-target="#exampleModal">
+                  <h5>+ Material</h5>
+               </a>
+               {/*INICIA MODAL*/}
+               <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+               >
+                  <div class="modal-dialog">
+                     <div class="modal-content">
+                        <div class="modal-header">
+                           <h5 class="modal-title" id="exampleModalLabel">
+                              Modal title
+                           </h5>
+                           <button
+                              type="button"
+                              class="close"
+                              data-dismiss="modal"
+                              aria-label="Close"
+                           >
+                              <span aria-hidden="true">&times;</span>
+                           </button>
+                        </div>
+                        <div class="modal-body">...</div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                              Close
+                           </button>
+                           <button type="button" class="btn btn-primary">
+                              Save changes
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               {/*TERMINA MODAL*/}
+
                <div className="div" className="row">
-                  {datos.map((item, i) => {
-                     return (
-                        <>
-                           <Card key={i} data={item} />
-                        </>
-                     )
-                  })}
+                  <GetInventoryMaterial setListado={setListado} />
                </div>
             </div>
             <div
@@ -89,17 +113,47 @@ export default function AdminF2() {
                role="tabpanel"
                aria-labelledby="pills-profile-tab"
             >
-            <a className="bt-new-work" href="/adminwork">
-            <h5>Nuevaheerramienta</h5> 
-         </a>
+               <a className="bt-new-work" data-toggle="modalOne" data-target="#exampleModalOne">
+                  <h5>+ Material</h5>
+               </a>
+               {/*INICIA MODAL*/}
+               <div
+                  class="modal fade"
+                  id="exampleModalOne"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabelOne"
+                  aria-hidden="true"
+               >
+                  <div class="modal-dialog">
+                     <div class="modal-content">
+                        <div class="modal-header">
+                           <h5 class="modal-title" id="exampleModalLabelOne">
+                              Modal title
+                           </h5>
+                           <button
+                              type="button"
+                              class="close"
+                              data-dismiss="modalOne"
+                              aria-label="Close"
+                           >
+                              <span aria-hidden="true">&times;</span>
+                           </button>
+                        </div>
+                        <div class="modal-body">...</div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-secondary" data-dismiss="modalOne">
+                              Close
+                           </button>
+                           <button type="button" class="btn btn-primary">
+                              Save changes
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               {/*TERMINA MODAL*/}
                <div className="div" className="row">
-                  {datos.map((item, i) => {
-                     return (
-                        <>
-                           <Card key={i} data={item} />
-                        </>
-                     )
-                  })}
+                  <GetInventoryTool setListado={setListado} />
                </div>
             </div>
             <div
@@ -108,17 +162,48 @@ export default function AdminF2() {
                role="tabpanel"
                aria-labelledby="pills-contact-tab"
             >
-            <a className="bt-new-work" href="/adminwork">
-            <h5>Nuevo veihiuuclo</h5> 
-         </a>
+               <a className="bt-new-work" data-toggle="modal2" data-target="#exampleModal2">
+                  <h5>+ Material</h5>
+               </a>
+               {/*INICIA MODAL*/}
+               <div
+                  class="modal fade"
+                  id="exampleModal2"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel2"
+                  aria-hidden="true"
+               >
+                  <div class="modal-dialog">
+                     <div class="modal-content">
+                        <div class="modal-header">
+                           <h5 class="modal-title" id="exampleModalLabel2">
+                              Modal title
+                           </h5>
+                           <button
+                              type="button"
+                              class="close"
+                              data-dismiss="modal2"
+                              aria-label="Close"
+                           >
+                              <span aria-hidden="true">&times;</span>
+                           </button>
+                        </div>
+                        <div class="modal-body">...</div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-secondary" data-dismiss="modal2">
+                              Close
+                           </button>
+                           <button type="button" class="btn btn-primary">
+                              Save changes
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               {/*TERMINA MODAL*/}
+
                <div className="div" className="row">
-                  {datos.map((item, i) => {
-                     return (
-                        <>
-                           <Card  key={i} data={item} />
-                        </>
-                     )
-                  })}
+                  <GetInventoryVehicle setListado={setListado} />
                </div>
             </div>
          </div>

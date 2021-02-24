@@ -23,7 +23,7 @@ export default function Admin() {
                   aria-controls="home"
                   aria-selected="true"
                >
-                  Lista de obras
+                  Contratistas
                </a>
             </li>
             <li className="nav-item">
@@ -63,7 +63,7 @@ export default function Admin() {
                role="tabpanel"
                aria-labelledby="home-tab"
             >
-               <AdminF1 />
+               <AdminF3 />
             </div>
 
             {/* FRAGEMNTO 2 */}
@@ -72,9 +72,9 @@ export default function Admin() {
             </div>
 
             {/* FRAGEMNTO 3 */}
-            <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            {/* <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                <AdminF3 />
-            </div>
+            </div> */}
          </div>
          <Footer />
       </div>

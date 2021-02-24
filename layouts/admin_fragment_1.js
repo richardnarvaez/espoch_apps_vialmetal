@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 
 import Card from '../components/card'
 
 export default function AdminF1() {
    // VARIABLES "ESTADO"
-   const [list_obras, setListObras] = useState([])
+   const [list_obras, setListObras] = useState()
    const [error, setError] = useState(false)
 
    // FETCH DATOS DE LA API
@@ -25,9 +24,17 @@ export default function AdminF1() {
 
    return (
       <>
-         <a className="bt-new-work" href="/adminwork">
-            <h5>Nueva Obra</h5>
-         </a>
+         <button
+            type="button"
+            class="btn bt-new-work"
+            data-toggle="modal"
+            data-target="#exampleModal"
+         >
+            Nueva Obra
+         </button>
+
+      
+
          {error ? (
             <>Error de conexion</>
          ) : (

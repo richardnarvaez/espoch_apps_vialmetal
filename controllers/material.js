@@ -7,7 +7,7 @@ export async function getAllMaterials() {
 }
 export async function getMaterialById(id){
    const db = await connect()
-   const result = await db.query(`select * from materials where = id_material`+ id)
+   const result = await db.query(`select * from materials where id_material =`+ id)
    return result.recordsets
 }
 export async function insertMaterial(dataMaterial){

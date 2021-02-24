@@ -1,15 +1,38 @@
 import { useState, useEffect } from 'react'
-
+import Row from '../components/rowlist_details'
 
 export default function Admin() {
-    const [users, setUsers] = useState()
-    const [list, setList] = useState([])
-
+    const [listMaterials, setMaterials] = useState([])
+    const [error, setError] = useState(false)
     
+    useEffect(() => {
+        fetch('/api/data/work_material/used')
+           .then((res) => res.json())
+           .then((result) => {
+            setMaterials(result)
+           })
+           .catch((e) => {
+              console.log('ERROR: >>>>', e)
+              setError(true)
+           })
+     }, [])
+
+    /*
+    const setListado = (a) => {
+        setList((old) => [...old, a])
+    }*/
+
     return(
         <>
         <div className="body-adminwork">
-            
+            <div className="btn-volver">
+                <a href="../admin">
+                <button class="" type="button">
+                    Volver
+                </button>
+                </a>
+            </div>
+
             <h1>FINALIZAR TRABAJO</h1>
              
             <div className="table-section">
@@ -20,13 +43,19 @@ export default function Admin() {
                 </div>
                 <div className="table-area">
                     <h3>MATERIALES</h3>
-                    <div className="row-materials">
-                        <div className="new-row-materials">
-                            <div className="first-column">Detalle de lo que se usó en el trabajo</div>
-                            <div className="second-column"> <input placeholder="Ingrese la cantidad"></input> </div>
-                            <div className="third-column">Cálculo de lo que queda</div>
+                    {error ? (
+                        <>Error de conexion</>
+                    ) : (
+                        <div className="row-materials">
+                            {!listMaterials ? (
+                                <>CARGANDO DATO...</>
+                            ) : (
+                                listMaterials.map((item, i) => {
+                                    return <Row key={i} data={item}/>
+                                })
+                            )}
                         </div>
-                    </div>
+                    )}
                     <h3>HERRAMIENTAS</h3>
                     <div className="row-tools">
                         <div className="new-row-tools">

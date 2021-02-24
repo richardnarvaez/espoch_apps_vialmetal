@@ -2,7 +2,7 @@ import connect from '../database/connection'
 
 export async function getAllWorks() {
     const db = await connect()
-    const result = await db.query(`select * from works`)
+    const result = await db.query(`select * from works order by created_at DESC`)
     return result.recordsets[0]
  }
  export async function getWorkById(id){

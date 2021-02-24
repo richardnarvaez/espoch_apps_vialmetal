@@ -10,7 +10,7 @@ export default function AdminF1() {
    // FETCH DATOS DE LA API
    // LOS DATOS PASAN A LA VARIABLE list_obras como LISTA []
    useEffect(() => {
-      fetch('/api/data/work/active')
+      fetch('/api/data/work/all')
          .then((res) => res.json())
          .then((result) => {
             setListObras(result)

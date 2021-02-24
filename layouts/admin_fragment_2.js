@@ -56,17 +56,23 @@ export default function AdminF2() {
                </a>
             </li>
          </ul>
+
+         {/*CONTENIDO*/}
          <div className="tab-content" id="pills-tabContent">
+
             <div
                className="tab-pane fade show active"
                id="pills-home"
                role="tabpanel"
                aria-labelledby="pills-home-tab"
             >
-               <a className="bt-new-work" data-toggle="modal" data-target="#exampleModal">
-                  <h5>+ Material</h5>
-               </a>
-               {/*INICIA MODAL*/}
+               <button
+                  className="bt-new-work"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+               > <h5> +Material </h5></button>
+
+               {/*INICIA MODAL --MATERIALES--*/}
                <div
                   class="modal fade"
                   id="exampleModal"
@@ -78,7 +84,7 @@ export default function AdminF2() {
                      <div class="modal-content">
                         <div class="modal-header">
                            <h5 class="modal-title" id="exampleModalLabel">
-                              Modal title
+                              Nueva Herramienta
                            </h5>
                            <button
                               type="button"
@@ -89,13 +95,46 @@ export default function AdminF2() {
                               <span aria-hidden="true">&times;</span>
                            </button>
                         </div>
-                        <div class="modal-body">...</div>
+                        <div class="modal-body">
+                           <div class="form-group">
+                              <label for="exampleInputEmail1">Nombre</label>
+                              <input className="form-control" id="location" />
+                              <small id="emailHelp" className="form-text text-muted">
+                                 Nombre de la herramienta
+                              </small>
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputEmail1">Imagen</label>
+                              <input className="form-control" id="location" />
+                              <small id="emailHelp" className="form-text text-muted">
+                                 Url de la imagen
+                              </small>
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputEmail1">Cantidad</label>
+                              <input
+                                 type="number"
+                                 class="form-control"
+                                 id="exampleInputEmail1"
+                                 aria-describedby="emailHelp"
+                                 min="0"
+                              />
+                              <small id="emailHelp" class="form-text text-muted">
+                                 Cantidad en litros
+                              </small>
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputEmail1">Precio</label>
+                              <input className="form-control" id="location" />
+                              <small id="emailHelp" className="form-text text-muted">
+                                 Precio por litro
+                              </small>
+                           </div>
+                        </div>
+
                         <div class="modal-footer">
-                           <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                              Close
-                           </button>
                            <button type="button" class="btn btn-primary">
-                              Save changes
+                              Guardar Material
                            </button>
                         </div>
                      </div>
@@ -107,16 +146,20 @@ export default function AdminF2() {
                   <GetInventoryMaterial setListado={setListado} />
                </div>
             </div>
+
             <div
                className="tab-pane fade"
                id="pills-profile"
                role="tabpanel"
                aria-labelledby="pills-profile-tab"
             >
-               <a className="bt-new-work" data-toggle="modalOne" data-target="#exampleModalOne">
-                  <h5>+ Material</h5>
-               </a>
-               {/*INICIA MODAL*/}
+               <button
+                  className="bt-new-work"
+                  data-toggle="modalOne"
+                  data-target="#exampleModalOne"
+               > <h5>+Tool</h5></button>
+
+               {/*INICIA MODAL HERRAMIENTA*/}
                <div
                   class="modal fade"
                   id="exampleModalOne"
@@ -141,11 +184,8 @@ export default function AdminF2() {
                         </div>
                         <div class="modal-body">...</div>
                         <div class="modal-footer">
-                           <button type="button" class="btn btn-secondary" data-dismiss="modalOne">
-                              Close
-                           </button>
                            <button type="button" class="btn btn-primary">
-                              Save changes
+                              Guardar Herramienta
                            </button>
                         </div>
                      </div>
@@ -162,21 +202,23 @@ export default function AdminF2() {
                role="tabpanel"
                aria-labelledby="pills-contact-tab"
             >
-               <a className="bt-new-work" data-toggle="modal2" data-target="#exampleModal2">
-                  <h5>+ Material</h5>
-               </a>
-               {/*INICIA MODAL*/}
+               <button
+                  className="bt-new-work"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+               > <h5>+Coche</h5></button>
+               {/*INICIA MODAL VEHICULOS*/}
                <div
                   class="modal fade"
-                  id="exampleModal2"
+                  id="exampleModal"
                   tabindex="-1"
-                  aria-labelledby="exampleModalLabel2"
+                  aria-labelledby="exampleModalLabel"
                   aria-hidden="true"
                >
                   <div class="modal-dialog">
                      <div class="modal-content">
                         <div class="modal-header">
-                           <h5 class="modal-title" id="exampleModalLabel2">
+                           <h5 class="modal-title" id="exampleModalLabel">
                               Modal title
                            </h5>
                            <button
@@ -190,11 +232,8 @@ export default function AdminF2() {
                         </div>
                         <div class="modal-body">...</div>
                         <div class="modal-footer">
-                           <button type="button" class="btn btn-secondary" data-dismiss="modal2">
-                              Close
-                           </button>
                            <button type="button" class="btn btn-primary">
-                              Save changes
+                              Guardar Vehiculo
                            </button>
                         </div>
                      </div>

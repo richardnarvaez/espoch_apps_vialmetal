@@ -10,7 +10,7 @@ export default function Card({ data, href }) {
    const leM = na ? na.substring(0, 1) : 'A'
 
    return (
-      <Link href={data.status == 'P' ? '/new/' + data.id_work : '/details/' + data.id_work}>
+      <Link href={href ? href: '/admin'}>
          {/* {href ? href : '/'}> */}
          <div className="col-sm-6 tarjeta">
             <div className={'card ' + (data.status == 'P' ? 'card-pendding' : '')}>

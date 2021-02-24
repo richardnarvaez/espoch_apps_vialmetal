@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import Card from '../components/card'
+import CardW from '../components/card_c'
 
 export default function AdminF3() {
    // VARIABLES "ESTADO"
@@ -34,7 +34,7 @@ export default function AdminF3() {
                   <>CARGANDO CONTRATISTAS...</>
                ) : (
                   list_obras.map((item, i) => {
-                     return <Card key={i} data={item} href={'/contractor/' + item.id_contractor} />
+                     return <CardW key={i} data={item} href={'/contractor/' + item.id_contractor} />
                   })
                )}
             </div>

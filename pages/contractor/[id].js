@@ -58,7 +58,8 @@ export default function AdminF1() {
       })
          .then((response) => {
             if (response) {
-               alert('the call works ok' + response)
+               console.log(response)
+               window.location.reload();
             }
          })
          .catch(function (error) {
@@ -66,7 +67,7 @@ export default function AdminF1() {
          })
    }
    return (
-      <>
+      <div className="container">
          <h1>Lista de obras de {contractor ? contractor.business_name : 'Cargando..'} </h1>
          <button
             type="button"
@@ -172,6 +173,6 @@ export default function AdminF1() {
                )}
             </div>
          )}
-      </>
+      </div>
    )
 }

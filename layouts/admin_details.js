@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Row from '../components/rowlist_details'
 
 export default function Admin() {
-    const [listMaterials, setMaterials] = useState([])
+    const [listMaterials, setMaterials] = useState()
     const [error, setError] = useState(false)
     
     useEffect(() => {
@@ -13,9 +13,10 @@ export default function Admin() {
            })
            .catch((e) => {
               console.log('ERROR: >>>>', e)
-              setError(true)
            })
      }, [])
+     
+
 
     /*
     const setListado = (a) => {

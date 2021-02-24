@@ -1,6 +1,6 @@
 
 
-export default function RowDetails({ data }) {
+export default function RowDetails({ key, data }) {
    
    return (
       <>

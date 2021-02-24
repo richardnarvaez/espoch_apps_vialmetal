@@ -8,7 +8,7 @@ export async function getAllWorks() {
  export async function getWorkById(id){
     const db = await connect()
     const result = await db.query(`select * from works where  id_work =`+ id)
-    return result.recordsets
+    return result.recordsets[0]
  }
  export async function insertWork(dataWork){
     const db = await connect()
@@ -26,3 +26,12 @@ export async function getAllWorks() {
     const result = await db.query(`DELETE FROM works WHERE id_work = ${id}`)
     return result.recordsets
  }
+
+
+ /*GET LISTA DE OBRAS ACTIVAS*/
+ export async function getActiveWorks() {
+   const db = await connect()
+   const result = await db.query(`select * from view_activework order by created_at DESC`)
+   return result.recordsets[0]
+}
+

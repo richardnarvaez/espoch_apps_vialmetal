@@ -1,20 +1,36 @@
 import Link from 'next/link'
+import 'dayjs/locale/es' 
+import dayjs from 'dayjs'
 
-export default function Card({ data }) {
+
+export default function Card({ data, href }) {
+
+   dayjs.locale('es')
+
+   const na =data.business_name
+   var date = dayjs(data.created_at).format('D MMMM, YYYY');
+   const leM = na? na.substring(0, 1) : "A"
+   
    return (
-      <Link href="/endwork">
-         <div class="col-sm-6 tarjeta">
-            <div class="card">
-               <div class="card-imagen">
+      <Link href={href ? href : "/"}>
+
+         <div className="col-sm-6 tarjeta">
+
+            <div className="card">
+
+               <div className="card-imagen">
                   <p>
-                     <strong>A</strong>
+                     <strong>{leM}</strong>
                   </p>
                </div>
-               <div class="card-body-right">
-                  <h5 class="card-title">{data.title}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">{data.price}</h6>
-                  <p class="card-text">{data.description}</p>
+
+               <div className="card-body-right">
+                  <p className="card-text"><strong>{data.business_name}</strong></p>
+                  <p className="card-text">{data.location}</p>
+                  <p className="card-text">{data.description}</p>
+                  <p className="card-text">{date}</p>
                </div>
+               
             </div>
          </div>
       </Link>

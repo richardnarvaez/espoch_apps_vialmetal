@@ -2,17 +2,17 @@ import { getSession, providers, signIn } from 'next-auth/client'
 
 export default function SignIn({ providers }) {
    return (
-      <div class="body-home" style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <div className="body-home" style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
          {/* <h1>Inicio de secion </h1> */}
-         <div class=" w3l-login-form">
+         <div className=" w3l-login-form">
             <h2>Inicio</h2>
             <div>
-               <div class=" w3l-form-group">
-                  <div class="group">
-                     <i class="fas fa-user"></i>
+               <div className=" w3l-form-group">
+                  <div className="group">
+                     <i className="fas fa-user"></i>
                      <input
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         placeholder="Email"
                         required="required"
                      />

@@ -8,15 +8,15 @@ export default function AdminF3 (){
         },
      ]
     return (<> 
-    <a class="bt-new-work" href="/adminwork">
+    <a className="bt-new-work" href="/adminwork">
             <h5>Nueva contra</h5> 
          </a>
     <h1>Contratistas</h1>
-               <div class="div" class="row">
+               <div className="div" className="row">
                   {datos.map((item, i) => {
                      return (
                         <>
-                           <Card data={item} />
+                           <Card key={i} data={item} />
                         </>
                      )
                   })} 

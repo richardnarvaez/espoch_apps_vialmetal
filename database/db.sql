@@ -1,3 +1,4 @@
+
 -- Create a new table called '[accounts]' in schema '[dbo]'
 -- Drop the table if it already exists
 IF OBJECT_ID('[dbo].[accounts]', 'U') IS NOT NULL
@@ -126,32 +127,6 @@ ALTER TABLE contractors
 GO
 
 --------------------------------------------------------------------------
--- Create a new table called '[agreements]' in schema '[dbo]'
--- Drop the table if it already exists
-IF OBJECT_ID('[dbo].[agreements]', 'U') IS NOT NULL
-DROP TABLE [dbo].[agreements]
-GO
--- Create the table in the specified schema
-CREATE TABLE [dbo].[agreements]
-(
-    [id_agreement] INT IDENTITY(1,1) NOT NULL, -- PK
-    [id_contractor] INT NOT NULL,
-    [location] NVARCHAR(50) NOT NULL,
-    [location_reference] NVARCHAR(50) NULL,
-    [description] NVARCHAR(50) NULL,
-    [date_begin] DATETIME NOT NULL,
-    [date_end] DATETIME NOT NULL
-    -- Specify more columns here
-);
-GO
-ALTER TABLE agreements
-    ADD CONSTRAINT PK_Agreement PRIMARY KEY NONCLUSTERED (id_agreement)
-GO
-ALTER TABLE agreements
-    ADD CONSTRAINT FK_ContractorAgreement FOREIGN KEY (id_contractor) REFERENCES contractors(id_contractor)
-GO
-
---------------------------------------------------------------------------
 -- Create a new table called '[works]' in schema '[dbo]'
 -- Drop the table if it already exists
 IF OBJECT_ID('[dbo].[works]', 'U') IS NOT NULL
@@ -162,8 +137,9 @@ CREATE TABLE [dbo].[works]
 (
     [id_work] INT IDENTITY(1,1) NOT NULL, -- PK
     [id_user] INT NOT NULL, -- FK
-    [id_agreement] INT NOT NULL, -- FK
+    [id_contractor] INT NOT NULL, -- FK
     [description] NVARCHAR(50) NULL,
+    [location] NVARCHAR(255) NOT NULL,
     [created_at] DATETIME NOT NULL DEFAULT GETDATE(),
     [updated_at] DATETIME NOT NULL DEFAULT GETDATE(),
     [finished_at] DATETIME NOT NULL DEFAULT GETDATE(),
@@ -179,7 +155,7 @@ ALTER TABLE works
     ADD CONSTRAINT FK_UserWork FOREIGN KEY (id_user) REFERENCES users(id)
 GO
 ALTER TABLE works
-    ADD CONSTRAINT FK_AgreementWork FOREIGN KEY (id_agreement) REFERENCES agreements(id_agreement)
+    ADD CONSTRAINT FK_ContractorWork FOREIGN KEY (id_contractor) REFERENCES contractors(id_contractor)
 GO
 --------------------------------------------------------------------------
 -- Create a new table called '[materials]' in schema '[dbo]'

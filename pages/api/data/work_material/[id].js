@@ -13,16 +13,21 @@ export default async (req, res) => {
     switch (method) {
         case 'GET': /*SELECT*/
 
+            let result;
+            
             try {
-                if (id == "all") {
-
-                    const result = await getAllWork_Materials()
-                    res.status(200).json(result)
-
-                } else {
-
-                    const result = await getWork_MaterialId(id)
-                    res.status(200).json(result)
+                switch(id){
+                    case "all":
+                        result = await getAllWork_Materials()
+                        res.status(200).json(result)
+                        break
+                    case "used":
+                        result = await getMaterialUsedWork(id)
+                        res.status(200).json(result)
+                        break
+                    default: 
+                        result = await getWork_MaterialId(id)
+                        res.status(200).json(result)
                 }
             } catch (err) {
                 res.status(500).json({ success: false, error: err })

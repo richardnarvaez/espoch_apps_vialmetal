@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "dayjs": "^1.10.4",
     "mssql": "^6.3.1",
     "next": "10.0.6",
     "next-auth": "^3.4.0",

@@ -1,11 +1,15 @@
+import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 
 import CardW from '../components/card_work'
 
-export default function AdminWorkMaterial() {
+export default function AdminWorkMaterial({ setListado }) {
 
+    // RUTAS
+    const { query } = useRouter()
+    const id = query.id
 
-    // VARIABLES "ESTADO"
+   // VARIABLES "ESTADO"
    const [material, setMaterial] = useState()
    const [error, setError] = useState(false)
 
@@ -22,26 +26,54 @@ export default function AdminWorkMaterial() {
          })
    }, [])
 
-    return (
+   const insertarMaterial = (id_mat) => {
+      const material = {
+        id_work: id,
+        id_material: id_mat,
+        material_begin: 1,
+        material_end: 0,
+        
+      }
+      
+      console.log(material)
 
-        <div className="row"> {/*HERRAMIENTAS*/}
-            {!material ? (
-                <>
-                    <div className="spinner-border" role="status">
-                        <span className="sr-only">Loading...</span>
-                    </div>
-                </>
-            ) : (
+      fetch('/api/data/work_material/null', {
+         method: 'post',
+         headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(material),
+      })
+         .then((response) => {
+            if (response) {
+               console.log(response)
+            }
+         })
+         .catch(function (error) {
+            console.log('Request failed', error)
+         })
+   }
 
-                    material.map((item, i) => {
-                        return (
-                            <>
-                                <CardW data={item}  />
-                            </>
-                        )
-                    })
-                )}
-        </div>
-
-    )
+   return (
+      <div className="row">
+         {' '}
+         {/*HERRAMIENTAS*/}
+         {!material ? (
+            <>
+               <div className="spinner-border" role="status">
+                  <span className="sr-only">Loading...</span>
+               </div>
+            </>
+         ) : (
+            material.map((item, i) => {
+               return (
+                  <>
+                     <CardW data={item} onClick={()=>insertarMaterial(item.id_material)} />
+                  </>
+               )
+            })
+         )}
+      </div>
+   )
 }

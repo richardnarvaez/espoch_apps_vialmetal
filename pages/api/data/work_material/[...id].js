@@ -50,8 +50,10 @@ export default async (req, res) => {
 
       case 'POST' /*Insert*/ /*O CUALQUIER ACCION secreta*/:
          try {
+            console.log('LLEGO:', body)
             const result = await insertWork_Material(body)
-            res.status(200).json(body)
+            console.log('ER', result)
+            res.status(200).json(result)
          } catch (err) {
             res.status(500).json({ success: false, error: err })
          }

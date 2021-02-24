@@ -18,8 +18,8 @@ const Nav = () => {
             <div className={`loading-view nojs-show ${!session && loading ? 'loading' : 'loaded'}`}>
                {!session ? (
                   <>
-                     <a href="/auth/login">
-                        <button className="signinButton">Sign in</button>
+                     <a href="/auth/login" className="signinButton">
+                        Iniciar sesión
                      </a>
                   </>
                ) : (

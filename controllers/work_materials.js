@@ -7,14 +7,17 @@ export async function getAllWork_Materials() {
 }
 export async function getWork_MaterialId(id) {
    const db = await connect()
-   const result = await db.query(`select * from work_materials where id_work_material =` + id)
+   const result = await db.query(`SELECT m.name, m.quantity, m.price_liter
+   FROM work_materials w INNER JOIN materials m
+   ON w.id_material = m.id_material
+   WHERE w.id_work = ${id}`)
    return result.recordsets[0]
 }
 
 export async function insertWork_Material(dataWorkM) {
    const db = await connect()
-   const result = await db.query(`INSERT INTO work_materials (id_work_material, id_work, id_material, material_begin, material_end, date)
-   VALUES(${dataWorkM.id_work_material}, ${dataWorkM.id_work}, ${dataWorkM.id_material} , ${dataWorkM.material_begin},	${dataWorkM.material_end} , '${dataWorkM.date}')`)
+   const result = await db.query(`INSERT INTO work_materials (id_work, id_material, material_begin, material_end)
+   VALUES( ${dataWorkM.id_work}, ${dataWorkM.id_material} , ${dataWorkM.material_begin},	${dataWorkM.material_end} )`)
    return result.recordsets[0]
 }
 export async function updateWork_Material(id, dataWorkM) {
@@ -39,3 +42,4 @@ export async function getMaterialUsedWork(id) {
    console.log('RESULT: ', result)
    return result.recordsets[0]
 }
+

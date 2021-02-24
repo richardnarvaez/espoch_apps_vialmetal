@@ -57,10 +57,13 @@
 .signoutButton {
    float: right;
    font-weight: 500;
-   background-color: #1eb1fc;
+   background-color: #1e2b5c;
+   height: 52px;
+   display: flex;
+   align-items: center;
+   border-left: solid 5px #fbdf0e;
    color: #fff;
-   border: 1px solid #1eb1fc;
-   border-radius: 2rem;
+   border-radius: 0rem;
    cursor: pointer;
    font-size: 1rem;
    line-height: 1rem;
@@ -70,7 +73,7 @@
 }
 
 .signinButton:hover {
-   background-color: #1b9fe2;
+   background-color: #2b3f86;
    border-color: #1b9fe2;
    color: #fff;
 }

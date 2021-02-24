@@ -4,16 +4,46 @@ import GetInventoryMaterial from '../layouts/inventory_materials'
 import GetInventoryTool from '../layouts/inventory_tools'
 import GetInventoryVehicle from '../layouts/inventory_vehicles'
 
-import NewMaterial from '../layouts/inventory_materials'
-
 export default function AdminF2() {
    const setListado = (a) => {
       setList((old) => [...old, a])
    }
 
+   {/*INSERTAR MATERIAL*/}
+   const insertarMaterial = () => {
+      const material = {
+         name: document.getElementById('ruc').value,
+         image: document.getElementById('descripcion').value,
+         quantity: document.getElementById('nombre').value,
+         price_liter: document.getElementById('nombre').value,
+      }
+      
+      fetch('/api/data/material/null', {
+         method: 'post',
+         headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(material),
+      })
+         .then((response) => {
+            if (response) {
+               console.log(response)
+               window.location.reload()
+            }
+         })
+         .catch(function (error) {
+            console.log('Request failed', error)
+         })
+   }
+
    return (
       <>
          <h1>Inventario</h1>
+
+         <ModalHeramientas />
+         <ModalMaterial />
+         <ModalVehiculo />
 
          <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li className="nav-item">
@@ -59,88 +89,16 @@ export default function AdminF2() {
 
          {/*CONTENIDO*/}
          <div className="tab-content" id="pills-tabContent">
-
             <div
                className="tab-pane fade show active"
                id="pills-home"
                role="tabpanel"
                aria-labelledby="pills-home-tab"
             >
-               <button
-                  className="bt-new-work"
-                  data-toggle="modal"
-                  data-target="#exampleModal"
-               > <h5> +Material </h5></button>
-
-               {/*INICIA MODAL --MATERIALES--*/}
-               <div
-                  class="modal fade"
-                  id="exampleModal"
-                  tabindex="-1"
-                  aria-labelledby="exampleModalLabel"
-                  aria-hidden="true"
-               >
-                  <div class="modal-dialog">
-                     <div class="modal-content">
-                        <div class="modal-header">
-                           <h5 class="modal-title" id="exampleModalLabel">
-                              Nueva Herramienta
-                           </h5>
-                           <button
-                              type="button"
-                              class="close"
-                              data-dismiss="modal"
-                              aria-label="Close"
-                           >
-                              <span aria-hidden="true">&times;</span>
-                           </button>
-                        </div>
-                        <div class="modal-body">
-                           <div class="form-group">
-                              <label for="exampleInputEmail1">Nombre</label>
-                              <input className="form-control" id="location" />
-                              <small id="emailHelp" className="form-text text-muted">
-                                 Nombre de la herramienta
-                              </small>
-                           </div>
-                           <div class="form-group">
-                              <label for="exampleInputEmail1">Imagen</label>
-                              <input className="form-control" id="location" />
-                              <small id="emailHelp" className="form-text text-muted">
-                                 Url de la imagen
-                              </small>
-                           </div>
-                           <div class="form-group">
-                              <label for="exampleInputEmail1">Cantidad</label>
-                              <input
-                                 type="number"
-                                 class="form-control"
-                                 id="exampleInputEmail1"
-                                 aria-describedby="emailHelp"
-                                 min="0"
-                              />
-                              <small id="emailHelp" class="form-text text-muted">
-                                 Cantidad en litros
-                              </small>
-                           </div>
-                           <div class="form-group">
-                              <label for="exampleInputEmail1">Precio</label>
-                              <input className="form-control" id="location" />
-                              <small id="emailHelp" className="form-text text-muted">
-                                 Precio por litro
-                              </small>
-                           </div>
-                        </div>
-
-                        <div class="modal-footer">
-                           <button type="button" class="btn btn-primary">
-                              Guardar Material
-                           </button>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               {/*TERMINA MODAL*/}
+               <button className="bt-new-work" data-toggle="modal" data-target="#exampleModal">
+                  {' '}
+                  <h5> +Material </h5>
+               </button>
 
                <div className="div" className="row">
                   <GetInventoryMaterial setListado={setListado} />
@@ -153,45 +111,11 @@ export default function AdminF2() {
                role="tabpanel"
                aria-labelledby="pills-profile-tab"
             >
-               <button
-                  className="bt-new-work"
-                  data-toggle="modalOne"
-                  data-target="#exampleModalOne"
-               > <h5>+Tool</h5></button>
+               <button className="bt-new-work" data-toggle="modal" data-target="#exampleModal2">
+                  {' '}
+                  <h5>+Tool</h5>
+               </button>
 
-               {/*INICIA MODAL HERRAMIENTA*/}
-               <div
-                  class="modal fade"
-                  id="exampleModalOne"
-                  tabindex="-1"
-                  aria-labelledby="exampleModalLabelOne"
-                  aria-hidden="true"
-               >
-                  <div class="modal-dialog">
-                     <div class="modal-content">
-                        <div class="modal-header">
-                           <h5 class="modal-title" id="exampleModalLabelOne">
-                              Modal title
-                           </h5>
-                           <button
-                              type="button"
-                              class="close"
-                              data-dismiss="modalOne"
-                              aria-label="Close"
-                           >
-                              <span aria-hidden="true">&times;</span>
-                           </button>
-                        </div>
-                        <div class="modal-body">...</div>
-                        <div class="modal-footer">
-                           <button type="button" class="btn btn-primary">
-                              Guardar Herramienta
-                           </button>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               {/*TERMINA MODAL*/}
                <div className="div" className="row">
                   <GetInventoryTool setListado={setListado} />
                </div>
@@ -202,50 +126,238 @@ export default function AdminF2() {
                role="tabpanel"
                aria-labelledby="pills-contact-tab"
             >
-               <button
-                  className="bt-new-work"
-                  data-toggle="modal"
-                  data-target="#exampleModal"
-               > <h5>+Coche</h5></button>
-               {/*INICIA MODAL VEHICULOS*/}
-               <div
-                  class="modal fade"
-                  id="exampleModal"
-                  tabindex="-1"
-                  aria-labelledby="exampleModalLabel"
-                  aria-hidden="true"
-               >
-                  <div class="modal-dialog">
-                     <div class="modal-content">
-                        <div class="modal-header">
-                           <h5 class="modal-title" id="exampleModalLabel">
-                              Modal title
-                           </h5>
-                           <button
-                              type="button"
-                              class="close"
-                              data-dismiss="modal2"
-                              aria-label="Close"
-                           >
-                              <span aria-hidden="true">&times;</span>
-                           </button>
-                        </div>
-                        <div class="modal-body">...</div>
-                        <div class="modal-footer">
-                           <button type="button" class="btn btn-primary">
-                              Guardar Vehiculo
-                           </button>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               {/*TERMINA MODAL*/}
+               <button className="bt-new-work" data-toggle="modal" data-target="#exampleModal3">
+                  {' '}
+                  <h5>+Coche</h5>
+               </button>
 
                <div className="div" className="row">
                   <GetInventoryVehicle setListado={setListado} />
                </div>
             </div>
          </div>
+      </>
+   )
+}
+
+const ModalHeramientas = () => {
+   return (
+      <>
+         {/*INICIA MODAL HERRAMIENTA*/}
+         <div
+            class="modal fade"
+            id="exampleModal2"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabelOne"
+            aria-hidden="true"
+         >
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">
+                        Nueva Herrameinta
+                     </h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+
+                  <div class="modal-body">
+                  <div class="form-group">
+                        <label for="">Nombre</label>
+                        <input className="form-control" id="location" />
+                        <small id="emailHelp" className="form-text text-muted">
+                           Nombre de la herramienta
+                        </small>
+                     </div>
+                     <div class="form-group">
+                        <label for="">Imagen</label>
+                        <input className="form-control" id="location" />
+                        <small id="emailHelp" className="form-text text-muted">
+                           Url de la imagen
+                        </small>
+                     </div>
+                     <div class="form-group">
+                        <label for="">Cantidad</label>
+                        <input
+                           type="number"
+                           class="form-control"
+                           id="exampleInputEmail1"
+                           aria-describedby="emailHelp"
+                           min="0"
+                        />
+                        <small id="emailHelp" class="form-text text-muted">
+                           Cantidad
+                        </small>
+                     </div>
+                     <div class="form-group">
+                        <label for="">Precio</label>
+                        <input className="form-control" id="location" />
+                        <small id="emailHelp" className="form-text text-muted">
+                           Precio por uso
+                        </small>
+                     </div>
+                  </div>
+
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-primary">
+                        Guardar Herramienta
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         {/*TERMINA MODAL*/}
+      </>
+   )
+}
+
+const ModalMaterial = () => {
+   return (
+      <>
+         {' '}
+         {/*INICIA MODAL --MATERIALES--*/}
+         <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+         >
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">
+                        Nuevo Material
+                     </h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <div class="form-group">
+                        <label for="">Nombre</label>
+                        <input className="form-control" id="location" />
+                        <small id="emailHelp" className="form-text text-muted">
+                           Nombre del material
+                        </small>
+                     </div>
+                     <div class="form-group">
+                        <label for="">Imagen</label>
+                        <input className="form-control" id="location" />
+                        <small id="emailHelp" className="form-text text-muted">
+                           Url de la imagen
+                        </small>
+                     </div>
+                     <div class="form-group">
+                        <label for="">Cantidad</label>
+                        <input
+                           type="number"
+                           class="form-control"
+                           id="exampleInputEmail1"
+                           aria-describedby="emailHelp"
+                           min="0"
+                        />
+                        <small id="emailHelp" class="form-text text-muted">
+                           Cantidad en litros
+                        </small>
+                     </div>
+                     <div class="form-group">
+                        <label for="">Precio</label>
+                        <input className="form-control" id="location" />
+                        <small id="emailHelp" className="form-text text-muted">
+                           Precio por litro
+                        </small>
+                     </div>
+                  </div>
+
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-primary">
+                        Guardar Material
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         {/*TERMINA MODAL*/}
+      </>
+   )
+}
+const ModalVehiculo = () => {
+   return (
+      <>
+         {' '}
+         {/*INICIA MODAL --VEHICULO--*/}
+         <div
+            class="modal fade"
+            id="exampleModal3"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+         >
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">
+                        Nuevo Vehiculo
+                     </h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <div class="form-group">
+                        <label for="">Placa</label>
+                        <input className="form-control" id="location" />
+                        <small id="emailHelp" className="form-text text-muted">
+                           Placa del Vehiculo
+                        </small>
+                     </div>
+                     <div class="form-group">
+                        <label for="">Nombre</label>
+                        <input className="form-control" id="location" />
+                        <small id="emailHelp" className="form-text text-muted">
+                           Nombre del Vehiculo
+                        </small>
+                     </div>
+                     <div class="form-group">
+                        <label for="">Imagen</label>
+                        <input className="form-control" id="location" />
+                        <small id="emailHelp" className="form-text text-muted">
+                           Url de la imagen
+                        </small>
+                     </div>
+                     <div class="form-group">
+                        <label for="">Kilometraje</label>
+                        <input
+                           type="number"
+                           class="form-control"
+                           id="exampleInputEmail1"
+                           aria-describedby="emailHelp"
+                           min="0"
+                        />
+                        <small id="emailHelp" class="form-text text-muted">
+                           Cantidad de km recorridos
+                        </small>
+                     </div>
+                     <div class="form-group">
+                        <label for="">Precio</label>
+                        <input className="form-control" id="location" />
+                        <small id="emailHelp" className="form-text text-muted">
+                           Precio por km
+                        </small>
+                     </div>
+                  </div>
+
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-primary">
+                        Guardar Vehiculo
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         {/*TERMINA MODAL*/}
       </>
    )
 }

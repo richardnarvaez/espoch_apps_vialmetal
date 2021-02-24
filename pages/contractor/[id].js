@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
-
 import Card from '../../components/card'
+import Footer from '../../components/footer'
+import Inicio from '../../components/Inicio'
 
 export default function AdminF1() {
    const { query } = useRouter()
@@ -16,7 +17,7 @@ export default function AdminF1() {
    // LOS DATOS PASAN A LA VARIABLE list_obras como LISTA []
    useEffect(() => {
       if (id) {
-         fetch('/api/data/work/' + id)
+         fetch('/api/data/work/active/' + id)
             .then((res) => res.json())
             .then((result) => {
                setListObras(result)
@@ -54,12 +55,12 @@ export default function AdminF1() {
             Accept: 'application/json, text/plain, */*',
             'Content-Type': 'application/json',
          },
-         body: JSON.stringify(obra)
+         body: JSON.stringify(obra),
       })
          .then((response) => {
             if (response) {
                console.log(response)
-               window.location.reload();
+               window.location.reload()
             }
          })
          .catch(function (error) {
@@ -68,12 +69,14 @@ export default function AdminF1() {
    }
    return (
       <div className="container">
+         <Inicio />
          <h1>Lista de obras de {contractor ? contractor.business_name : 'Cargando..'} </h1>
          <button
             type="button"
             class="btn bt-new-work"
             data-toggle="modal"
             data-target="#exampleModal"
+            style={{ zIndex: 99 }}
          >
             Nueva Obra
          </button>
@@ -139,6 +142,7 @@ export default function AdminF1() {
                We'll never share your email with anyone else.
             </small>
          </div> */}
+
                         <div className="form-group">
                            <label for="exampleInputEmail1">Fecha fin</label>
                            <input type="date" className="form-control" id="end_date" />
@@ -173,6 +177,7 @@ export default function AdminF1() {
                )}
             </div>
          )}
+         <Footer />
       </div>
    )
 }

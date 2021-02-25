@@ -36,7 +36,7 @@ export async function deleteWork_Material(id) {
 export async function getMaterialUsedWork(id) {
    const db = await connect()
    const result = await db.query(
-      `select name, quantity from work_materials inner join materials on work_materials.id_work_material = materials.id_material WHERE id_work=${id}`
+      `select name, quantity from work_materials inner join materials on work_materials.id_material = materials.id_material WHERE id_work=${id}`
    )
    return result.recordsets[0]
 }

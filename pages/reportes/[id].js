@@ -62,7 +62,7 @@ export default function Reportes() {
                </tbody>
             </table>
             <br></br>
-            <button>Imprimir</button>
+            <button onClick={() => window.print()}>Imprimir</button>
          </div>
       </>
    )

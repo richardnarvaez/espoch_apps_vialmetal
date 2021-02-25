@@ -1,7 +1,19 @@
+import {useState,useEffect} from 'react'
+
 export default function RowDetails({ key, data , tp}) {
-   
-   return (
-      <>
+      
+      const [kmUsed, setkmUsed] = useState([])
+      const handleOnChange = (event) => {
+            const kmAct = document.getElementById("kmAct").value 
+            //const kmBef = document.getElementById("kmBef").innerHTML
+            console.log("antes",kmUsed)
+            setkmUsed(kmAct-data.mileage)
+            
+      }
+      console.log("despues",kmUsed)
+
+      return (
+            <>
             { tp == "mt" ? (
                   <div className="new-row-tools">
                         <div className="first-column"><strong>{data.name}</strong></div>
@@ -11,11 +23,11 @@ export default function RowDetails({ key, data , tp}) {
             ) : (
                   <div className="new-row-tools">
                         <div className="first-column"><strong>{data.name}</strong></div>
-                        <div className="second-column"><input type="checkbox" value="status" checked disabled></input> </div>
-                        <div className="third-column">{"Ocupado"}</div>
+                        <div className="second-column"><input id="kmAct" type="number" placeholder="Ingresa el kilometraje actual" onChange={handleOnChange}></input></div>
+                        <div id="kmBef" className="third-column">{kmUsed}</div>
                   </div>
             )
             }
-      </>
-   )
+            </>
+      )
 }

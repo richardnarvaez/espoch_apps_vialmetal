@@ -90,7 +90,7 @@ export default function Admin() {
                            <>CARGANDO DATO...</>
                         ) : (
                            listMaterials.map((item, i) => {
-                              return <Row key={i} data={item} />
+                              return <Row key={i} data={item} tp={"mt"}/>
                            })
                         )}
                      </div>
@@ -104,7 +104,7 @@ export default function Admin() {
                            <>CARGANDO DATO...</>
                         ) : (
                            listTools.map((item, i) => {
-                              return <Row key={i} data={item} />
+                              return <Row key={i} data={item} tp={"mt"}/>
                            })
                         )}
                      </div>
@@ -118,7 +118,7 @@ export default function Admin() {
                            <>CARGANDO DATO...</>
                         ) : (
                            listVehicles.map((item, i) => {
-                              return <Row key={i} data={item} />
+                              return <Row key={i} data={item} tp={"v"}/>
                            })
                         )}
                      </div>

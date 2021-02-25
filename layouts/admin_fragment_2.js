@@ -116,7 +116,7 @@ const ModalHeramientas = () => {
 
    {/*INSERTAR HERRAMIENTA*/ }
    const insertarHerramienta = () => {
-      const material = {
+      const herramienta = {
          name: document.getElementById('mNombre').value,
          image: document.getElementById('mImagen').value,
          quantity: document.getElementById('mCantidad').value,
@@ -129,7 +129,7 @@ const ModalHeramientas = () => {
             Accept: 'application/json, text/plain, */*',
             'Content-Type': 'application/json',
          },
-         body: JSON.stringify(material),
+         body: JSON.stringify(herramienta),
       })
          .then((response) => {
             if (response) {
@@ -202,7 +202,7 @@ const ModalHeramientas = () => {
                   </div>
 
                   <div class="modal-footer">
-                     <button type="button" class="btn btn-primary">
+                     <button onClick={insertarHerramienta} type="button" class="btn btn-primary">
                         Guardar Herramienta
                      </button>
                   </div>

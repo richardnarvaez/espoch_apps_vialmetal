@@ -125,7 +125,7 @@ const ModalHeramientas = () => {
       }
 
       console.log(herramienta)
-      
+
       fetch('/api/data/tool/null', {
          method: 'post',
          headers: {
@@ -318,6 +318,39 @@ const ModalMaterial = () => {
    )
 }
 const ModalVehiculo = () => {
+
+      {/*INSERTAR VEHICULO*/ }
+      const insertarVehiculo = () => {
+         const vehiculo = {
+            license: document.getElementById('vPlaca').value,
+            name: document.getElementById('vNombre').value,
+            image: document.getElementById('vImagen').value,
+            mileage: document.getElementById('vKm').value,
+            price_km: document.getElementById('hPrecioUso').value,
+            status: "T",
+         }
+   
+         console.log(vehiculo)
+         
+         fetch('/api/data/vehicle/null', {
+            method: 'post',
+            headers: {
+               Accept: 'application/json, text/plain, */*',
+               'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(vehiculo),
+         })
+            .then((response) => {
+               if (response) {
+                  console.log(response)
+                  window.location.reload()
+               }
+            })
+            .catch(function (error) {
+               console.log('Request failed', error)
+            })
+      }
+
    return (
       <>
          {' '}
@@ -342,21 +375,21 @@ const ModalVehiculo = () => {
                   <div class="modal-body">
                      <div class="form-group">
                         <label for="">Placa</label>
-                        <input className="form-control" id="location" />
+                        <input className="form-control" id="vPlaca" />
                         <small id="emailHelp" className="form-text text-muted">
                            Placa del Vehiculo
                         </small>
                      </div>
                      <div class="form-group">
                         <label for="">Nombre</label>
-                        <input className="form-control" id="location" />
+                        <input className="form-control" id="vNombre" />
                         <small id="emailHelp" className="form-text text-muted">
                            Nombre del Vehiculo
                         </small>
                      </div>
                      <div class="form-group">
                         <label for="">Imagen</label>
-                        <input className="form-control" id="location" />
+                        <input className="form-control" id="vImagen" />
                         <small id="emailHelp" className="form-text text-muted">
                            Url de la imagen
                         </small>
@@ -366,7 +399,7 @@ const ModalVehiculo = () => {
                         <input
                            type="number"
                            class="form-control"
-                           id="exampleInputEmail1"
+                           id="vKm"
                            aria-describedby="emailHelp"
                            min="0"
                         />
@@ -376,7 +409,7 @@ const ModalVehiculo = () => {
                      </div>
                      <div class="form-group">
                         <label for="">Precio</label>
-                        <input className="form-control" id="location" />
+                        <input className="form-control" id="vPrecioUso" />
                         <small id="emailHelp" className="form-text text-muted">
                            Precio por km
                         </small>
@@ -384,7 +417,7 @@ const ModalVehiculo = () => {
                   </div>
 
                   <div class="modal-footer">
-                     <button type="button" class="btn btn-primary">
+                     <button onClick={insertarVehiculo} type="button" class="btn btn-primary">
                         Guardar Vehiculo
                      </button>
                   </div>

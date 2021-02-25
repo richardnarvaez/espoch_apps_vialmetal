@@ -9,34 +9,6 @@ export default function AdminF2() {
       setList((old) => [...old, a])
    }
 
-   {/*INSERTAR MATERIAL*/}
-   const insertarMaterial = () => {
-      const material = {
-         name: document.getElementById('ruc').value,
-         image: document.getElementById('descripcion').value,
-         quantity: document.getElementById('nombre').value,
-         price_liter: document.getElementById('nombre').value,
-      }
-      
-      fetch('/api/data/material/null', {
-         method: 'post',
-         headers: {
-            Accept: 'application/json, text/plain, */*',
-            'Content-Type': 'application/json',
-         },
-         body: JSON.stringify(material),
-      })
-         .then((response) => {
-            if (response) {
-               console.log(response)
-               window.location.reload()
-            }
-         })
-         .catch(function (error) {
-            console.log('Request failed', error)
-         })
-   }
-
    return (
       <>
          <h1>Inventario</h1>
@@ -141,6 +113,36 @@ export default function AdminF2() {
 }
 
 const ModalHeramientas = () => {
+
+   {/*INSERTAR HERRAMIENTA*/ }
+   const insertarHerramienta = () => {
+      const material = {
+         name: document.getElementById('mNombre').value,
+         image: document.getElementById('mImagen').value,
+         quantity: document.getElementById('mCantidad').value,
+         price_liter: document.getElementById('mPrecioLitro').value,
+      }
+
+      fetch('/api/data/tool/null', {
+         method: 'post',
+         headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(material),
+      })
+         .then((response) => {
+            if (response) {
+               console.log(response)
+               window.location.reload()
+            }
+         })
+         .catch(function (error) {
+            console.log('Request failed', error)
+         })
+
+   }
+
    return (
       <>
          {/*INICIA MODAL HERRAMIENTA*/}
@@ -163,7 +165,7 @@ const ModalHeramientas = () => {
                   </div>
 
                   <div class="modal-body">
-                  <div class="form-group">
+                     <div class="form-group">
                         <label for="">Nombre</label>
                         <input className="form-control" id="location" />
                         <small id="emailHelp" className="form-text text-muted">
@@ -213,6 +215,36 @@ const ModalHeramientas = () => {
 }
 
 const ModalMaterial = () => {
+
+   {/*INSERTAR MATERIAL*/ }
+   const insertarMaterial = () => {
+      const material = {
+         name: document.getElementById('mNombre').value,
+         image: document.getElementById('mImagen').value,
+         quantity: document.getElementById('mCantidad').value,
+         price_liter: document.getElementById('mPrecioLitro').value,
+      }
+
+      fetch('/api/data/material/null', {
+         method: 'post',
+         headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(material),
+      })
+         .then((response) => {
+            if (response) {
+               console.log(response)
+               window.location.reload()
+            }
+         })
+         .catch(function (error) {
+            console.log('Request failed', error)
+         })
+
+   }
+
    return (
       <>
          {' '}
@@ -237,14 +269,14 @@ const ModalMaterial = () => {
                   <div class="modal-body">
                      <div class="form-group">
                         <label for="">Nombre</label>
-                        <input className="form-control" id="location" />
+                        <input className="form-control" id="mNombre" />
                         <small id="emailHelp" className="form-text text-muted">
                            Nombre del material
                         </small>
                      </div>
                      <div class="form-group">
                         <label for="">Imagen</label>
-                        <input className="form-control" id="location" />
+                        <input className="form-control" id="mImagen" />
                         <small id="emailHelp" className="form-text text-muted">
                            Url de la imagen
                         </small>
@@ -254,7 +286,7 @@ const ModalMaterial = () => {
                         <input
                            type="number"
                            class="form-control"
-                           id="exampleInputEmail1"
+                           id="mCantidad"
                            aria-describedby="emailHelp"
                            min="0"
                         />
@@ -264,7 +296,7 @@ const ModalMaterial = () => {
                      </div>
                      <div class="form-group">
                         <label for="">Precio</label>
-                        <input className="form-control" id="location" />
+                        <input className="form-control" id="mPrecioLitro" />
                         <small id="emailHelp" className="form-text text-muted">
                            Precio por litro
                         </small>
@@ -272,7 +304,7 @@ const ModalMaterial = () => {
                   </div>
 
                   <div class="modal-footer">
-                     <button type="button" class="btn btn-primary">
+                     <button onClick={insertarMaterial} type="button" class="btn btn-primary">
                         Guardar Material
                      </button>
                   </div>

@@ -117,12 +117,15 @@ const ModalHeramientas = () => {
    {/*INSERTAR HERRAMIENTA*/ }
    const insertarHerramienta = () => {
       const herramienta = {
-         name: document.getElementById('mNombre').value,
-         image: document.getElementById('mImagen').value,
-         quantity: document.getElementById('mCantidad').value,
-         price_liter: document.getElementById('mPrecioLitro').value,
+         name: document.getElementById('hNombre').value,
+         image: document.getElementById('hImagen').value,
+         quantity: document.getElementById('hCantidad').value,
+         price_use: document.getElementById('hPrecioUso').value,
+         status: "T",
       }
 
+      console.log(herramienta)
+      
       fetch('/api/data/tool/null', {
          method: 'post',
          headers: {
@@ -140,7 +143,6 @@ const ModalHeramientas = () => {
          .catch(function (error) {
             console.log('Request failed', error)
          })
-
    }
 
    return (
@@ -167,14 +169,14 @@ const ModalHeramientas = () => {
                   <div class="modal-body">
                      <div class="form-group">
                         <label for="">Nombre</label>
-                        <input className="form-control" id="location" />
+                        <input className="form-control" id="hNombre" />
                         <small id="emailHelp" className="form-text text-muted">
                            Nombre de la herramienta
                         </small>
                      </div>
                      <div class="form-group">
                         <label for="">Imagen</label>
-                        <input className="form-control" id="location" />
+                        <input className="form-control" id="hImagen" />
                         <small id="emailHelp" className="form-text text-muted">
                            Url de la imagen
                         </small>
@@ -184,7 +186,7 @@ const ModalHeramientas = () => {
                         <input
                            type="number"
                            class="form-control"
-                           id="exampleInputEmail1"
+                           id="hCantidad"
                            aria-describedby="emailHelp"
                            min="0"
                         />
@@ -194,7 +196,7 @@ const ModalHeramientas = () => {
                      </div>
                      <div class="form-group">
                         <label for="">Precio</label>
-                        <input className="form-control" id="location" />
+                        <input className="form-control" id="hPrecioUso" />
                         <small id="emailHelp" className="form-text text-muted">
                            Precio por uso
                         </small>

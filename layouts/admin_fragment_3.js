@@ -49,7 +49,7 @@ export default function AdminF3() {
    return (
       <>
          <button className="bt-new-work" data-toggle="modal" data-target="#exampleModal4">
-            <h5>+Contratista</h5>
+            <h6>+Contratista</h6>
          </button>
 
          <h1>Lista de Contratistas</h1>
@@ -89,10 +89,10 @@ export default function AdminF3() {
                      </div>
 
                      <div class="form-group">
-                        <label for="">Descripcion</label>
+                        <label for="">Descripción</label>
                         <input className="form-control" id="descripcion" />
                         <small id="emailHelp" className="form-text text-muted">
-                           Descripcion de contratista
+                           Descripción de contratista
                         </small>
                      </div>
                   </div>

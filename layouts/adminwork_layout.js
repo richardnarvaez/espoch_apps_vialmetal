@@ -144,6 +144,22 @@ export default function Admin() {
       console.log('ENVIADO AL SERVIDOR', data)
    }
 
+   const eliminarMaterial = (id_w_m) => {
+      console.log('Eliminar', id_w_m)
+      fetch('/api/data/work_material/' + id_w_m, {
+         method: 'DELETE',
+      })
+         .then((response) => {
+            if (response) {
+               console.log(response)
+               updateMaterials()
+            }
+         })
+         .catch(function (error) {
+            console.log('Request failed', error)
+         })
+   }
+
    return (
       <>
          <div className="body-adminwork">
@@ -178,7 +194,7 @@ export default function Admin() {
                         <div>
                            {activeStep === steps.length ? (
                               <div>
-                                 <p>Has completado todo el formulario</p>
+                                 <p>Has completado todo el formulário</p>
                                  <Button onClick={handleReset}>Llenar de nuevo</Button>
                               </div>
                            ) : (
@@ -236,10 +252,53 @@ export default function Admin() {
                                        <br />
                                        <small>Precio:{' $' + pf}</small>
                                     </div>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                                       <p> - </p>
-                                       <p>1</p>
-                                       <p> + </p>
+                                    <div
+                                       style={{
+                                          display: 'flex',
+                                          alignItems: 'center',
+                                       }}
+                                    >
+                                       <div
+                                          style={{
+                                             background: '#ececec',
+                                             borderRadius: 99,
+                                             height: 30,
+                                             display: 'flex',
+                                             width: 90,
+                                             alignItems: 'center',
+                                             justifyContent: 'space-around',
+                                             padding: '0 4px',
+                                          }}
+                                       >
+                                          {' '}
+                                          <p
+                                             style={{
+                                                background: '#747474',
+                                                borderRadius: 99,
+                                                width: 24,
+                                                height: 24,
+                                                textAlign: 'center',
+                                                cursor: 'pointer',
+                                             }}
+                                          >
+                                             {' '}
+                                             -{' '}
+                                          </p>
+                                          <p> 1 </p>
+                                          <p
+                                             style={{
+                                                background: '#525252',
+                                                borderRadius: 99,
+                                                width: 24,
+                                                height: 24,
+                                                textAlign: 'center',
+                                                cursor: 'pointer',
+                                             }}
+                                          >
+                                             {' '}
+                                             +{' '}
+                                          </p>
+                                       </div>
                                     </div>
                                     <div
                                        style={{
@@ -248,7 +307,17 @@ export default function Admin() {
                                           color: 'red',
                                        }}
                                     >
-                                       <div style={{ width: 24, borderRadius: 99 }}>
+                                       <div
+                                          style={{
+                                             width: 24,
+                                             borderRadius: 99,
+                                             background: '#ececec',
+                                             cursor: 'pointer',
+                                          }}
+                                          onClick={() => {
+                                             eliminarMaterial(item.id_work_material)
+                                          }}
+                                       >
                                           <svg
                                              style={{ width: 24, height: 24 }}
                                              viewBox="0 0 24 24"
@@ -265,7 +334,6 @@ export default function Admin() {
                            })
                         )}
                      </div>
-
                      <div className="item-list">
                         <h5>Herrameintas</h5>
                         {!list_herramientas ? (
@@ -308,9 +376,10 @@ export default function Admin() {
                      </div>
                   </div>
 
-                  <div className="btn-agregar">
+                  <div style={{ height: 100 }}></div>
+                  <div className="btn-agregar" style={{ position: 'fixed', bottom: 0 }}>
                      <button className="" type="button">
-                        Iniciar Obra
+                        Actualizar detalles
                      </button>
                   </div>
                </div>

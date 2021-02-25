@@ -7,7 +7,7 @@ export async function getAllWork_Materials() {
 }
 export async function getWork_MaterialId(id) {
    const db = await connect()
-   const result = await db.query(`SELECT m.name, m.quantity, m.price_liter
+   const result = await db.query(`SELECT w.id_work_material, w.id_work, m.id_material, m.name, m.quantity, m.price_liter
    FROM work_materials w INNER JOIN materials m
    ON w.id_material = m.id_material
    WHERE w.id_work = ${id}`)
@@ -40,4 +40,3 @@ export async function getMaterialUsedWork(id) {
    )
    return result.recordsets[0]
 }
-

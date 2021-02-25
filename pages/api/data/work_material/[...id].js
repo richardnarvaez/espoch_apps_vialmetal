@@ -61,8 +61,9 @@ export default async (req, res) => {
 
       case 'DELETE':
          try {
+            console.log('... ELIMINANDO: ', id[0])
             const result = await deleteWork_Material(id)
-            res.status(200).json(body)
+            res.status(200).json(result)
          } catch {
             res.status(500).json({ success: false, error: err })
          }

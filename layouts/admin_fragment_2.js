@@ -54,7 +54,7 @@ export default function AdminF2() {
                   aria-controls="pills-contact"
                   aria-selected="false"
                >
-                  Vehiculos
+                  Vehículos
                </a>
             </li>
          </ul>
@@ -175,10 +175,10 @@ const ModalHeramientas = () => {
                         </small>
                      </div>
                      <div class="form-group">
-                        <label for="">Imagen</label>
+                        <label for="">Imágen</label>
                         <input className="form-control" id="hImagen" />
                         <small id="emailHelp" className="form-text text-muted">
-                           Url de la imagen
+                           Url de la imágen
                         </small>
                      </div>
                      <div class="form-group">
@@ -277,10 +277,10 @@ const ModalMaterial = () => {
                         </small>
                      </div>
                      <div class="form-group">
-                        <label for="">Imagen</label>
+                        <label for="">Imágen</label>
                         <input className="form-control" id="mImagen" />
                         <small id="emailHelp" className="form-text text-muted">
-                           Url de la imagen
+                           Url de la imágen
                         </small>
                      </div>
                      <div class="form-group">
@@ -377,21 +377,21 @@ const ModalVehiculo = () => {
                         <label for="">Placa</label>
                         <input className="form-control" id="vPlaca" />
                         <small id="emailHelp" className="form-text text-muted">
-                           Placa del Vehiculo
+                           Placa del Vehículo
                         </small>
                      </div>
                      <div class="form-group">
                         <label for="">Nombre</label>
                         <input className="form-control" id="vNombre" />
                         <small id="emailHelp" className="form-text text-muted">
-                           Nombre del Vehiculo
+                           Nombre del Vehículo
                         </small>
                      </div>
                      <div class="form-group">
-                        <label for="">Imagen</label>
+                        <label for="">Imágen</label>
                         <input className="form-control" id="vImagen" />
                         <small id="emailHelp" className="form-text text-muted">
-                           Url de la imagen
+                           Url de la imágen
                         </small>
                      </div>
                      <div class="form-group">
@@ -418,7 +418,7 @@ const ModalVehiculo = () => {
 
                   <div class="modal-footer">
                      <button onClick={insertarVehiculo} type="button" class="btn btn-primary">
-                        Guardar Vehiculo
+                        Guardar Veháculo
                      </button>
                   </div>
                </div>

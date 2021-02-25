@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import { Input } from '@material-ui/core'
 
 export default function AdminWorkDetails() {
-
    // VARIABLES "ESTADO"
    const [contractor, setContractor] = useState()
    const [details, setDetails] = useState()
@@ -33,7 +32,11 @@ export default function AdminWorkDetails() {
          })
    }, [id])
    return (
-      <form id="form-details" onSubmit={(event) => getDetails(event)} style={{ height: ' 49vh', overflowY: 'scroll', minHeight: 0 }}>
+      <form
+         id="form-details"
+         onSubmit={(event) => getDetails(event)}
+         style={{ height: ' 49vh', overflowY: 'scroll', minHeight: 0 }}
+      >
          <div className="form-group">
             <label for="exampleInputEmail1">
                Contratista: <strong>{contractor ? contractor.business_name : '...'}</strong>{' '}
@@ -42,7 +45,11 @@ export default function AdminWorkDetails() {
 
          <div className="form-group">
             <label for="exampleInputEmail1">Responsable</label>
-            <input className="form-control" id="descripcion" value={details&&details.responsable}/>
+            <input
+               className="form-control"
+               id="descripcion"
+               value={details && details.responsable}
+            />
             <small id="emailHelp" className="form-text text-muted">
                Introducir el nombre del responsable
             </small>
@@ -50,16 +57,20 @@ export default function AdminWorkDetails() {
 
          <div className="form-group">
             <label for="exampleInputEmail1">Descripcion</label>
-            <input className="form-control" id="descripcion" value={details&&details.description} />
+            <input
+               className="form-control"
+               id="descripcion"
+               value={details && details.description}
+            />
             <small id="emailHelp" className="form-text text-muted">
                Ej. Asfaltado 10km via GUANO
             </small>
          </div>
          <div className="form-group">
             <label for="exampleInputEmail1">Ubicacion</label>
-            <input className="form-control" id="location" value={details&&details.location}/>
+            <input className="form-control" id="location" value={details && details.location} />
             <small id="emailHelp" className="form-text text-muted">
-               Lugar donde se realizara la obra
+               Lugar donde se realizará la obra
             </small>
          </div>
          {/* <div className="form-group">
@@ -69,6 +80,7 @@ export default function AdminWorkDetails() {
                Fecha Tentativa final de la Obra
             </small>
          </div> */}
+         <button>Actulizar</button>
       </form>
    )
 }

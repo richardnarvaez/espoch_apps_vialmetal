@@ -24,14 +24,6 @@ export default function AdminF1() {
 
    return (
       <>
-         <button
-            type="button"
-            class="btn bt-new-work"
-            data-toggle="modal"
-            data-target="#exampleModal"
-         >
-            Nueva Obra
-         </button>
 
          <h1>Lista de Obras</h1>
 

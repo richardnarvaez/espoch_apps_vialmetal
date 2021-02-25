@@ -200,3 +200,7 @@ a {
 .card-pendding{
    border: solid 2px #1e2b5c;
 }
+
+.bt-new-work{
+   z-index: 99 !important;
+}

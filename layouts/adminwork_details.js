@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { Input } from '@material-ui/core'
 
 export default function AdminWorkDetails() {
-   
+
    // VARIABLES "ESTADO"
    const [contractor, setContractor] = useState()
    const [details, setDetails] = useState()
@@ -33,7 +33,7 @@ export default function AdminWorkDetails() {
          })
    }, [id])
    return (
-      <form id="form-details" onSubmit={(event) => getDetails(event)}>
+      <form id="form-details" onSubmit={(event) => getDetails(event)} style={{ height: ' 49vh', overflowY: 'scroll', minHeight: 0 }}>
          <div className="form-group">
             <label for="exampleInputEmail1">
                Contratista: <strong>{contractor ? contractor.business_name : '...'}</strong>{' '}

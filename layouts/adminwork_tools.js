@@ -15,7 +15,7 @@ export default function AdminWorkTool({setListado }) {
     }, [])
 
     return (
-        <div className="row"> {/*HERRAMIENTAS*/}
+        <div className="row" style={{ height: ' 49vh', overflowY: 'scroll', minHeight: 0 }}> {/*HERRAMIENTAS*/}
             {!transport ? (
                 <>
                     <div className="spinner-border" role="status">

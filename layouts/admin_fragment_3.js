@@ -49,10 +49,10 @@ export default function AdminF3() {
    return (
       <>
          <button className="bt-new-work" data-toggle="modal" data-target="#exampleModal4">
-            {' '}
             <h5>+Contratista</h5>
          </button>
 
+         <h1>Lista de Contratistas</h1>
          {/*INICIA MODAL --CONTRATISTA--*/}
          <div
             class="modal fade"

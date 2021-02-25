@@ -34,11 +34,11 @@ export default function Admin() {
          case 0:
             return <AdminWorkDetails />
          case 1:
-            return <AdminWorkMaterial setListado={setListado} />
+            return <AdminWorkMaterial updateMaterials={updateMaterials} />
          case 2:
-            return <AdminWorkTool setListado={setListado} />
+            return <AdminWorkTool updateTools={updateTools} />
          case 3:
-            return <AdminWorkTransport setListado={setListado} />
+            return <AdminWorkTransport updateTransport={updateTransport} />
 
          default:
             return 'Unknown step'
@@ -53,16 +53,45 @@ export default function Admin() {
    // FETCH DATOS DE LA API
    // LOS DATOS PASAN A LA VARIABLE list_obras como LISTA []
    useEffect(() => {
-      if (id)
-         fetch('/api/data/work_material/' + id)
-            .then((res) => res.json())
-            .then((result) => {
-               setListMateriales(result)
-            })
-            .catch((e) => {
-               console.log('ERRPR: >>>>', e)
-            })
+      if (id) {
+         updateMaterials()
+         // updateTools()
+         // updateTransport()
+      }
    }, [id])
+
+   const updateMaterials = () => {
+      fetch('/api/data/work_material/' + id)
+         .then((res) => res.json())
+         .then((result) => {
+            setListMateriales(result)
+         })
+         .catch((e) => {
+            console.log('ERRPR: >>>>', e)
+         })
+   }
+
+   const updateTools = () => {
+      fetch('/api/data/work_tool/' + id)
+         .then((res) => res.json())
+         .then((result) => {
+            setListMateriales(result)
+         })
+         .catch((e) => {
+            console.log('ERRPR: >>>>', e)
+         })
+   }
+
+   const updateTransport = () => {
+      fetch('/api/data/work_vehicle/' + id)
+         .then((res) => res.json())
+         .then((result) => {
+            setListVehuiculos(result)
+         })
+         .catch((e) => {
+            console.log('ERRPR: >>>>', e)
+         })
+   }
 
    const isStepOptional = (step) => {
       return step === 1
@@ -118,8 +147,8 @@ export default function Admin() {
    return (
       <>
          <div className="body-adminwork">
-            <div className="content-newwork">
-               <div className="new-work">
+            <div className="row content-newwork">
+               <div className="new-work col-7" style={{ height: '85vh', overflowY: 'scroll' }}>
                   <h2>Material de trabajo</h2>
 
                   <div className="work-options">
@@ -176,47 +205,61 @@ export default function Admin() {
                </div>
 
                {/*LISTA DE RESUMEN*/}
-               <div className="list-work">
+               <div className="list-work col-5" style={{ height: '85vh', overflowY: 'scroll' }}>
                   <h2>Resumen</h2>
                   <div className="content-list">
                      <div className="item-list">
                         <h5>Material</h5>
 
-                        {console.log('ads', list_materiales)}
                         {!list_materiales ? (
                            <>No hay elementos</>
                         ) : (
                            list_materiales.map((item, i) => {
-                              
                               const pf = (item.quantity * item.price_liter).toFixed(2)
 
                               return (
-                                 <div style={{ borderBottom: 'solid 0.5px #ececec', padding: 8 }}>
-                                    <p>
-                                       <span>
+                                 <div
+                                    className="row"
+                                    style={{
+                                       borderBottom: 'solid 0.5px #ececec',
+                                       padding: 8,
+                                       minHeight: 50,
+                                       justifyContent: 'space-between',
+                                    }}
+                                 >
+                                    <div>
+                                       <p>
                                           <strong>{item.name}</strong>
-                                       </span>
-                                    </p>
-                                    <p>Cantidad: {item.quantity} </p>
-                                    <p>Precio p/l :{item.price_liter}</p>
-                                    <p>Precio estimado :{pf}</p>
-
-                                    <button>
-                                       <svg style={{ width: 24, height: 24 }} viewBox="0 0 24 24">
-                                          <path
-                                             fill="currentColor"
-                                             d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z"
-                                          />
-                                       </svg>
-                                    </button>
-                                    <button>
-                                       <svg style={{ width: 24, height: 24 }} viewBox="0 0 24 24">
-                                          <path
-                                             fill="currentColor"
-                                             d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"
-                                          />
-                                       </svg>
-                                    </button>
+                                       </p>
+                                       <small>Cantidad: {item.quantity} </small>{' '}
+                                       <small>Precio p/l :{item.price_liter}</small>
+                                       <br />
+                                       <small>Precio:{' $' + pf}</small>
+                                    </div>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                       <p> - </p>
+                                       <p>1</p>
+                                       <p> + </p>
+                                    </div>
+                                    <div
+                                       style={{
+                                          display: 'flex',
+                                          alignItems: 'center',
+                                          color: 'red',
+                                       }}
+                                    >
+                                       <div style={{ width: 24, borderRadius: 99 }}>
+                                          <svg
+                                             style={{ width: 24, height: 24 }}
+                                             viewBox="0 0 24 24"
+                                          >
+                                             <path
+                                                fill="currentColor"
+                                                d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"
+                                             />
+                                          </svg>
+                                       </div>
+                                    </div>
                                  </div>
                               )
                            })

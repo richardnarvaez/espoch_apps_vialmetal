@@ -15,7 +15,7 @@ export default function AdminWorkTransport({setListado }) {
     }, [])
 
     return (
-        <div className="row"> {/*TRANSPORTE*/}
+        <div className="row" style={{ height: ' 49vh', overflowY: 'scroll', minHeight: 0 }}> {/*TRANSPORTE*/}
             {!transport ? (
                 <>
                     <div className="spinner-border" role="status">

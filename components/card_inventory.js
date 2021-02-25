@@ -13,7 +13,7 @@ export default function CardInventory({ data, onClick }) {
    return (
       <>
          <div
-            class="col-sm-3"
+            class="col-6 col-sm-4 col-md-3"
             onClick={() => {
                console.log(i)
                i++

@@ -33,7 +33,7 @@ export default function AdminF1() {
             Nueva Obra
          </button>
 
-      
+         <h1>Lista de Obras</h1>
 
          {error ? (
             <>Error de conexion</>

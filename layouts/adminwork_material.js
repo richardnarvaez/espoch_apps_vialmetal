@@ -3,11 +3,10 @@ import { useState, useEffect } from 'react'
 
 import CardW from '../components/card_work'
 
-export default function AdminWorkMaterial({ setListado }) {
-
-    // RUTAS
-    const { query } = useRouter()
-    const id = query.id
+export default function AdminWorkMaterial({ updateMaterials }) {
+   // RUTAS
+   const { query } = useRouter()
+   const id = query.id
 
    // VARIABLES "ESTADO"
    const [material, setMaterial] = useState()
@@ -28,13 +27,12 @@ export default function AdminWorkMaterial({ setListado }) {
 
    const insertarMaterial = (id_mat) => {
       const material = {
-        id_work: id,
-        id_material: id_mat,
-        material_begin: 1,
-        material_end: 0,
-        
+         id_work: id,
+         id_material: id_mat,
+         material_begin: 1,
+         material_end: 0,
       }
-      
+
       console.log(material)
 
       fetch('/api/data/work_material/null', {
@@ -48,6 +46,7 @@ export default function AdminWorkMaterial({ setListado }) {
          .then((response) => {
             if (response) {
                console.log(response)
+               updateMaterials()
             }
          })
          .catch(function (error) {
@@ -56,7 +55,7 @@ export default function AdminWorkMaterial({ setListado }) {
    }
 
    return (
-      <div className="row">
+      <div className="row" style={{ height: ' 49vh', overflowY: 'scroll', minHeight: 0 }}>
          {' '}
          {/*HERRAMIENTAS*/}
          {!material ? (
@@ -69,7 +68,7 @@ export default function AdminWorkMaterial({ setListado }) {
             material.map((item, i) => {
                return (
                   <>
-                     <CardW data={item} onClick={()=>insertarMaterial(item.id_material)} />
+                     <CardW data={item} onClick={() => insertarMaterial(item.id_material)} />
                   </>
                )
             })

@@ -26,3 +26,12 @@ export async function deleteWork_Vehicle(id){
    const result = await db.query(`DELETE FROM work_vehicles WHERE id_work_vehicle = ${id}`)
    return result.recordsets
 }
+
+//aditional: Vehículos usadas en la obra
+export async function getVehiclesUsedWork(id) {
+   const db = await connect()
+   const result = await db.query(
+      `select name, status from work_vehicles inner join vehicles on work_vehicles.id_work_vehicle = vehicles.id_vehicle WHERE id_work=${id}`
+   )
+   return result.recordsets[0]
+}

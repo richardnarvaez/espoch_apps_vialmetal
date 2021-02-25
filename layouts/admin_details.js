@@ -8,6 +8,8 @@ export default function Admin() {
    console.log('ID', id)
 
    const [listMaterials, setMaterials] = useState([])
+   const [listTools, setTools] = useState([])
+   const [listVehicles, setVehicles] = useState([])
    const [error, setError] = useState(false)
 
    useEffect(() => {
@@ -21,7 +23,27 @@ export default function Admin() {
                console.log('ERROR: >>>>', e)
                setError(true)
             })
-            
+         
+         
+         fetch('/api/data/work_tool/used/' + id)
+         .then((res) => res.json())
+         .then((result) => {
+            setTools(result)
+         })
+         .catch((e) => {
+            console.log('ERROR: >>>>', e)
+            setError(true)
+         })
+         
+         fetch('/api/data/work_vehicle/used/' + id)
+         .then((res) => res.json())
+         .then((result) => {
+            setVehicles(result)
+         })
+         .catch((e) => {
+            console.log('ERROR: >>>>', e)
+            setError(true)
+         })
       }
    }, [id])
 
@@ -74,27 +96,33 @@ export default function Admin() {
                      </div>
                   )}
                   <h3>HERRAMIENTAS</h3>
-                  <div className="row-tools">
-                     <div className="new-row-tools">
-                        <div className="first-column">Detalle de lo que se usó en el trabajo</div>
-                        <div className="second-column">
-                           {' '}
-                           <input placeholder="Ingrese la cantidad"></input>{' '}
-                        </div>
-                        <div className="third-column">Cálculo de lo que queda</div>
+                  {error ? (
+                     <>Error de conexion</>
+                  ) : (
+                     <div className="row-materials">
+                        {!listTools ? (
+                           <>CARGANDO DATO...</>
+                        ) : (
+                           listTools.map((item, i) => {
+                              return <Row key={i} data={item} />
+                           })
+                        )}
                      </div>
-                  </div>
+                  )}
                   <h3>VEHÍCULOS</h3>
-                  <div className="row-vehicles">
-                     <div className="new-row-vehicles">
-                        <div className="first-column">Detalle de lo que se usó en el trabajo</div>
-                        <div className="second-column">
-                           {' '}
-                           <input placeholder="Ingrese la cantidad"></input>{' '}
-                        </div>
-                        <div className="third-column">Cálculo de lo que queda</div>
+                  {error ? (
+                     <>Error de conexion</>
+                  ) : (
+                     <div className="row-materials">
+                        {!listVehicles ? (
+                           <>CARGANDO DATO...</>
+                        ) : (
+                           listVehicles.map((item, i) => {
+                              return <Row key={i} data={item} />
+                           })
+                        )}
                      </div>
-                  </div>
+                  )}
                </div>
             </div>
 

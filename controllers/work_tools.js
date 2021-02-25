@@ -24,5 +24,13 @@ export async function updateWork_Tool(id, dataUser){
 export async function deleteWork_Tool(id){
    const db = await connect()
    const result = await db.query(`DELETE FROM work_tools WHERE id_work_tool = ${id}`)
-   return result.recordsets
+   return result.recordsets[0]
+}
+//aditional: Herramientas usadas en la obra
+export async function getToolUsedWork(id) {
+   const db = await connect()
+   const result = await db.query(
+      `select name, quantity from work_tools inner join tools on work_tools.id_work_tool = tools.id_tool WHERE id_work=${id}`
+   )
+   return result.recordsets[0]
 }

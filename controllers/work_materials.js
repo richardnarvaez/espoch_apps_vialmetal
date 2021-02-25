@@ -35,11 +35,9 @@ export async function deleteWork_Material(id) {
 //aditional: Materiales usados en la obra
 export async function getMaterialUsedWork(id) {
    const db = await connect()
-   console.log('I(D: ', id)
    const result = await db.query(
       `select name, quantity from work_materials inner join materials on work_materials.id_work_material = materials.id_material WHERE id_work=${id}`
    )
-   console.log('RESULT: ', result)
    return result.recordsets[0]
 }
 

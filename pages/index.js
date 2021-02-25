@@ -10,7 +10,6 @@ export default function Home() {
             <title>VialMetal</title>
             <link rel="icon" href="/favicon.ico" />
          </Head>
-         <Nav />
          <main id="hero" className="text-white tm-font-big tm-parallax">
             <div className="back-black"></div>
             <nav className="navbar navbar-expand-md tm-navbar" id="tmNav">

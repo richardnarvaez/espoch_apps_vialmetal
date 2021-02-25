@@ -1,5 +1,11 @@
 import { getSession } from 'next-auth/client'
-import { getAllWork_Tools, getWork_ToolById, insertWork_Tool, updateWork_Tool, deleteWork_Tool } from '../../../../controllers/work_tools'
+import { 
+    getAllWork_Vehicles, 
+    getWork_VehicleById, 
+    insertWork_Vehicle, 
+    updateWork_Vehicle, 
+    deleteWork_Vehicle, 
+    getVehiclesUsedWork } from '../../../../controllers/work_vehicles'
 
 
 export default async (req, res) => {
@@ -12,26 +18,31 @@ export default async (req, res) => {
 
     switch (method) {
         case 'GET': /*SELECT*/
+            let result
 
             try {
-                if (id == "all") {
-
-                    const result = await getAllWork_Tools()
+                switch (id[0]) {
+                case 'all':
+                    result = await getAllWork_Vehicles()
                     res.status(200).json(result)
-
-                } else {
-
-                    const result = await getWork_ToolById(id)
+                    break
+                case 'used':
+                    result = await getVehiclesUsedWork(id[1])
                     res.status(200).json(result)
+                    break
+                default:
+                    result = await getWork_VehicleById(id[0])
+                    res.status(200).json(result)
+                    break
                 }
             } catch (err) {
-                res.status(500).json({ success: false, error: err })
+                res.status(500).json({ success: false, error: err, llego: true })
             }
             break
 
         case 'PUT': /*Actulizar */
             try {
-                const result = await updateWork_Tool(id,body)
+                const result = await updateWork_Vehicle(id,body)
                 res.status(200).json(body)
             } catch (err) {
                 res.status(500).json({ success: false, error: err })
@@ -40,7 +51,7 @@ export default async (req, res) => {
 
         case 'POST': /*Insert*/  /*O CUALQUIER ACCION secreta*/
             try {
-                const result = await insertWork_Tool(body)
+                const result = await insertWork_Vehicle(body)
                 res.status(200).json(body)
             } catch (err) {
                 res.status(500).json({ success: false, error: err })
@@ -49,7 +60,7 @@ export default async (req, res) => {
 
         case 'DELETE':
             try{
-                const result = await deleteWork_Tool(id)
+                const result = await deleteWork_Vehicle(id)
                 res.status(200).json(body)
             }catch{
                 res.status(500).json({ success: false, error: err })

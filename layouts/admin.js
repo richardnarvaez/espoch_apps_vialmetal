@@ -49,7 +49,7 @@ export default function Admin() {
                   aria-controls="contact"
                   aria-selected="false"
                >
-                  Contratistas
+                 Obras
                </a>
             </li>
          </ul>
@@ -72,9 +72,9 @@ export default function Admin() {
             </div>
 
             {/* FRAGEMNTO 3 */}
-            {/* <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-               <AdminF3 />
-            </div> */}
+            <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+               <AdminF1 />
+            </div>
          </div>
          <Footer />
       </div>

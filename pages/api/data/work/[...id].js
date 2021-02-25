@@ -6,7 +6,7 @@ export default async (req, res) => {
 
     const {
         body,
-        query: { id, name },
+        query: { id },
         method,
     } = req
 
@@ -17,7 +17,7 @@ export default async (req, res) => {
 
             try {
 
-                switch (id) {
+                switch (id[0]) {
                     
                     case 'all':
                         result = await getAllWorks()
@@ -25,11 +25,11 @@ export default async (req, res) => {
                         break
 
                     case 'active':
-                        result = await getActiveWorks(id)
+                        result = await getActiveWorks(id[1])
                         res.status(200).json(result)
                         break
                     default:
-                        result = await getActiveWorks(id)
+                        result = await getWorkById(id[0])
                         res.status(200).json(result)
                         break
                 }

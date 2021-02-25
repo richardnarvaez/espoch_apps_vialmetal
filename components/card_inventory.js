@@ -29,6 +29,7 @@ export default function CardInventory({ data, onClick }) {
                   <h5 className="trasnport-name">{data.name}</h5>
                   <h5 className="trasnport-status">{status}</h5>
                   <h5 className="trasnport-status">{data.quantity}</h5>
+                  <h5 className="trasnport-status">{data.mileage}</h5>
                </div>
             </div>
          </div>

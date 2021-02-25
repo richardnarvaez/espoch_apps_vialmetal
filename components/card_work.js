@@ -1,14 +1,10 @@
 export default function Card({ data, onClick }) {
-   let i = 0
+
    return (
       <>
          <div
             class="col-sm-3"
-            onClick={() => {
-               console.log(i)
-               i++
-               onClick('Naaaada')
-            }}
+            onClick={onClick}
          >
 
             <div className="item-work">
@@ -21,7 +17,8 @@ export default function Card({ data, onClick }) {
                   <h5 className="trasnport-name">{data.name}</h5>
                   <h5 className="trasnport-status" >{data.status}</h5>
                   <h5 className="trasnport-status" >Cantidad: {data.quantity}</h5>
-               </div>
+
+                  </div>
                
             </div>
             

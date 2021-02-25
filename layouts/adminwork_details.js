@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { Input } from '@material-ui/core'
 
 export default function AdminWorkDetails() {
+   
    // VARIABLES "ESTADO"
    const [contractor, setContractor] = useState()
    const [details, setDetails] = useState()
@@ -49,37 +50,25 @@ export default function AdminWorkDetails() {
 
          <div className="form-group">
             <label for="exampleInputEmail1">Descripcion</label>
-            <Input className="form-control" id="descripcion" />
+            <input className="form-control" id="descripcion" value={details&&details.description} />
             <small id="emailHelp" className="form-text text-muted">
                Ej. Asfaltado 10km via GUANO
             </small>
          </div>
          <div className="form-group">
             <label for="exampleInputEmail1">Ubicacion</label>
-            <input className="form-control" id="location" />
+            <input className="form-control" id="location" value={details&&details.location}/>
             <small id="emailHelp" className="form-text text-muted">
                Lugar donde se realizara la obra
             </small>
          </div>
          {/* <div className="form-group">
-            <label for="exampleInputEmail1">Fecha de inicio</label>
-            <input
-               type="date"
-               className="form-control"
-               id="create_date"
-               aria-describedby="emailHelp"
-            />
-            <small id="emailHelp" className="form-text text-muted">
-               We'll never share your email with anyone else.
-            </small>
-         </div> */}
-         <div className="form-group">
             <label for="exampleInputEmail1">Fecha fin</label>
-            <input type="date" className="form-control" id="end_date" />
+            <input type="date" className="form-control" id="end_date" value={details&&details.finished_at} />
             <small id="emailHelp" className="form-text text-muted">
                Fecha Tentativa final de la Obra
             </small>
-         </div>
+         </div> */}
       </form>
    )
 }

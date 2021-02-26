@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/client'
-import { getAllWorks, getWorkById, insertWork, updateWork, deleteWork, getActiveWorks } from '../../../../controllers/work'
+import { getAllWorks, getWorkById, insertWork, updateWork, deleteWork, getActiveWorks, updateWorkEnd } from '../../../../controllers/work'
 
 
 export default async (req, res) => {
@@ -41,8 +41,15 @@ export default async (req, res) => {
 
         case 'PUT': /*Actulizar */
             try {
-                const result = await updateWork(id, body)
-                res.status(200).json(body)
+                if(id[0]=="end"){
+                    console.log("mas datos", id[1],body)
+                    const result = await updateWorkEnd(id[1], body)
+                    res.status(200).json(result)
+                }else{
+                    const result = await updateWork(id, body)
+                    res.status(200).json(body)
+                }
+                
             } catch (err) {
                 res.status(500).json({ success: false, error: err })
             }

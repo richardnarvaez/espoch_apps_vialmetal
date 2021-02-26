@@ -30,7 +30,7 @@ export async function deleteWork_Tool(id){
 export async function getToolUsedWork(id) {
    const db = await connect()
    const result = await db.query(
-      `select name, quantity from work_tools inner join tools on work_tools.id_tool = tools.id_tool WHERE id_work=${id}`
+      `select name, quantity, tool_begin from work_tools inner join tools on work_tools.id_tool = tools.id_tool WHERE id_work=${id}`
    )
    return result.recordsets[0]
 }

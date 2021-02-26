@@ -6,6 +6,7 @@ import {
    updateWork_Material,
    deleteWork_Material,
    getMaterialUsedWork,
+   updateWork_Material_quantity
 } from '../../../../controllers/work_materials'
 
 export default async (req, res) => {
@@ -41,8 +42,15 @@ export default async (req, res) => {
 
       case 'PUT' /*Actulizar */:
          try {
-            const result = await updateWork_Material(id, body)
-            res.status(200).json(body)
+            if(id[0]=="end"){
+               console.log("el body ->",body)
+               const result = await updateWork_Material_quantity(body)
+               console.log("el result ->",result)
+               res.status(200).json({})
+            }else{
+               const result = await updateWork_Material(id, body)
+               res.status(200).json(result)
+            }
          } catch (err) {
             res.status(500).json({ success: false, error: err })
          }
@@ -50,9 +58,7 @@ export default async (req, res) => {
 
       case 'POST' /*Insert*/ /*O CUALQUIER ACCION secreta*/:
          try {
-            console.log('LLEGO:', body)
             const result = await insertWork_Material(body)
-            console.log('ER', result)
             res.status(200).json(result)
          } catch (err) {
             res.status(500).json({ success: false, error: err })

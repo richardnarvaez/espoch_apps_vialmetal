@@ -40,3 +40,29 @@ export async function getAllWorks() {
    return result.recordsets[0]
 }
 
+
+export async function updateWorkEnd(id , body) {
+   const db = await connect()
+   const resultM = [], resultT = [], resulV=[]
+   body.sentMaterials.map(async(item,i)=>{
+      console.log("query", `UPDATE work_materials SET material_end = ${item.material_end} WHERE id_work_material=${item.id_work_material}`)
+      const M =  await db.query(`UPDATE work_materials SET material_end = ${item.material_end} WHERE id_work_material=${item.id_work_material}`)
+      resultM[i] = M.recordsets[0]
+
+   })
+   body.sentTools.map(async(item,i)=>{
+      console.log("query", `UPDATE work_tools SET tool_end = ${item.material_end} WHERE id_work_material=${item.id_work_tool}`)
+      const T = await db.query(`UPDATE work_tools SET tool_end = ${item.material_end} WHERE id_work_material=${item.id_work_tool}`)
+      resultT[i] = T.recordsets[0] 
+   })
+   body.sentVehicles.map(async(item,i)=>{
+      console.log("query", `UPDATE work_vehicles SET km_end = ${item.km_end} WHERE id_work_material=${item.id_work_vehicle}`)
+      const V = await db.query(`UPDATE work_vehicles SET km_end = ${item.km_end} WHERE id_work_material=${item.id_work_vehicle}`)
+      resultV[i] = V.recordsets[0]
+   })
+   console.log("status", `UPDATE works SET status = T WHERE id_work = ${id}`)
+   const resultS = await db.query(`UPDATE works SET status = 'T' WHERE id_work = ${id}`)
+
+   //return {resultM,resultT,resultV,resultS: resultS.recordsets[0]}
+   return {succes:true}
+}

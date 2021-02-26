@@ -31,7 +31,7 @@ export async function deleteWork_Vehicle(id){
 export async function getVehiclesUsedWork(id) {
    const db = await connect()
    const result = await db.query(
-      `select name, mileage from work_vehicles inner join vehicles on work_vehicles.id_vehicle = vehicles.id_vehicle WHERE id_work=${id}`
+      `select name, mileage, km_begin from work_vehicles inner join vehicles on work_vehicles.id_vehicle = vehicles.id_vehicle WHERE id_work=${id}`
    )
    return result.recordsets[0]
 }

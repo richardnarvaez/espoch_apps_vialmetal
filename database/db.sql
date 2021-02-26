@@ -305,3 +305,7 @@ GO
 ALTER TABLE work_tools
     ADD CONSTRAINT FK_Tool_WorkTools FOREIGN KEY(id_tool) REFERENCES tools(id_tool)
 GO
+
+
+
+

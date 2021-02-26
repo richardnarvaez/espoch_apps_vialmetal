@@ -19,9 +19,9 @@ export async function insertMaterial(dataMaterial) {
 export async function updateMaterial(id, dataMaterial) {
    const db = await connect()
    const result = await db.query(
-      `UPDATE materials SET name = ${dataMaterial.name}, image = ${dataMaterial.image}, quantity = ${dataMaterial.quantity}, price_liter = ${dataMaterial.price_liter} WHERE id_material = ${id}`
+      `UPDATE materials SET name = '${dataMaterial.name}', image = '${dataMaterial.image}', quantity = ${dataMaterial.quantity}, price_liter = ${dataMaterial.price_liter} WHERE id_material = ${id}`
    )
-   return result.recordsets
+   return result.recordsets[0]
 }
 export async function deleteMaterial(id) {
    const db = await connect()

@@ -27,7 +27,10 @@ export default function GetInventoryMaterial({ setListado }) {
             inventary.map((item, i) => {
                return (
                   <>
-                     <CardInventory data={item} onClick={setListado} />
+                     <CardInventory
+                        data={item}
+                        href={'/editar/' + item.id_material + '/M'}
+                     />
                   </>
                )
             })
@@ -37,10 +40,5 @@ export default function GetInventoryMaterial({ setListado }) {
 }
 
 export function NewMaterial() {
-   return (
-      <>
-         
-         
-      </>
-   )
+   return <></>
 }

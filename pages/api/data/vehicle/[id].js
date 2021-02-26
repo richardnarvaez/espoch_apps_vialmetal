@@ -32,7 +32,7 @@ export default async (req, res) => {
         case 'PUT': /*Actulizar */
             try {
                 const result = await updateVehicle(id,body)
-                res.status(200).json(body)
+                res.status(200).json(result)
             } catch (err) {
                 res.status(500).json({ success: false, error: err })
             }

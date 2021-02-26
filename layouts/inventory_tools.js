@@ -27,7 +27,7 @@ export default function GetInventoryTool({setListado }) {
                     inventary.map((item, i) => {
                         return (
                             <>
-                                <CardInventory data={item} onClick={setListado} />
+                                <CardInventory data={item}  href={'/editar/' + item.id_tool + '/T'} />
                             </>
                         )
                     })

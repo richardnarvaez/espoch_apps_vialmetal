@@ -1,4 +1,4 @@
-export default function CardInventory({ data, onClick }) {
+export default function CardInventory({ data, onClick, href }) {
    let i = 0
 
    let status = data.status
@@ -12,10 +12,7 @@ export default function CardInventory({ data, onClick }) {
 
    return (
       <>
-         <a
-            class="col-6 col-sm-4 col-md-3"
-            href="/editar/1"
-         >
+         <a class="col-6 col-sm-4 col-md-3" href={href ? href : '/admin'}>
             <div className="item-work">
                <div className="img-transport">
                   <img src={data.image} />

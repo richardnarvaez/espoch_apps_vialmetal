@@ -17,6 +17,7 @@ export default function Admin() {
          fetch('/api/data/work_material/used/' + id)
             .then((res) => res.json())
             .then((result) => {
+               console.log("Resultado", result)
                setMaterials(result)
             })
             .catch((e) => {
@@ -64,6 +65,7 @@ export default function Admin() {
             </div>
 
             <h1>FINALIZAR TRABAJO</h1>
+
 
             <div className="table-section">
                <div className="titles-table">
@@ -115,7 +117,7 @@ export default function Admin() {
                   ) : (
                      <div className="row-materials">
                         {!listVehicles ? (
-                           <>CARGANDO DATO...</>
+                           <> CARGANDO DATO...</>
                         ) : (
                            listVehicles.map((item, i) => {
                               return <Row key={i} data={item} tp={"v"}/>
@@ -127,11 +129,6 @@ export default function Admin() {
             </div>
 
             <div className="button-container">
-               <div className="btn btn-editar">
-                  <button className="" type="button">
-                     Editar Obra
-                  </button>
-               </div>
                <div className="btn btn-terminar">
                   <button className="" type="button">
                      Finalizar Obra

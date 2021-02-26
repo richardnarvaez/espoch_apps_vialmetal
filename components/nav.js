@@ -10,7 +10,7 @@ const Nav = () => {
             <style>{`.nojs-show { opacity: 1; top: 0; }`}</style>
          </noscript>
 
-         <nav className="toolbar">
+         <nav className="toolbar noprint">
             <Link href="/">
                <Logo />
             </Link>

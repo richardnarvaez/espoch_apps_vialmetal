@@ -86,7 +86,7 @@ export default function AdminF3() {
       }
 
       if (!contratista.business_name.trim()) {
-         alert('Faltan datos')
+         alert('Datos incompletos... ')
          return
       }
 
@@ -102,6 +102,7 @@ export default function AdminF3() {
             .then((response) => {
                if (response) {
                   console.log(response)
+                  alert("Contratista: "+ contratista.business_name +" guardado Correctamente")
                   window.location.reload()
                }
             })

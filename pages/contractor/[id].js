@@ -164,7 +164,7 @@ function ModalNuevaObra({ contractor, createObra }) {
                      </div>
 
                      <div className="form-group">
-                        <label for="exampleInputEmail1">Descripcion</label>
+                        <label for="exampleInputEmail1">Descripción</label>
                         <input className="form-control" id="descripcion" />
                         <small id="emailHelp" className="form-text text-muted">
                            Ej. Asfaltado 10km via GUANO
@@ -290,15 +290,15 @@ function ModalEditarContratista({ contractor }) {
                      </div>
 
                      <div class="form-group">
-                        <label for="">Descripcion</label>
+                        <label for="">Descripción</label>
                         <input
                            className="form-control"
-                           id="description"
-                           value={c && c.description}
-                           onChange={cambiarvalor}
+                           id="description" 
+                           value={c && c.description} 
+                           onChange={cambiarvalor} 
                         />
                         <small id="emailHelp" className="form-text text-muted">
-                           Descripcion
+                           Descripción
                         </small>
                      </div>
                   </div>

@@ -7,12 +7,12 @@ export default function Admin() {
   
    return (
       <div className="container">
-         <div className="main"></div>
+         <div className="main noprint"></div>
 
          <br />
 
          {/* MENU NAV */}
-         <ul className="nav nav-tabs" id="myTab" role="tablist">
+         <ul className="nav nav-tabs noprint" id="myTab" role="tablist">
             <li className="nav-item">
                <a
                   className="nav-link active"

@@ -46,8 +46,8 @@ export default function SignIn({ providers }) {
                ))}
             </div>
             <p class=" w3l-register-p">
-               Usted no tiene cuenta
-               <a href="#" class="register">
+               Usted no tiene una cuenta de Google | <p> </p>
+               <a href="https://accounts.google.com/signup/v2/webcreateaccount?continue=https%3A%2F%2Faccounts.google.com%2FManageAccount%3Fnc%3D1&hl=Es&flowName=GlifWebSignIn&flowEntry=SignUp" class="register">
                   Registrese
                </a>
             </p>

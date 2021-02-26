@@ -35,7 +35,7 @@ export default function AdminWorkDetails() {
       <form
          id="form-details"
          onSubmit={(event) => getDetails(event)}
-         style={{ height: ' 49vh', overflowY: 'scroll', minHeight: 0 }}
+         style={{ height: '57vh', overflowY: 'scroll', minHeight: 0}}
       >
          <div className="form-group">
             <label for="exampleInputEmail1">
@@ -56,7 +56,7 @@ export default function AdminWorkDetails() {
          </div>
 
          <div className="form-group">
-            <label for="exampleInputEmail1">Descripcion</label>
+            <label for="exampleInputEmail1">Descripción</label>
             <input
                className="form-control"
                id="descripcion"
@@ -67,7 +67,7 @@ export default function AdminWorkDetails() {
             </small>
          </div>
          <div className="form-group">
-            <label for="exampleInputEmail1">Ubicacion</label>
+            <label for="exampleInputEmail1">Ubicación</label>
             <input className="form-control" id="location" value={details && details.location} />
             <small id="emailHelp" className="form-text text-muted">
                Lugar donde se realizará la obra

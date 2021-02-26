@@ -69,7 +69,7 @@ export default function AdminF2() {
             >
                <button className="bt-new-work" data-toggle="modal" data-target="#exampleModal">
                   {' '}
-                  <h5> +Material </h5>
+                  <h5> + Material </h5>
                </button>
 
                <div className="div" className="row">
@@ -85,7 +85,7 @@ export default function AdminF2() {
             >
                <button className="bt-new-work" data-toggle="modal" data-target="#exampleModal2">
                   {' '}
-                  <h5>+Tool</h5>
+                  <h5>+ Herramienta</h5>
                </button>
 
                <div className="div" className="row">
@@ -100,7 +100,7 @@ export default function AdminF2() {
             >
                <button className="bt-new-work" data-toggle="modal" data-target="#exampleModal3">
                   {' '}
-                  <h5>+Coche</h5>
+                  <h5>+ Vehiculo</h5>
                </button>
 
                <div className="div" className="row">

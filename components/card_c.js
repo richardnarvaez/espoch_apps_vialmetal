@@ -11,23 +11,24 @@ export default function Card({ data, href }) {
 
    return (
       <Link href={href ? href : '/admin'}>
-         {/* {href ? href : '/'}> */}
          <div className="col-sm-6 tarjeta">
             <div className={'card ' + (data.status == 'P' ? 'card-pendding' : '')}>
-               <div className="card-imagen">
-                  <p>
-                     <strong>{leM}</strong>
-                  </p>
-               </div>
+               <div style={{ display: 'flex' }}>
+                  <div className="card-imagen">
+                     <p>
+                        <strong>{leM}</strong>
+                     </p>
+                  </div>
 
-               <div className="card-body-right">
-                  <p className="card-text">
-                     <strong>{data.business_name}</strong>
-                  </p>
-                  <p className="card-text">{data.location}</p>
-                  <p className="card-text">{data.description ? data.description : '-'}</p>
-                  <p className="card-text">{data.responsable}</p>
-                  <p className="card-text">{date}</p>
+                  <div className="card-body-right">
+                     <p className="card-text">
+                        <strong>{data.business_name}</strong>
+                     </p>
+                     <p className="card-text">{data.location}</p>
+                     <p className="card-text">{data.description ? data.description : '-'}</p>
+                     <p className="card-text">{data.responsable}</p>
+                     <p className="card-text">{date}</p>
+                  </div>
                </div>
             </div>
          </div>

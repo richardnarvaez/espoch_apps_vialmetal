@@ -1,5 +1,32 @@
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import H1 from '../../components/Inicio'
+
 export default function Reportes() {
+   const { query } = useRouter()
+   const id = query.id
+
+   const [lista_materiales, setMateriales] = useState()
+
+   useEffect(() => {
+      if (id) {
+         console.log('ID: ', id)
+         obtenerReportesPorId()
+      }
+   }, [id])
+
+   const obtenerReportesPorId = () => {
+      fetch('/api/data/work_material/' + id)
+         .then((res) => res.json())
+         .then((result) => {
+            console.log('DATOS:', result)
+            setMateriales(result)
+         })
+         .catch((e) => {
+            console.log('ERROR: >>>>', e)
+         })
+   }
+
    return (
       <>
          <div className="container">
@@ -31,28 +58,35 @@ export default function Reportes() {
                   </tr>
                </tbody>
             </table>
+
             <h1>Despacho</h1>
             <table border="1" className="w-100">
                <tbody>
                   <tr>
-                     <td>Responsable</td>
-                     <th>Obra</th>
-                     <th>Sector</th>
+                     <th>CANTIDAD</th>
+                     <th>DETALLE</th>
+                     <th>TOTAL</th>
                   </tr>
-                  <tr>
-                     <th>Nombre</th>
-                     <td>A1</td>
-                     <td>B1</td>
-                  </tr>
+                  {lista_materiales &&
+                     lista_materiales.map((item, i) => {
+                        return (
+                           <tr>
+                              <td>2/12/2000</td>
+                              <td>A1324fdsad</td>
+                              <td>Riobamba</td>
+                           </tr>
+                        )
+                     })}
                </tbody>
             </table>
+
             <h1>Sobrante</h1>
             <table border="1" className="w-100">
                <tbody>
                   <tr>
-                     <td>Responsable</td>
-                     <th>Obra</th>
-                     <th>Sector</th>
+                     <th>CANTIDAD</th>
+                     <th>DETALLE</th>
+                     <th>TOTAL</th>
                   </tr>
                   <tr>
                      <td>Nombre</td>
@@ -62,7 +96,11 @@ export default function Reportes() {
                </tbody>
             </table>
             <br></br>
-            <button>Imprimir</button>
+            <button className="noprint" onClick={() => window.print()}>
+               Imprimir
+            </button>
+            <br />
+            <br />
          </div>
       </>
    )

@@ -204,3 +204,9 @@ a {
 .bt-new-work{
    z-index: 99 !important;
 }
+
+@media print{
+   .noprint{
+       display:none;
+   }
+}

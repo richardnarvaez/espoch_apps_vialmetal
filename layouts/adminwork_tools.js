@@ -15,17 +15,18 @@ export default function AdminWorkTool({setListado }) {
     }, [])
 
     const insertarTool = (id_mat) => {
+
         const material = {
            id_work: id,
-           id_material: id_mat,
+           id_tool: id_mat,
            material_begin: 1,
            material_end: 0,
         }
   
         console.log(material)
   
-        fetch('/api/data/work_material/null', {
-           method: 'post',
+        fetch('/api/data/work_tool/null', {
+           method: 'POST',
            headers: {
               Accept: 'application/json, text/plain, */*',
               'Content-Type': 'application/json',
@@ -44,7 +45,7 @@ export default function AdminWorkTool({setListado }) {
      }
 
     return (
-        <div className="row" style={{ height: ' 49vh', overflowY: 'scroll', minHeight: 0 }}> {/*HERRAMIENTAS*/}
+        <div className="row" style={{ height: '57vh', overflowY: 'scroll', minHeight: 0 }}> {/*HERRAMIENTAS*/}
             {!transport ? (
                 <>
                     <div className="spinner-border" role="status">

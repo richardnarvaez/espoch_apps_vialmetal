@@ -23,7 +23,7 @@ export default function AdminWorkTransport({ setListado }) {
 
       console.log(material)
 
-      fetch('/api/data/work_material/null', {
+      fetch('/api/data/work_vehiclel/null', {
          method: 'post',
          headers: {
             Accept: 'application/json, text/plain, */*',
@@ -43,7 +43,7 @@ export default function AdminWorkTransport({ setListado }) {
    }
 
    return (
-      <div className="row" style={{ height: ' 49vh', overflowY: 'scroll', minHeight: 0 }}>
+      <div className="row" style={{ height: '57vh', overflowY: 'scroll', minHeight: 0 }}>
          {' '}
          {/*TRANSPORTE*/}
          {!transport ? (

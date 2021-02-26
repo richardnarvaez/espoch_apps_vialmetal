@@ -8,7 +8,7 @@
 }
 
 .content-newwork {
-   padding-top: 12px;
+   margin-top: 12px;
    width: 100%;
    display: flex;
    justify-content: space-around;
@@ -46,10 +46,7 @@
 /*BOTON AGREGAR*/
 .btn-agregar{
    margin: auto;
-   display: flex;
-   justify-content: center;
    margin: 10px;
-   
 }
 .btn-agregar button {
    box-shadow: 0 2px 5px #00000032;
@@ -64,6 +61,8 @@
    text-align: center;
    border-bottom: 2px solid rgb(255, 196, 0);;
 }
+
+
 
 /*ESTILO CARTA*/
 .item-work{
@@ -91,8 +90,32 @@
 }
 
 
+.btn-sobrante{
+   display: flex;
+   justify-content: center;
+   box-shadow: 0 2px 5px #00000032;
+   background-color: rgb(251, 211, 78);
+   color: black;
+   font-size: 20px;
+   margin: 10px;
+   border-radius: 5px;
+}
+.btn-sobrante a{
+   width: 100%;
+   text-align: center;
+}
+
+.btns-list{
+   width: 100%;
+   position: relative;
+   bottom: 0;
+}
+
+
+
+
 /*FOOTER*/
 .newwork-footer{
    width: 100%;
-   height: 40px;
+   height: 20px;
 }

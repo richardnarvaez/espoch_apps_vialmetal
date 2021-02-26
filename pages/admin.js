@@ -46,7 +46,7 @@ function NotLogin() {
       <div>
          <Nav />
          <div>
-            <h1>Necesitas iniciar sesion para aceder a esta pagina</h1>
+            <h1>Necesita iniciar sesión para acceder a esta página</h1>
          </div>
       </div>
    )

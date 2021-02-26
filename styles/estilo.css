@@ -295,7 +295,7 @@ footer {
    box-shadow: 0 2px 5px #00000032;
    /* Edicion nueva prueba*/
    display: flex;
-   width: 150px;
+   width: auto;
    height: 50px;
 }
 

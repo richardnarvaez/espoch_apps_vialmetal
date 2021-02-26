@@ -160,11 +160,30 @@ export default function Admin() {
          })
    }
 
+   const updateQuantity = (index, t, lista) => (e) => {
+      let newArr = [...lista]
+      if (newArr[index].material_begin == 1 && t == -1) {
+         alert('No se puede poner menos de 1')
+      } else {
+         newArr[index].material_begin = newArr[index].material_begin + t
+         console.log('1. ', newArr[index].material_begin, ' - ', newArr[index].quantity)
+         if (newArr[index].material_begin > newArr[index].quantity) {
+            alert('NO hay mas en stock')
+         } else {
+            setListMateriales(newArr)
+         }
+      }
+   }
+
+   const calcularTotal = () => {
+      // list_materiales.map((item, i)=>{})
+   }
+
    return (
       <>
          <div className="body-adminwork">
-            <div className="row content-newwork">
-               <div className="new-work col-7" style={{ height: '85vh', overflowY: 'scroll' }}>
+            <div className="content-newwork">
+               <div className="new-work">
                   <h2>Material de trabajo</h2>
 
                   <div className="work-options">
@@ -194,13 +213,19 @@ export default function Admin() {
                         <div>
                            {activeStep === steps.length ? (
                               <div>
-                                 <p>Has completado todo el formulário</p>
-                                 <Button onClick={handleReset}>Llenar de nuevo</Button>
+                                 <p>Has completado todo el formulario</p>
                               </div>
                            ) : (
                               <div>
                                  {getStepContent(activeStep)}
-                                 <div>
+                                 <div
+                                    style={{
+                                       display: 'flex',
+                                       marginTop: 24,
+                                       position: 'relative',
+                                       bottom: 0,
+                                    }}
+                                 >
                                     <Button disabled={activeStep === 0} onClick={handleBack}>
                                        Atras
                                     </Button>
@@ -221,7 +246,7 @@ export default function Admin() {
                </div>
 
                {/*LISTA DE RESUMEN*/}
-               <div className="list-work col-5" style={{ height: '85vh', overflowY: 'scroll' }}>
+               <div className="list-work " style={{ height: '85vh', overflowY: 'scroll' }}>
                   <h2>Resumen</h2>
                   <div className="content-list">
                      <div className="item-list">
@@ -231,7 +256,7 @@ export default function Admin() {
                            <>No hay elementos</>
                         ) : (
                            list_materiales.map((item, i) => {
-                              const pf = (item.quantity * item.price_liter).toFixed(2)
+                              const pf = (item.material_begin * item.price_liter).toFixed(2)
 
                               return (
                                  <div
@@ -247,8 +272,8 @@ export default function Admin() {
                                        <p>
                                           <strong>{item.name}</strong>
                                        </p>
-                                       <small>Cantidad: {item.quantity} </small>{' '}
-                                       <small>Precio p/l :{item.price_liter}</small>
+                                       {/* <small>Cantidad: {item.quantity} </small> */}
+                                       <small>Precio :{item.price_liter}</small>
                                        <br />
                                        <small>Precio:{' $' + pf}</small>
                                     </div>
@@ -272,6 +297,7 @@ export default function Admin() {
                                        >
                                           {' '}
                                           <p
+                                             onClick={updateQuantity(i, -1, list_materiales)}
                                              style={{
                                                 background: '#747474',
                                                 borderRadius: 99,
@@ -284,8 +310,9 @@ export default function Admin() {
                                              {' '}
                                              -{' '}
                                           </p>
-                                          <p> 1 </p>
+                                          <p> {item.material_begin} </p>
                                           <p
+                                             onClick={updateQuantity(i, 1, list_materiales)}
                                              style={{
                                                 background: '#525252',
                                                 borderRadius: 99,
@@ -335,7 +362,7 @@ export default function Admin() {
                         )}
                      </div>
                      <div className="item-list">
-                        <h5>Herrameintas</h5>
+                        <h5>Herramientas</h5>
                         {!list_herramientas ? (
                            <>No hay elementos</>
                         ) : (
@@ -376,11 +403,13 @@ export default function Admin() {
                      </div>
                   </div>
 
-                  <div style={{ height: 100 }}></div>
-                  <div className="btn-agregar" style={{ position: 'fixed', bottom: 0 }}>
-                     <button className="" type="button">
-                        Actualizar detalles
-                     </button>
+                  <div className="btns-list">
+                     <div className="btn-sobrante">
+                        <a href="/details/3">SOBRANTE</a>
+                     </div>
+                     <div className="btn-agregar">
+                        <button type="button">Actualizar</button>
+                     </div>
                   </div>
                </div>
             </div>

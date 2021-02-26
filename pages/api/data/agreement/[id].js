@@ -29,7 +29,7 @@ export default async (req, res) => {
             }
             break
 
-        case 'PUT': /*Actulizar */
+        case 'PUT': /*Actualizar */
             try {
                 const result = await updateAgreement(id,body)
                 res.status(200).json(body)

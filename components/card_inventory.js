@@ -3,22 +3,18 @@ export default function CardInventory({ data, onClick }) {
 
    let status = data.status
 
-   if(status == 'T'){
+   if (status == 'T') {
       status = 'Disponible'
    }
-   if(status == 'O'){
+   if (status == 'O') {
       status = 'Ocupado'
    }
-   
+
    return (
       <>
-         <div
+         <a
             class="col-6 col-sm-4 col-md-3"
-            onClick={() => {
-               console.log(i)
-               i++
-               onClick('Naaaada')
-            }}
+            href="/editar/1"
          >
             <div className="item-work">
                <div className="img-transport">
@@ -32,7 +28,7 @@ export default function CardInventory({ data, onClick }) {
                   <h5 className="trasnport-status">{data.mileage}</h5>
                </div>
             </div>
-         </div>
+         </a>
       </>
    )
 }

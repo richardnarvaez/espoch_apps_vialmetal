@@ -18,6 +18,7 @@ export async function insertMaterial(dataMaterial) {
 }
 export async function updateMaterial(id, dataMaterial) {
    const db = await connect()
+   console.log("Material", dataMaterial)
    const result = await db.query(
       `UPDATE materials SET name = '${dataMaterial.name}', image = '${dataMaterial.image}', quantity = ${dataMaterial.quantity}, price_liter = ${dataMaterial.price_liter} WHERE id_material = ${id}`
    )

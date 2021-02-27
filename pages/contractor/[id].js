@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/client'
 import { useState, useEffect } from 'react'
 import Card from '../../components/card'
 import Footer from '../../components/footer'
@@ -8,6 +9,8 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/es'
 
 export default function AdminF1() {
+   const [session, sessionLoading] = useSession()
+
    const { query } = useRouter()
    const id = query.id
 
@@ -52,7 +55,7 @@ export default function AdminF1() {
          price_work: 0,
       }
 
-      if(ValidarDatos(obra.responsable, obra.location, obra.finished_at)){
+      if (ValidarDatos(obra.responsable, obra.location, obra.finished_at)) {
          fetch('/api/data/work/null', {
             method: 'post',
             headers: {
@@ -70,67 +73,78 @@ export default function AdminF1() {
             .catch(function (error) {
                console.log('Request failed', error)
             })
-      }else{
-         alert("DATOS OBLIGATORIOS POR LLENAR")
+      } else {
+         alert('DATOS OBLIGATORIOS POR LLENAR')
       }
-      
    }
    return (
-      <div className="container">
-         <Inicio />
-         <h1>Lista de obras de {contractor ? contractor.business_name : 'Cargando..'} </h1>
-         {contractor && (
+      <>
+         {!session && !sessionLoading && (
+            <h1>Acceso Denegado - No puede acceder al contendio de esta página</h1>
+         )}
+         {session && !sessionLoading && (
             <>
-               <div>
-                  {' '}
-                  {/*BOTON EDITAR CONTRATISTA */}
+               <div className="container">
+                  <Inicio />
+                  <h1>Lista de obras de {contractor ? contractor.business_name : 'Cargando..'} </h1>
+                  {contractor && (
+                     <>
+                        <div>
+                           {' '}
+                           {/*BOTON EDITAR CONTRATISTA */}
+                           <button
+                              type="button"
+                              class="btn"
+                              data-toggle="modal"
+                              data-target="#exampleModal6"
+                              style={{ zIndex: 99 }}
+                           >
+                              Editar Contratista
+                              <svg
+                                 style={{ marginLeft: 10, width: 24, height: 24 }}
+                                 viewBox="0 0 24 24"
+                              >
+                                 <path
+                                    fill="currentColor"
+                                    d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z"
+                                 />
+                              </svg>
+                           </button>
+                        </div>
+                        <ModalEditarContratista contractor={contractor} />
+                     </>
+                  )}
+
                   <button
                      type="button"
-                     class="btn"
+                     class="btn bt-new-work"
                      data-toggle="modal"
-                     data-target="#exampleModal6"
+                     data-target="#exampleModal2"
                      style={{ zIndex: 99 }}
                   >
-                     Editar Contratista
-                     <svg style={{ marginLeft: 10, width: 24, height: 24 }} viewBox="0 0 24 24">
-                        <path
-                           fill="currentColor"
-                           d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z"
-                        />
-                     </svg>
+                     Nueva Obra
                   </button>
+
+                  <ModalNuevaObra contractor={contractor} createObra={createObra} />
+
+                  {error ? (
+                     <>Error de conexión</>
+                  ) : (
+                     <div className="div" className="row">
+                        {!list_obras ? (
+                           <>CARGANDO DATO...</>
+                        ) : (
+                           list_obras.map((item, i) => {
+                              return <Card key={i} data={item} href={'/details/' + item.id_work} />
+                           })
+                        )}
+                     </div>
+                  )}
+                  <Footer />
                </div>
-               <ModalEditarContratista contractor={contractor} />
             </>
          )}
-
-         <button
-            type="button"
-            class="btn bt-new-work"
-            data-toggle="modal"
-            data-target="#exampleModal2"
-            style={{ zIndex: 99 }}
-         >
-            Nueva Obra
-         </button>
-
-         <ModalNuevaObra contractor={contractor} createObra={createObra} />
-
-         {error ? (
-            <>Error de conexión</>
-         ) : (
-            <div className="div" className="row">
-               {!list_obras ? (
-                  <>CARGANDO DATO...</>
-               ) : (
-                  list_obras.map((item, i) => {
-                     return <Card key={i} data={item} href={'/details/' + item.id_work} />
-                  })
-               )}
-            </div>
-         )}
-         <Footer />
-      </div>
+      </>
    )
 }
 
@@ -181,7 +195,9 @@ function ModalNuevaObra({ contractor, createObra }) {
                         </small>
                      </div>
                      <div className="form-group">
-                        <label for="exampleInputEmail1"><span style={{ color: 'red' }}>*</span>Ubicacion</label>
+                        <label for="exampleInputEmail1">
+                           <span style={{ color: 'red' }}>*</span>Ubicación
+                        </label>
                         <input className="form-control" id="location" />
                         <small id="emailHelp" className="form-text text-muted">
                            Lugar donde se realizará la obra
@@ -189,7 +205,9 @@ function ModalNuevaObra({ contractor, createObra }) {
                      </div>
 
                      <div className="form-group">
-                        <label for="exampleInputEmail1"><span style={{ color: 'red' }}>*</span>Fecha fin</label>
+                        <label for="exampleInputEmail1">
+                           <span style={{ color: 'red' }}>*</span>Fecha fin
+                        </label>
                         <input type="date" className="form-control" id="end_date" />
                         <small id="emailHelp" className="form-text text-muted">
                            Fecha Tentativa final de la Obra
@@ -211,26 +229,24 @@ function ModalNuevaObra({ contractor, createObra }) {
    )
 }
 
-function ValidarDatos(contra, ubi, fecha){
-
-   if(validarFecha(fecha) && contra!="" && ubi!=""){
-      return true;
-   }else{
-      return false;
+function ValidarDatos(contra, ubi, fecha) {
+   if (validarFecha(fecha) && contra != '' && ubi != '') {
+      return true
+   } else {
+      return false
    }
-
 }
 
-function validarFecha(fecha){
+function validarFecha(fecha) {
    var cfecha = dayjs(new Date()).format('YYYY-MM-DD')
    var vfecha = dayjs(fecha).format('YYYY-MM-DD')
    var longi = vfecha.length
-   
-   if(vfecha >= cfecha && longi!=12){
-      return true;
-   }else{
-      alert("Fecha Inválida")
-      return false;
+
+   if (vfecha >= cfecha && longi != 12) {
+      return true
+   } else {
+      alert('Fecha Inválida')
+      return false
    }
 }
 

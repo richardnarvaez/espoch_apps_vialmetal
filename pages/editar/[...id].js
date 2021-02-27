@@ -1,9 +1,12 @@
 import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/client'
 import { useEffect, useState } from 'react'
 import Footer from '../../components/footer'
 import Inicio from '../../components/Inicio'
 
 export default function Editar() {
+   const [session, sessionLoading] = useSession()
+   
    const [data, setData] = useState({})
    const [data_final, setDataF] = useState({})
 
@@ -87,37 +90,47 @@ export default function Editar() {
       return <h1>Cargando...</h1>
    }
    return (
-      <div>
-         <Inicio />
-         <div
-            className="d-flex container"
-            style={{ alignItems: 'center', justifyContent: 'center', height: '100vh' }}
-         >
-            <div
-               align="middle"
-               className="row"
-               style={{
-                  border: 'solid 1px #ececec',
-                  borderRadius: 12,
-                  padding: 16,
-                  width: '100%',
-                  justifyItems: 'center',
-               }}
-            >
-               {id &&
-                  (id[1] == 'M' ? (
-                     <TarjetaMaterial data={data_final} cambiarvalor={cambiarvalor} />
-                  ) : id[1] == 'V' ? (
-                     <Tarjetavehicle data={data_final} cambiarvalor={cambiarvalor} />
-                  ) : id[1] == 'T' ? (
-                     <TarjetaTool data={data_final} cambiarvalor={cambiarvalor} />
-                  ) : null)}
-               <br />
-               {!igual ? <button onClick={actualizarInventario}>Guardar</button> : null}
-            </div>
-         </div>
-         <Footer />
-      </div>
+      <>
+         {!session && !sessionLoading && (
+            <h1>Acceso Denegado - No puede acceder al contendio de esta página</h1>
+         )}
+         {/* !session.user?.roles?.includes('Verified') */}
+         {session && !sessionLoading && (
+            <>
+               <div>
+                  <Inicio />
+                  <div
+                     className="d-flex container"
+                     style={{ alignItems: 'center', justifyContent: 'center', height: '100vh' }}
+                  >
+                     <div
+                        align="middle"
+                        className="row"
+                        style={{
+                           border: 'solid 1px #ececec',
+                           borderRadius: 12,
+                           padding: 16,
+                           width: '100%',
+                           justifyItems: 'center',
+                        }}
+                     >
+                        {id &&
+                           (id[1] == 'M' ? (
+                              <TarjetaMaterial data={data_final} cambiarvalor={cambiarvalor} />
+                           ) : id[1] == 'V' ? (
+                              <Tarjetavehicle data={data_final} cambiarvalor={cambiarvalor} />
+                           ) : id[1] == 'T' ? (
+                              <TarjetaTool data={data_final} cambiarvalor={cambiarvalor} />
+                           ) : null)}
+                        <br />
+                        {!igual ? <button onClick={actualizarInventario}>Guardar</button> : null}
+                     </div>
+                  </div>
+                  <Footer />
+               </div>
+            </>
+         )}
+      </>
    )
 }
 

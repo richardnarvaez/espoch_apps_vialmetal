@@ -47,7 +47,7 @@ export default function AdminWorkTool({ updateTools }) {
    }
 
    return (
-      <div className="row" style={{ height: '57vh', overflowY: 'scroll', minHeight: 0 }}>
+      <div className="row p-4" style={{ height: '57vh', overflowY: 'scroll', minHeight: 0 }}>
          {' '}
          {/*HERRAMIENTAS*/}
          {!transport ? (

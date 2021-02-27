@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 
 import CardW from '../components/card_c'
 
+
 function validaRUC(ruc) {
    var lv_cedula
    var lv_vec3

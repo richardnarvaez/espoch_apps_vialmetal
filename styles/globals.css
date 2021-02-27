@@ -197,16 +197,18 @@ a {
    width: auto !important;
 }
 
-.card-pendding{
+.card-pendding {
    border: solid 2px #1e2b5c;
 }
 
-.bt-new-work{
+.bt-new-work {
    z-index: 99 !important;
 }
-
-@media print{
-   .noprint{
-       display:none;
+.opacity-1 {
+   filter: opacity(0.3);
+}
+@media print {
+   .noprint {
+      display: none;
    }
 }

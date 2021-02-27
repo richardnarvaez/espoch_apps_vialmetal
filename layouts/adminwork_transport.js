@@ -16,7 +16,7 @@ export default function AdminWorkTransport({ updateTransport }) {
       fetchData()
    }, [])
 
-   const insertarTransport = (id_veh) => {
+   const insertarTransport = (id_veh, status) => {
       const vehicle = {
          id_work: id,
          id_vehicle: id_veh,
@@ -25,7 +25,11 @@ export default function AdminWorkTransport({ updateTransport }) {
       }
 
       console.log(vehicle)
-
+      if (status == 'O') {
+         alert('No esta disponible')
+         return
+      }
+      
       fetch('/api/data/work_vehicle/null', {
          method: 'post',
          headers: {
@@ -46,7 +50,7 @@ export default function AdminWorkTransport({ updateTransport }) {
    }
 
    return (
-      <div className="row" style={{ height: '57vh', overflowY: 'scroll', minHeight: 0 }}>
+      <div className="row p-4" style={{ height: '57vh', overflowY: 'scroll', minHeight: 0 }}>
          {' '}
          {/*TRANSPORTE*/}
          {!transport ? (
@@ -59,7 +63,10 @@ export default function AdminWorkTransport({ updateTransport }) {
             transport.map((item, i) => {
                return (
                   <>
-                     <CardW data={item} onClick={() => insertarTransport(item.id_vehicle)} />
+                     <CardW
+                        data={item}
+                        onClick={() => insertarTransport(item.id_vehicle, item.status)}
+                     />
                   </>
                )
             })

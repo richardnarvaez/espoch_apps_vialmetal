@@ -1,13 +1,18 @@
 import { getSession, providers, signIn } from 'next-auth/client'
+import Logo from '../../components/logo'
 
 export default function SignIn({ providers }) {
    return (
-      <div className="body-home" style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <div
+         className="body-home"
+         style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}
+      >
          {/* <h1>Inicio de secion </h1> */}
          <div className=" w3l-login-form">
             <h2>Inicio</h2>
             <div>
-               <div className=" w3l-form-group">
+               <Logo />
+               {/* <div className=" w3l-form-group">
                   <div className="group">
                      <i className="fas fa-user"></i>
                      <input
@@ -19,7 +24,7 @@ export default function SignIn({ providers }) {
                   </div>
                </div>
 
-               <button type="submit">inicio</button>
+               <button type="submit">inicio</button> */}
                {/* <div class=" w3l-form-group">
                      <label>Contraseña:</label>
                      <div class="group">
@@ -34,23 +39,16 @@ export default function SignIn({ providers }) {
                   </div> */}
                <div class="separation">
                   <div class="b"></div>
-                  <p>o inicia sesión con</p>
+                  <p>Inicia sesión con</p>
                   <div class="a"></div>
                </div>
                {Object.values(providers).map((provider) => (
                   <div key={provider.name}>
-                     <button onClick={() => signIn(provider.id)}>
-                      {provider.name}
-                     </button>
+                     <button onClick={() => signIn(provider.id)}>{provider.name}</button>
                   </div>
                ))}
             </div>
-            <p class=" w3l-register-p">
-               Usted no tiene una cuenta de Google | <p> </p>
-               <a href="https://accounts.google.com/signup/v2/webcreateaccount?continue=https%3A%2F%2Faccounts.google.com%2FManageAccount%3Fnc%3D1&hl=Es&flowName=GlifWebSignIn&flowEntry=SignUp" class="register">
-                  Registrese
-               </a>
-            </p>
+            <p class=" w3l-register-p">Ingresa con una cuenta de Google</p>
          </div>
          <footer style={{ background: 'linear-gradient(0deg, black, transparent)' }}>
             <p class="copyright-agileinfo">©2021 | Derechos resevados</p>

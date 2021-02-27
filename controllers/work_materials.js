@@ -7,7 +7,7 @@ export async function getAllWork_Materials() {
 }
 export async function getWork_MaterialId(id) {
    const db = await connect()
-   const result = await db.query(`SELECT w.id_work_material, w.id_work, m.id_material, m.name, m.quantity, m.price_liter, w.material_begin
+   const result = await db.query(`SELECT w.id_work_material, w.id_work, m.id_material, m.name, m.quantity, m.price_liter, w.material_begin, w.material_end
    FROM work_materials w INNER JOIN materials m
    ON w.id_material = m.id_material
    WHERE w.id_work = ${id}`)

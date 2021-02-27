@@ -55,8 +55,8 @@ export default function AdminWorkMaterial({ updateMaterials }) {
    }
 
    return (
-      <div className="row" style={{ height: '57vh', overflowY: 'scroll', minHeight: 0 }}>
-         {' '}
+      <div className="row p-4" style={{ height: '57vh', overflowY: 'scroll', minHeight: 0 }}>
+       
          {/*HERRAMIENTAS*/}
          {!material ? (
             <>

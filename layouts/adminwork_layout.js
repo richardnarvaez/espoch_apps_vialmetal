@@ -45,6 +45,9 @@ export default function Admin() {
       }
    }
 
+   const [m_start, setMS] = useState()
+   const [t_start, setTS] = useState()
+
    // VARIABLES "ESTADO"
    const [list_materiales, setListMateriales] = useState()
    const [list_herramientas, setListHerramientas] = useState()
@@ -67,6 +70,7 @@ export default function Admin() {
          .then((res) => res.json())
          .then((result) => {
             setListMateriales(result)
+            setMS(result)
          })
          .catch((e) => {
             console.log('ERRPR: >>>>', e)
@@ -79,6 +83,7 @@ export default function Admin() {
          .then((result) => {
             console.log('RESULT _TOOLSL:', result)
             setListHerramientas(result)
+            setTS(result)
          })
          .catch((e) => {
             console.log('ERRPR: >>>>', e)
@@ -86,6 +91,10 @@ export default function Admin() {
    }
 
    const updateTransport = () => {
+      if (list_vehiculos) {
+         setActiveStep(2)
+         setActiveStep(3)
+      }
       fetch('/api/data/work_vehicle/' + id)
          .then((res) => res.json())
          .then((result) => {
@@ -147,11 +156,24 @@ export default function Admin() {
       console.log('ENVIADO AL SERVIDOR', data)
    }
 
-   const eliminarMaterial = (id_w_m, type) => {
+   const eliminarMaterial = (id_w_m, type, id_vehicle) => {
       console.log('Eliminar', id_w_m)
-      fetch('/api/data/' + type + '/' + id_w_m, {
-         method: 'DELETE',
-      })
+      let config = {}
+      if (type == 'work_vehicle') {
+         config = {
+            method: 'DELETE',
+            headers: {
+               Accept: 'application/json, text/plain, */*',
+               'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id_vehicle }),
+         }
+      } else {
+         config = {
+            method: 'DELETE',
+         }
+      }
+      fetch('/api/data/' + type + '/' + id_w_m, config)
          .then((response) => {
             if (response) {
                console.log(response)
@@ -179,6 +201,7 @@ export default function Admin() {
             } else {
                newArr[index].material_begin = newArr[index].material_begin + t
                console.log('1. ', newArr[index].material_begin, ' - ', newArr[index].quantity)
+               
                if (newArr[index].material_begin > newArr[index].quantity) {
                   alert('NO hay mas en stock')
                } else {
@@ -210,6 +233,10 @@ export default function Admin() {
 
    const updateAllMaterials = () => {
       setLoading(true)
+      // list_materiales.map((item, i) => {
+      //    console.log(Math.abs(item.material_begin - m_start[i].material_begin))
+      // })
+
       fetch('/api/data/work/update/' + id, {
          method: 'PUT',
          headers: {
@@ -235,9 +262,7 @@ export default function Admin() {
          <div className="body-adminwork">
             <div className="content-newwork">
                <div className="new-work">
-                  <h2>Material de trabajo</h2>
-
-                  <div className="work-options">
+                  <div className="p-3">
                      {/*DE AQUI VA FUNCION STEP */}
                      <div>
                         <Stepper activeStep={activeStep}>
@@ -278,16 +303,17 @@ export default function Admin() {
                                     }}
                                  >
                                     <Button disabled={activeStep === 0} onClick={handleBack}>
-                                       Atras
+                                       Atrás
                                     </Button>
-
-                                    <Button
-                                       variant="contained"
-                                       color="primary"
-                                       onClick={handleNext}
-                                    >
-                                       {activeStep === steps.length - 1 ? 'Terminar' : 'Siguiente'}
-                                    </Button>
+                                    {activeStep === steps.length - 1 ? null : (
+                                       <Button
+                                          variant="contained"
+                                          color="primary"
+                                          onClick={handleNext}
+                                       >
+                                          Siguente
+                                       </Button>
+                                    )}
                                  </div>
                               </div>
                            )}
@@ -298,7 +324,7 @@ export default function Admin() {
 
                {/*LISTA DE RESUMEN*/}
                <div className="list-work " style={{ height: '85vh', overflowY: 'scroll' }}>
-                  <h2>Resumen</h2>
+                  <h2>Resúmen</h2>
                   <div className="content-list">
                      <div className="item-list">
                         <h5>Material</h5>
@@ -336,7 +362,6 @@ export default function Admin() {
                                     >
                                        <div
                                           style={{
-                                             background: '#ececec',
                                              borderRadius: 99,
                                              height: 30,
                                              display: 'flex',
@@ -350,7 +375,7 @@ export default function Admin() {
                                           <p
                                              onClick={updateQuantity(i, -1, list_materiales, 'M')}
                                              style={{
-                                                background: '#747474',
+                                                background: '#ffc107',
                                                 borderRadius: 99,
                                                 width: 24,
                                                 height: 24,
@@ -365,7 +390,7 @@ export default function Admin() {
                                           <p
                                              onClick={updateQuantity(i, 1, list_materiales, 'M')}
                                              style={{
-                                                background: '#525252',
+                                                background: '#ffc107',
                                                 borderRadius: 99,
                                                 width: 24,
                                                 height: 24,
@@ -451,7 +476,6 @@ export default function Admin() {
                                     >
                                        <div
                                           style={{
-                                             background: '#ececec',
                                              borderRadius: 99,
                                              height: 30,
                                              display: 'flex',
@@ -465,7 +489,7 @@ export default function Admin() {
                                           <p
                                              onClick={updateQuantity(i, -1, list_herramientas, 'T')}
                                              style={{
-                                                background: '#747474',
+                                                background: '#ffc107',
                                                 borderRadius: 99,
                                                 width: 24,
                                                 height: 24,
@@ -480,7 +504,7 @@ export default function Admin() {
                                           <p
                                              onClick={updateQuantity(i, 1, list_herramientas, 'T')}
                                              style={{
-                                                background: '#525252',
+                                                background: '#ffc107',
                                                 borderRadius: 99,
                                                 width: 24,
                                                 height: 24,
@@ -562,7 +586,6 @@ export default function Admin() {
                                     >
                                        <div
                                           style={{
-                                             background: '#ececec',
                                              borderRadius: 99,
                                              height: 30,
                                              display: 'flex',
@@ -586,11 +609,16 @@ export default function Admin() {
                                           style={{
                                              width: 24,
                                              borderRadius: 99,
-                                             background: '#ececec',
+                                             background: '#f7f7f7',
+
                                              cursor: 'pointer',
                                           }}
                                           onClick={() => {
-                                             eliminarMaterial(item.id_work_vehicle, 'work_vehicle')
+                                             eliminarMaterial(
+                                                item.id_work_vehicle,
+                                                'work_vehicle',
+                                                item.id_vehicle
+                                             )
                                           }}
                                        >
                                           <svg
@@ -618,7 +646,7 @@ export default function Admin() {
                         </button>
                      </div>
                      <div className="btn-sobrante">
-                        <a href={'/details/' + id}>TERMIINAR OBRA</a>
+                        <a href={'/details/' + id}>TERMINAR OBRA</a>
                      </div>
                   </div>
                </div>

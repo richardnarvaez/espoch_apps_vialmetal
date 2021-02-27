@@ -12,7 +12,11 @@ export default function CardInventory({ data, onClick, href }) {
 
    return (
       <>
-         <a class="col-6 col-sm-4 col-md-3" href={href ? href : '/admin'}>
+         <a
+            class="col-6 col-sm-4 col-md-3"
+            href={href ? href : '/admin'}
+            
+         >
             <div className="item-work">
                <div className="img-transport">
                   <img src={data.image} />

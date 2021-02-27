@@ -18,6 +18,7 @@ export default function AdminWorkDetails() {
          .then((res) => res.json())
          .then((result) => {
             setDetails(result[0])
+            console.log(result)
             fetch('/api/data/contractor/' + result[0].id_contractor)
                .then((res) => res.json())
                .then((result) => {
@@ -31,15 +32,45 @@ export default function AdminWorkDetails() {
             console.log('ERRPR: >>>>', e)
          })
    }, [id])
+
+   function cambiarvalor(e) {
+      setDetails({ ...details, [e.target.id]: e.target.value })
+   }
+
+   function getDetails(e) {
+      e.preventDefault()
+      console.log(details)
+      fetch('/api/data/work/' + id, {
+         method: 'PUT',
+         headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(details),
+      })
+         .then((response) => {
+            if (response) {
+               console.log(response)
+               alert('Se actualizó correctamente')
+            }
+         })
+         .catch(function (error) {
+            console.log('Request failed', error)
+         })
+   }
+
+   if (!contractor) return <h1>Cargando..</h1>
+
    return (
       <form
          id="form-details"
+         className="p-4"
          onSubmit={(event) => getDetails(event)}
-         style={{ height: '57vh', overflowY: 'scroll', minHeight: 0}}
+         style={{ height: '57vh', overflowY: 'scroll', minHeight: 0 }}
       >
          <div className="form-group">
             <label for="exampleInputEmail1">
-               Contratista: <strong>{contractor ? contractor.business_name : '...'}</strong>{' '}
+               Contratista: <strong>{contractor ? contractor.business_name : 'Cargando...'}</strong>{' '}
             </label>
          </div>
 
@@ -47,7 +78,8 @@ export default function AdminWorkDetails() {
             <label for="exampleInputEmail1">Responsable</label>
             <input
                className="form-control"
-               id="descripcion"
+               id="responsable"
+               onChange={cambiarvalor}
                value={details && details.responsable}
             />
             <small id="emailHelp" className="form-text text-muted">
@@ -59,7 +91,8 @@ export default function AdminWorkDetails() {
             <label for="exampleInputEmail1">Descripción</label>
             <input
                className="form-control"
-               id="descripcion"
+               id="description"
+               onChange={cambiarvalor}
                value={details && details.description}
             />
             <small id="emailHelp" className="form-text text-muted">
@@ -68,19 +101,17 @@ export default function AdminWorkDetails() {
          </div>
          <div className="form-group">
             <label for="exampleInputEmail1">Ubicación</label>
-            <input className="form-control" id="location" value={details && details.location} />
+            <input
+               onChange={cambiarvalor}
+               className="form-control"
+               id="location"
+               value={details && details.location}
+            />
             <small id="emailHelp" className="form-text text-muted">
                Lugar donde se realizará la obra
             </small>
          </div>
-         {/* <div className="form-group">
-            <label for="exampleInputEmail1">Fecha fin</label>
-            <input type="date" className="form-control" id="end_date" value={details&&details.finished_at} />
-            <small id="emailHelp" className="form-text text-muted">
-               Fecha Tentativa final de la Obra
-            </small>
-         </div> */}
-         <button>Actulizar</button>
+         <button>Actualizar</button>
       </form>
    )
 }

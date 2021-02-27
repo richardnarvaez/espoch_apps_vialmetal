@@ -68,7 +68,6 @@ export default function AdminF2() {
                aria-labelledby="pills-home-tab"
             >
                <button className="bt-new-work" data-toggle="modal" data-target="#exampleModal">
-                  {' '}
                   <h5> + Material </h5>
                </button>
 
@@ -112,6 +111,20 @@ export default function AdminF2() {
    )
 }
 
+function validarHerramienta(name, img, cant, pr){
+   if(cant< 0 || pr<0){
+      return false;
+   }
+
+   if(name=="" || img=="" || cant=="" || pr==""){
+      return false;
+   }else{
+      return true;
+   }
+
+   
+}
+
 const ModalHeramientas = () => {
 
    {/*INSERTAR HERRAMIENTA*/ }
@@ -125,24 +138,28 @@ const ModalHeramientas = () => {
       }
 
       console.log(herramienta)
-
-      fetch('/api/data/tool/null', {
-         method: 'post',
-         headers: {
-            Accept: 'application/json, text/plain, */*',
-            'Content-Type': 'application/json',
-         },
-         body: JSON.stringify(herramienta),
-      })
-         .then((response) => {
-            if (response) {
-               console.log(response)
-               window.location.reload()
-            }
+      if(validarHerramienta(herramienta.name, herramienta.image, herramienta.quantity, herramienta.price_use)){
+         fetch('/api/data/tool/null', {
+            method: 'post',
+            headers: {
+               Accept: 'application/json, text/plain, */*',
+               'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(herramienta),
          })
-         .catch(function (error) {
-            console.log('Request failed', error)
-         })
+            .then((response) => {
+               if (response) {
+                  console.log(response)
+                  window.location.reload()
+               }
+            })
+            .catch(function (error) {
+               console.log('Request failed', error)
+            })
+      }else{
+         alert("Verifique que los campos estén correctos y completos")
+      }
+      
    }
 
    return (
@@ -159,7 +176,7 @@ const ModalHeramientas = () => {
                <div class="modal-content">
                   <div class="modal-header">
                      <h5 class="modal-title" id="exampleModalLabel">
-                        Nueva Herrameinta
+                        Nueva Herramienta
                      </h5>
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -168,21 +185,27 @@ const ModalHeramientas = () => {
 
                   <div class="modal-body">
                      <div class="form-group">
-                        <label for="">Nombre</label>
+                        <label for="">
+                           <span style={{ color: 'red' }}>*</span>Nombre
+                        </label>
                         <input className="form-control" id="hNombre" />
                         <small id="emailHelp" className="form-text text-muted">
                            Nombre de la herramienta
                         </small>
                      </div>
                      <div class="form-group">
-                        <label for="">Imágen</label>
+                        <label for="">
+                           <span style={{ color: 'red' }}>*</span>Imágen
+                        </label>
                         <input className="form-control" id="hImagen" />
                         <small id="emailHelp" className="form-text text-muted">
                            Url de la imágen
                         </small>
                      </div>
                      <div class="form-group">
-                        <label for="">Cantidad</label>
+                        <label for="">
+                           <span style={{ color: 'red' }}>*</span>Cantidad
+                        </label>
                         <input
                            type="number"
                            class="form-control"
@@ -195,8 +218,10 @@ const ModalHeramientas = () => {
                         </small>
                      </div>
                      <div class="form-group">
-                        <label for="">Precio</label>
-                        <input className="form-control" id="hPrecioUso" />
+                        <label for="">
+                           <span style={{ color: 'red' }}>*</span>Precio
+                        </label>
+                        <input type="number" className="form-control" id="hPrecioUso" />
                         <small id="emailHelp" className="form-text text-muted">
                            Precio por uso
                         </small>
@@ -216,6 +241,19 @@ const ModalHeramientas = () => {
    )
 }
 
+function validarMaterial(name, img, cant, pr){
+
+   if(cant<0 || pr<0){
+      return false;
+   }
+
+   if(name=="" || img=="" || cant=="" || pr==""){
+      return false;
+   }else{
+      return true;
+   }
+}
+
 const ModalMaterial = () => {
 
    {/*INSERTAR MATERIAL*/ }
@@ -227,23 +265,29 @@ const ModalMaterial = () => {
          price_liter: document.getElementById('mPrecioLitro').value,
       }
 
-      fetch('/api/data/material/null', {
-         method: 'post',
-         headers: {
-            Accept: 'application/json, text/plain, */*',
-            'Content-Type': 'application/json',
-         },
-         body: JSON.stringify(material),
-      })
-         .then((response) => {
-            if (response) {
-               console.log(response)
-               window.location.reload()
-            }
+      if(validarMaterial(material.name, material.image, material.quantity, material.price_liter)){
+         fetch('/api/data/material/null', {
+            method: 'post',
+            headers: {
+               Accept: 'application/json, text/plain, */*',
+               'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(material),
          })
-         .catch(function (error) {
-            console.log('Request failed', error)
-         })
+            .then((response) => {
+               if (response) {
+                  console.log(response)
+                  window.location.reload()
+               }
+            })
+            .catch(function (error) {
+               console.log('Request failed', error)
+            })
+      }else{
+         alert("Verifique que los campos estén correctos y completos")
+      }
+
+      
 
    }
 
@@ -270,21 +314,27 @@ const ModalMaterial = () => {
                   </div>
                   <div class="modal-body">
                      <div class="form-group">
-                        <label for="">Nombre</label>
+                        <label for="">
+                           <span style={{ color: 'red' }}>*</span>Nombre
+                        </label>
                         <input className="form-control" id="mNombre" />
                         <small id="emailHelp" className="form-text text-muted">
                            Nombre del material
                         </small>
                      </div>
                      <div class="form-group">
-                        <label for="">Imágen</label>
+                        <label for="">
+                           <span style={{ color: 'red' }}>*</span>Imágen
+                        </label>
                         <input className="form-control" id="mImagen" />
                         <small id="emailHelp" className="form-text text-muted">
                            Url de la imágen
                         </small>
                      </div>
                      <div class="form-group">
-                        <label for="">Cantidad</label>
+                        <label for="">
+                           <span style={{ color: 'red' }}>*</span>Cantidad
+                        </label>
                         <input
                            type="number"
                            class="form-control"
@@ -297,8 +347,10 @@ const ModalMaterial = () => {
                         </small>
                      </div>
                      <div class="form-group">
-                        <label for="">Precio</label>
-                        <input className="form-control" id="mPrecioLitro" />
+                        <label for="">
+                           <span style={{ color: 'red' }}>*</span>Precio
+                        </label>
+                        <input type="number" className="form-control" id="mPrecioLitro" />
                         <small id="emailHelp" className="form-text text-muted">
                            Precio por litro
                         </small>
@@ -317,6 +369,21 @@ const ModalMaterial = () => {
       </>
    )
 }
+
+function validarVehiculo(placa,name, img, km, pr){
+   if(km<0 || pr <0){
+      return false;
+   }
+
+   if(placa=="" || name=="" || img=="" || km=="" || pr==""){
+      return false;
+   }else{
+      return true;
+   }
+
+   
+}
+
 const ModalVehiculo = () => {
 
       {/*INSERTAR VEHICULO*/ }
@@ -326,29 +393,35 @@ const ModalVehiculo = () => {
             name: document.getElementById('vNombre').value,
             image: document.getElementById('vImagen').value,
             mileage: document.getElementById('vKm').value,
-            price_km: document.getElementById('hPrecioUso').value,
+            price_km: document.getElementById('vPrecioUso').value,
             status: "T",
          }
    
-         console.log(vehiculo)
          
-         fetch('/api/data/vehicle/null', {
-            method: 'post',
-            headers: {
-               Accept: 'application/json, text/plain, */*',
-               'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(vehiculo),
-         })
-            .then((response) => {
-               if (response) {
-                  console.log(response)
-                  window.location.reload()
-               }
+
+         if(validarVehiculo(vehiculo.license, vehiculo.name, vehiculo.image, vehiculo.mileage, vehiculo.price_km)){
+            fetch('/api/data/vehicle/null', {
+               method: 'post',
+               headers: {
+                  Accept: 'application/json, text/plain, */*',
+                  'Content-Type': 'application/json',
+               },
+               body: JSON.stringify(vehiculo),
             })
-            .catch(function (error) {
-               console.log('Request failed', error)
-            })
+               .then((response) => {
+                  if (response) {
+                     console.log(response)
+                     window.location.reload()
+                  }
+               })
+               .catch(function (error) {
+                  console.log('Request failed', error)
+               })
+         }else{
+            alert("Verifique que los campos estén correctos y completos")
+         }
+
+         
       }
 
    return (
@@ -366,7 +439,7 @@ const ModalVehiculo = () => {
                <div class="modal-content">
                   <div class="modal-header">
                      <h5 class="modal-title" id="exampleModalLabel">
-                        Nuevo Vehiculo
+                        Nuevo Vehículo
                      </h5>
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -374,28 +447,36 @@ const ModalVehiculo = () => {
                   </div>
                   <div class="modal-body">
                      <div class="form-group">
-                        <label for="">Placa</label>
+                        <label for="">
+                           <span style={{ color: 'red' }}>*</span>Placa
+                        </label>
                         <input className="form-control" id="vPlaca" />
                         <small id="emailHelp" className="form-text text-muted">
                            Placa del Vehículo
                         </small>
                      </div>
                      <div class="form-group">
-                        <label for="">Nombre</label>
+                        <label for="">
+                           <span style={{ color: 'red' }}>*</span>Nombre
+                        </label>
                         <input className="form-control" id="vNombre" />
                         <small id="emailHelp" className="form-text text-muted">
                            Nombre del Vehículo
                         </small>
                      </div>
                      <div class="form-group">
-                        <label for="">Imágen</label>
+                        <label for="">
+                           <span style={{ color: 'red' }}>*</span>Imágen
+                        </label>
                         <input className="form-control" id="vImagen" />
                         <small id="emailHelp" className="form-text text-muted">
                            Url de la imágen
                         </small>
                      </div>
                      <div class="form-group">
-                        <label for="">Kilometraje</label>
+                        <label for="">
+                           <span style={{ color: 'red' }}>*</span>Kilometraje
+                        </label>
                         <input
                            type="number"
                            class="form-control"
@@ -408,8 +489,10 @@ const ModalVehiculo = () => {
                         </small>
                      </div>
                      <div class="form-group">
-                        <label for="">Precio</label>
-                        <input className="form-control" id="vPrecioUso" />
+                        <label for="">
+                           <span style={{ color: 'red' }}>*</span>Precio
+                        </label>
+                        <input type="number" className="form-control" id="vPrecioUso" />
                         <small id="emailHelp" className="form-text text-muted">
                            Precio por km
                         </small>
@@ -418,7 +501,7 @@ const ModalVehiculo = () => {
 
                   <div class="modal-footer">
                      <button onClick={insertarVehiculo} type="button" class="btn btn-primary">
-                        Guardar Veháculo
+                        Guardar Vehículo
                      </button>
                   </div>
                </div>

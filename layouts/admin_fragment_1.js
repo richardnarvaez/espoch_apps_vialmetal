@@ -100,5 +100,5 @@ function FilaTablaInfo({ data, href }) {
          </tbody>
       </>
    )
-   // Genial parece que funciona veamos ya en el localhost
+  
 }

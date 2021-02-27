@@ -37,8 +37,9 @@ export async function deleteWork_Material(id) {
 export async function getMaterialUsedWork(id) {
    const db = await connect()
    const result = await db.query(
-      `select id_work_material, name, quantity, material_begin from work_materials inner join materials on work_materials.id_material = materials.id_material WHERE id_work=${id}`
+      `select wm.id_work_material, m.id_material, m.name, m.quantity, wm.material_begin from work_materials wm inner join materials m on wm.id_material = m.id_material WHERE id_work=${id}`
    )
+   console.log(result.recordsets[0])
    return result.recordsets[0]
 }
 //aditional: Actualizar cantidad
@@ -48,5 +49,6 @@ export async function updateWork_Material_quantity(dataWorkM) {
    const result = await db.query(
       `UPDATE work_materials SET material_end = ${dataWorkM.material_end} WHERE id_work_material=${dataWorkM.id_work_material}`
    )
+   
    return result.recordsets[0]
 }

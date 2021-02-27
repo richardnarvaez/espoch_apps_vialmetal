@@ -14,7 +14,7 @@ const Footer = () => (
             </Link>
          </li>
          <li className="navigationItem">
-            <a href="">
+            <a href="https://manual-vm.vercel.app">
                Ayuda
             </a>
          </li>

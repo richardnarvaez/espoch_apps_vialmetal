@@ -1,5 +1,5 @@
 export default function Card({ data, onClick }) {
-   console.log('>>>>', data)
+   
    return (
       <>
          <div

@@ -52,8 +52,9 @@ export async function deleteWork_Vehicle(id, { id_vehicle }) {
 //aditional: Vehículos usadas en la obra
 export async function getVehiclesUsedWork(id) {
    const db = await connect()
-   const result = await db.query(
-      `select name, mileage, km_begin from work_vehicles inner join vehicles on work_vehicles.id_vehicle = vehicles.id_vehicle WHERE id_work=${id}`
-   )
+   const result = await db.query(`SELECT w.id_work_vehicle, w.id_work, v.id_vehicle, v.name, v.mileage, v.price_km, w.km_begin
+   FROM work_vehicles w INNER JOIN vehicles v
+   ON w.id_vehicle = v.id_vehicle
+   WHERE w.id_work = ${id}`)
    return result.recordsets[0]
 }

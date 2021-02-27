@@ -56,7 +56,9 @@ export async function updateWorkEnd(id, body) {
    const resultM = [],
       resultT = [],
       resulV = []
+   console.log("pruebas datos: ", body)
    body.sentMaterials.map(async (item, i) => {
+      console.log(item)
       console.log(
          'query',
          `UPDATE work_materials SET material_end = ${item.material_end} WHERE id_work_material=${item.id_work_material}`
@@ -67,27 +69,31 @@ export async function updateWorkEnd(id, body) {
       resultM[i] = M.recordsets[0]
    })
    body.sentTools.map(async (item, i) => {
+      console.log(item)
       console.log(
          'query',
-         `UPDATE work_tools SET tool_end = ${item.material_end} WHERE id_work_tool=${item.id_work_tool}`
+         `UPDATE work_tools SET tool_end = ${item.tool_end} WHERE id_work_tool=${item.id_work_tool}`
       )
       const T = await db.query(
-         `UPDATE work_tools SET tool_end = ${item.material_end} WHERE id_work_tool=${item.id_work_tool}`
+         `UPDATE work_tools SET tool_end = ${item.tool_end} WHERE id_work_tool=${item.id_work_tool}`
       )
       resultT[i] = T.recordsets[0]
    })
    body.sentVehicles.map(async (item, i) => {
+      console.log(item)
       console.log(
          'query',
          `UPDATE work_vehicles SET km_end = ${item.km_end} WHERE id_work_vehicle=${item.id_work_vehicle}`
       )
       const V = await db.query(
          `UPDATE work_vehicles SET km_end = ${item.km_end} WHERE id_work_vehicle=${item.id_work_vehicle}`
+         
       )
+      const V1 = await db.query(`UPDATE vehicles SET mileage = ${item.km_end} WHERE id_vehicle=${item.id_vehicle}`)
       resultV[i] = V.recordsets[0]
    })
 
-   console.log('status', `UPDATE works SET status = T WHERE id_work = ${id}`)
+   console.log('status', `UPDATE works SET status = 'T' WHERE id_work = ${id}`)
    const resultS = await db.query(`UPDATE works SET status = 'T' WHERE id_work = ${id}`)
 
    //return {resultM,resultT,resultV,resultS: resultS.recordsets[0]}

@@ -39,14 +39,14 @@ export default function Admin() {
             console.log('aft materials', sentMaterials)
          } else if (idPrueba.substring(0, 1) == 'T') {
             sentTools = [
-               ...sentMaterials,
-               { id_work_tool: idPrueba.substring(1), material_end: a.val() },
+               ...sentTools,
+               { id_work_tool: idPrueba.substring(1), tool_end: a.val() },
             ]
          } else {
             if (a.val() != '...') {
-               sentVehicles = [
-                  ...sentMaterials,
-                  { id_vehicle_material: idPrueba.substring(1), km_end: a.val() },
+               sentVehicles = [ 
+                  ...sentVehicles,
+                  { id_work_vehicle: idPrueba.substring(1), km_end: a.val() },
                ]
             } else {
                alert('Ingrese valores válidos.')
@@ -71,7 +71,7 @@ export default function Admin() {
          .then((response) => {
             if (response) {
                console.log(response)
-               window.location.href = '/admin'
+               //window.location.href = '/admin'
             }
          })
          .catch(function (error) {
@@ -107,6 +107,7 @@ export default function Admin() {
          fetch('/api/data/work_vehicle/used/' + id)
             .then((res) => res.json())
             .then((result) => {
+               console.log('RES', result)
                setVehicles(result)
             })
             .catch((e) => {
@@ -156,8 +157,8 @@ export default function Admin() {
                      <tr>
                         <th scope="col">UTILIZADO</th>
                         <th scope="col"></th>
+                        <th scope="col">REGRESA</th>
                         <th scope="col">SOBRANTE</th>
-                        <th scope="col">RESTANTE</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -229,6 +230,7 @@ export default function Admin() {
                               </>
                            ) : (
                               listVehicles.map((item, i) => {
+                                 console.log('<><><<>< ID VEHICLE:', item.id_work_vehicle)
                                  return (
                                     <Row
                                        key={i}

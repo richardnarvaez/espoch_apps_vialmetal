@@ -21,7 +21,9 @@ export default async (req, res) => {
          let result
 
          try {
+            console.log(id[1])
             switch (id[0]) {
+               
                case 'all':
                   result = await getAllWork_Materials()
                   res.status(200).json(result)

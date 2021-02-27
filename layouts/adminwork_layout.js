@@ -48,6 +48,8 @@ export default function Admin() {
    const [m_start, setMS] = useState()
    const [t_start, setTS] = useState()
 
+   const [total, setTotal] = useState()
+
    // VARIABLES "ESTADO"
    const [list_materiales, setListMateriales] = useState()
    const [list_herramientas, setListHerramientas] = useState()
@@ -201,7 +203,7 @@ export default function Admin() {
             } else {
                newArr[index].material_begin = newArr[index].material_begin + t
                console.log('1. ', newArr[index].material_begin, ' - ', newArr[index].quantity)
-               
+
                if (newArr[index].material_begin > newArr[index].quantity) {
                   alert('NO hay mas en stock')
                } else {
@@ -225,10 +227,24 @@ export default function Admin() {
          default:
             alert('No se pude incrementar/disminuir')
       }
+      calcularTotal()
    }
 
-   const calcularTotal = () => {
-      // list_materiales.map((item, i)=>{})
+   const calcularTotal = async () => {
+      console.log('CAAALCULANDO><<><><><><><><<>', list_materiales, list_herramientas)
+      let total = 0
+      await list_materiales.map((item, i) => {
+         console.log('>>>', item.material_begin, item.price_liter)
+         total += item.material_begin * item.price_liter
+         console.log('T', total)
+      })
+      await list_herramientas.map((item, i) => {
+         console.log(item.tool_begin, '-', item.price_use)
+         total += item.tool_begin * item.price_use
+      })
+      console.log(total)
+      // list_vehiculos.map((item, i) => {total = item.km_begin * item.price_liter})
+      setTotal(total.toFixed(2))
    }
 
    const updateAllMaterials = () => {
@@ -636,6 +652,10 @@ export default function Admin() {
                               )
                            })
                         )}
+                     </div>
+                     <div>
+                        <p>Total Estimado:</p>
+                        <p>${total}</p>
                      </div>
                   </div>
 

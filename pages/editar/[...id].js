@@ -143,7 +143,7 @@ function TarjetaMaterial({ data, cambiarvalor }) {
 
          <div align="middle" className="details-transport col-12 col-sm-7 col-md-8">
             <p>Nombre</p>
-            <input id="name" className="form-control" value={data.name} onChange={cambiarvalor} />
+            <input id="name" className="form-control" value={data.name} onChange={cambiarvalor}  />
             <small id="emailHelp" class="form-text text-muted">
                Nombre del material
             </small>
@@ -158,6 +158,7 @@ function TarjetaMaterial({ data, cambiarvalor }) {
                className="form-control"
                value={data.quantity}
                onChange={cambiarvalor}
+               required pattern="[0-9]"
             />
             <small id="emailHelp" class="form-text text-muted">
                Cantidad en litros
@@ -168,6 +169,7 @@ function TarjetaMaterial({ data, cambiarvalor }) {
                className="form-control"
                value={data.price_liter}
                onChange={cambiarvalor}
+               required pattern="[0-9]"
             />
             <small id="emailHelp" class="form-text text-muted">
                Precio por litro
@@ -252,7 +254,7 @@ function Tarjetavehicle({ data, cambiarvalor }) {
             </small>
             <p>Kilometraje</p>
             <input
-               id="name"
+               id="mileage"
                className="form-control"
                value={data.mileage}
                onChange={cambiarvalor}

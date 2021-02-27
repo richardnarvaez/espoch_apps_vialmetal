@@ -74,6 +74,9 @@ export default function Admin() {
             {/* FRAGEMNTO 3 */}
             <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                <AdminF1 />
+               <a className="noprint" onClick={() => window.print()}>
+               Imprimir Reporte
+               </a>
             </div>
          </div>
          <Footer />

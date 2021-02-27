@@ -1,7 +1,10 @@
+import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import CardW from '../components/card_work'
 
-export default function AdminWorkTransport({ setListado }) {
+export default function AdminWorkTransport({ updateTransport }) {
+   const { query } = useRouter()
+   const id = query.id
    const [transport, settransport] = useState()
 
    useEffect(() => {
@@ -13,28 +16,28 @@ export default function AdminWorkTransport({ setListado }) {
       fetchData()
    }, [])
 
-   const insertarTransport = (id_mat) => {
-      const material = {
+   const insertarTransport = (id_veh) => {
+      const vehicle = {
          id_work: id,
-         id_material: id_mat,
-         material_begin: 1,
-         material_end: 0,
+         id_vehicle: id_veh,
+         km_begin: 1,
+         km_end: 0,
       }
 
-      console.log(material)
+      console.log(vehicle)
 
-      fetch('/api/data/work_vehiclel/null', {
+      fetch('/api/data/work_vehicle/null', {
          method: 'post',
          headers: {
             Accept: 'application/json, text/plain, */*',
             'Content-Type': 'application/json',
          },
-         body: JSON.stringify(material),
+         body: JSON.stringify(vehicle),
       })
          .then((response) => {
             if (response) {
                console.log(response)
-               updateMaterials()
+               updateTransport()
             }
          })
          .catch(function (error) {

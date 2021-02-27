@@ -4,6 +4,9 @@ import Card from '../../components/card'
 import Footer from '../../components/footer'
 import Inicio from '../../components/Inicio'
 
+import dayjs from 'dayjs'
+import 'dayjs/locale/es'
+
 export default function AdminF1() {
    const { query } = useRouter()
    const id = query.id
@@ -49,23 +52,28 @@ export default function AdminF1() {
          price_work: 0,
       }
 
-      fetch('/api/data/work/null', {
-         method: 'post',
-         headers: {
-            Accept: 'application/json, text/plain, */*',
-            'Content-Type': 'application/json',
-         },
-         body: JSON.stringify(obra),
-      })
-         .then((response) => {
-            if (response) {
-               console.log(response)
-               window.location.reload()
-            }
+      if(ValidarDatos(obra.responsable, obra.location, obra.finished_at)){
+         fetch('/api/data/work/null', {
+            method: 'post',
+            headers: {
+               Accept: 'application/json, text/plain, */*',
+               'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(obra),
          })
-         .catch(function (error) {
-            console.log('Request failed', error)
-         })
+            .then((response) => {
+               if (response) {
+                  console.log(response)
+                  window.location.reload()
+               }
+            })
+            .catch(function (error) {
+               console.log('Request failed', error)
+            })
+      }else{
+         alert("DATOS OBLIGATORIOS POR LLENAR")
+      }
+      
    }
    return (
       <div className="container">
@@ -156,7 +164,9 @@ function ModalNuevaObra({ contractor, createObra }) {
                      </div>
 
                      <div className="form-group">
-                        <label for="exampleInputEmail1">Responsable</label>
+                        <label for="exampleInputEmail1">
+                           <span style={{ color: 'red' }}>*</span>Responsable
+                        </label>
                         <input className="form-control" id="responsable" />
                         <small id="emailHelp" className="form-text text-muted">
                            Introducir el nombre del responsable
@@ -171,27 +181,15 @@ function ModalNuevaObra({ contractor, createObra }) {
                         </small>
                      </div>
                      <div className="form-group">
-                        <label for="exampleInputEmail1">Ubicacion</label>
+                        <label for="exampleInputEmail1"><span style={{ color: 'red' }}>*</span>Ubicacion</label>
                         <input className="form-control" id="location" />
                         <small id="emailHelp" className="form-text text-muted">
                            Lugar donde se realizará la obra
                         </small>
                      </div>
-                     {/* <div className="form-group">
-         <label for="exampleInputEmail1">Fecha de inicio</label>
-         <input
-            type="date"
-            className="form-control"
-            id="create_date"
-            aria-describedby="emailHelp"
-         />
-         <small id="emailHelp" className="form-text text-muted">
-            We'll never share your email with anyone else.
-         </small>
-      </div> */}
 
                      <div className="form-group">
-                        <label for="exampleInputEmail1">Fecha fin</label>
+                        <label for="exampleInputEmail1"><span style={{ color: 'red' }}>*</span>Fecha fin</label>
                         <input type="date" className="form-control" id="end_date" />
                         <small id="emailHelp" className="form-text text-muted">
                            Fecha Tentativa final de la Obra
@@ -213,6 +211,29 @@ function ModalNuevaObra({ contractor, createObra }) {
    )
 }
 
+function ValidarDatos(contra, ubi, fecha){
+
+   if(validarFecha(fecha) && contra!="" && ubi!=""){
+      return true;
+   }else{
+      return false;
+   }
+
+}
+
+function validarFecha(fecha){
+   var cfecha = dayjs(new Date()).format('YYYY-MM-DD')
+   var vfecha = dayjs(fecha).format('YYYY-MM-DD')
+   var longi = vfecha.length
+   
+   if(vfecha >= cfecha && longi!=12){
+      return true;
+   }else{
+      alert("Fecha Inválida")
+      return false;
+   }
+}
+
 function ModalEditarContratista({ contractor }) {
    const [c, setC] = useState()
 
@@ -227,7 +248,7 @@ function ModalEditarContratista({ contractor }) {
    }
 
    const actualizarContratista = () => {
-      fetch('/api/data/contractor/'+ contractor.id_contractor, {
+      fetch('/api/data/contractor/' + contractor.id_contractor, {
          method: 'PUT',
          headers: {
             Accept: 'application/json, text/plain, */*',
@@ -293,9 +314,9 @@ function ModalEditarContratista({ contractor }) {
                         <label for="">Descripción</label>
                         <input
                            className="form-control"
-                           id="description" 
-                           value={c && c.description} 
-                           onChange={cambiarvalor} 
+                           id="description"
+                           value={c && c.description}
+                           onChange={cambiarvalor}
                         />
                         <small id="emailHelp" className="form-text text-muted">
                            Descripción

@@ -1,12 +1,15 @@
 import { Switch } from '@material-ui/core'
 import { useState, useEffect } from 'react'
 
+import dayjs from 'dayjs'
+import 'dayjs/locale/es'
+
 import Card from '../components/card'
 
 export default function AdminF1() {
    // VARIABLES "ESTADO"
    const [list_obras, setListObras] = useState()
-   const [view, setView] = useState(true)
+   const [view, setView] = useState(false)
 
    const [error, setError] = useState(false)
 
@@ -30,9 +33,9 @@ export default function AdminF1() {
          <div className="noprint">
             <Switch checked={view} onChange={() => setView(!view)} />
             <p>{!view ? 'Vista Tarjetas' : 'Vista Tabla'}</p>
-            <a className="noprint" onClick={() => window.print()}>
+            {/*<a className="noprint" onClick={() => window.print()}>
                Imprimir Reporte
-            </a>
+   </a>*/}
          </div>
          {error ? (
             <>Error de conexion</>
@@ -52,11 +55,11 @@ export default function AdminF1() {
                   <table class="table">
                      <thead>
                         <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Contratista</th>
-                        <th scope="col">Responsable</th>
-                        <th scope="col">Locación</th>
-                        <th scope="col">Descripción</th>
+                           <th scope="col">#</th>
+                           <th scope="col">Responsable</th>
+                           <th scope="col">Locación</th>
+                           <th scope="col">Fecha</th>
+                           <th scope="col">Descripción</th>
                         </tr>
                      </thead>
                      {!list_obras ? (
@@ -81,16 +84,21 @@ export default function AdminF1() {
 }
 
 function FilaTablaInfo({ data, href }) {
-   return <>
-  <tbody>
-    <tr>
-      <th scope="row">{data.id_work}</th>
-      <td>{data.business_name}</td>
-      <td>{data.responsable}</td>
-      <td>{data.location}</td>
-      <td>{data.description}</td>
-    </tr>
-  </tbody>
-   </>
+   dayjs.locale('es')
+   var date = dayjs(data.created_at).format('D MMMM, YYYY')
+
+   return (
+      <>
+         <tbody>
+            <tr>
+               <th scope="row">{data.id_work}</th>
+               <td>{data.responsable}</td>
+               <td>{data.location}</td>
+               <td>{date}</td>
+               <td>{data.description}</td>
+            </tr>
+         </tbody>
+      </>
+   )
    // Genial parece que funciona veamos ya en el localhost
 }

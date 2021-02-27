@@ -16,6 +16,7 @@ export async function getWork_MaterialId(id) {
 
 export async function insertWork_Material(dataWorkM) {
    const db = await connect()
+   console.log('INSERT _WORK_MATERIAL: ', dataWorkM)
    const result = await db.query(`INSERT INTO work_materials (id_work, id_material, material_begin, material_end)
    VALUES( ${dataWorkM.id_work}, ${dataWorkM.id_material} , ${dataWorkM.material_begin},	${dataWorkM.material_end} )`)
    return result.recordsets[0]
@@ -42,7 +43,7 @@ export async function getMaterialUsedWork(id) {
 }
 //aditional: Actualizar cantidad
 export async function updateWork_Material_quantity(dataWorkM) {
-   console.log("La data: ",dataWorkM)
+   console.log('La data: ', dataWorkM)
    const db = await connect()
    const result = await db.query(
       `UPDATE work_materials SET material_end = ${dataWorkM.material_end} WHERE id_work_material=${dataWorkM.id_work_material}`

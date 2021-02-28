@@ -49,6 +49,6 @@ export async function updateWork_Material_quantity(dataWorkM) {
    const result = await db.query(
       `UPDATE work_materials SET material_end = ${dataWorkM.material_end} WHERE id_work_material=${dataWorkM.id_work_material}`
    )
-   
+
    return result.recordsets[0]
 }

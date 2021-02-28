@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/*Quitar las flechas input number*/
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }
+
+.container-table{
+    margin: 30px;
+    border-radius: 16px;
+    box-shadow: 2px 5px 10px #00000035;
+    overflow: hidden;
+}
+.table{
+    
+}
+/*TEXTO*/
+h3{
+    text-align: start;
+    margin: 0 40px;
+}
+input{
+    border-radius: 7px;
+}
+
+/*TABLA*/
+.table-section{
+    margin: 3%;
+    background-color: whitesmoke;
+    box-shadow: 5px 5px 5px #999;
+    border-radius: 20px;
+}
+.titles-table{
+    display: flex;
+}
+
+.table-area{
+    display: block;
+}
+/*Filas*/
+
+.new-row-materials{
+    margin: auto;
+    padding: 0 30px;
+    display: flex;
+}
+.new-row-tools{
+    margin: auto;
+    padding: 0 30px;
+    display: flex;
+}
+
+.new-row-vehicles{
+    margin: auto;
+    padding: 0 30px;
+    display: flex;
+}
+
+
+/*Columnas*/
+.first-column{
+    margin: auto;
+    padding: 20px 0;
+}
+
+.second-column{
+    margin: auto;
+    padding: 20px 0;
+}
+
+.third-column{
+    margin: auto;
+    padding: 20px 0;
+}
+
+/*Button*/
+.button-container{
+    width: 25%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.btn-volver button{
+    font-size: 15px;
+    width: 200px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    margin: 10px;
+}
+
+.btn{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    
+ }
+ .btn button {
+    box-shadow: 0 2px 5px #00000032;
+    background-color: rgb(255, 196, 0);
+    color: black;
+    font-size: 20px;
+ }

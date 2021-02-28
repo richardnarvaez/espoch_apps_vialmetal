@@ -1,10 +1,10 @@
-import Nav from '../components/nav'
-
-export default function  AdminWork(){
-    return(
-        <div>
-            <Nav/>
-            <h1>ADMIN WORK</h1>
-        </div>
-    )
+import Nav from "../components/nav";
+import AdminworkLayout from "../layouts/adminwork_layout";
+export default function AdminWork() {
+  return (
+    <>
+      <Nav />
+      <AdminworkLayout />
+    </>
+  );
 }

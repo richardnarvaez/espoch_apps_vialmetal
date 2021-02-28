@@ -1,12 +1,10 @@
-.html {
-   margin: 0;
-   padding: 0;
+.mainhome {
+   background-image: url(https://data.1freewallpapers.com/detail/city-street-movement-buildings-markup-new-york.jpg);
+   background-position: bottom;
+   overflow: auto;
+   height: 40vh;
+   left: 40vh;
 }
-.body {
-   margin: 0;
-   padding: 0;
-}
-
 .main {
    background-image: url(https://data.1freewallpapers.com/detail/city-street-movement-buildings-markup-new-york.jpg);
    background-position: bottom;
@@ -16,30 +14,26 @@
    left: 20vh;
 }
 
-.footer {
-   /* background-image: url(https://data.1freewallpapers.com/detail/city-street-movement-buildings-markup-new-york.jpg); */
-   height: 30vh;
-   background-color: #ccc;
+.noprint {
+   margin-bottom: 32px;
 }
-
-.main .title {
-   border: 1px solid #fff;
-   width: 300px;
-   height: 50px;
+.fade a{
+   cursor: pointer;
+}
+.paragraph-home {
+   font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+   color: #ffffff;
+   font-size: 20px;
+   font-weight: 400;
    text-align: center;
-   color: #fff;
-   top: calc(80vh - 45%);
-   left: 50%;
-   position: absolute;
-   margin-left: -150px;
-}
-
-.div {
-   background-image: url(https://i.pinimg.com/originals/00/36/c5/0036c56729db8e22e15a7563cf3275ec.png);
-   background-position: bottom;
-   overflow: auto;
-   height: 70vh;
-   left: 71vh;
+   background: #030303;
+   margin: 0 0 25px;
+   overflow: hidden;
+   padding: 20px;
+   border-radius: 35px 0px 35px 0px;
+   -moz-border-radius: 35px 0px 35px 0px;
+   -webkit-border-radius: 35px 0px 35px 0px;
+   border: 2px solid #000000;
 }
 
 .body-home {
@@ -66,24 +60,76 @@ h1 {
    letter-spacing: 2px;
    padding: 50px 0;
 }
+.combobox {
+   padding-top: 50px;
+   padding-bottom: 50px;
+   padding-right: 16px;
+}
+
+.combobox a {
+   border-radius: 99px;
+}
+
+.list-combo {
+   display: flex;
+}
 
 .card {
-   box-shadow: 2px 2px 5px #999;
+   box-shadow: 0px 2px 10px #00000040;
+   border: none;
+   border-radius: 12px;
+   display: flex;
+   flex-direction: row;
+   padding: 16px;
+   cursor: pointer;
+}
+
+.logo {
+   text-align: center;
+   cursor:pointer;
+}
+.logo .color {
+   color: rgb(255, 196, 0);
+}
+
+.logo small{
+   font-weight: bold;
+}
+
+.row {
+   min-height: 400px;
+}
+
+.logo p {
+   font-weight: bold;
+   font-size: 22px;
+   margin-bottom: -8px;
+}
+
+.nav-tabs .nav-link.active{
+   background-color: rgb(202, 196, 196);
+   color: rgb(248, 247, 247);
+}
+
+.card-imagen {
+   background: #0692a532;
+   color: #0692a5;
+   border-radius: 99px;
+   width: 42px;
+   height: 42px;
+   display: flex;
+}
+
+.card-imagen p {
+   margin: auto;
+}
+
+.card-body-right {
+   margin-left: 16px;
 }
 
 .tarjeta {
    padding-bottom: 16px;
-}
-
-.tarjeta-lista {
-   display: flex;
-}
-.tarjeta-imagen{
-   background: red;
-   vertical-align: middel;
-   border-radius: 50%;
-   width: 50px;
-   height: 50px;
 }
 
 h2 {
@@ -175,8 +221,8 @@ input[type='password']:focus {
 }
 
 button {
-   background: #fc3955;
-   color: #ffffff;
+   background: #fbdf0e;
+   color: #1e2b5c;
    font-size: 13px;
    text-transform: uppercase;
    letter-spacing: 1px;
@@ -244,6 +290,24 @@ footer p a:hover {
 footer {
    padding: 2em 0;
    text-align: center;
+}
+
+.bt-new-work {
+   position: fixed;
+   background: rgb(255, 196, 0);
+   border-radius: 99px;
+   bottom: 32px;
+   right: 32px;
+   padding: 8px 16px;
+   box-shadow: 0 2px 5px #00000032;
+   /* Edicion nueva prueba*/
+   display: flex;
+   width: auto;
+   height: 50px;
+}
+
+.bt-new-work h5 {
+   margin: auto;
 }
 /*--//footer--*/
 

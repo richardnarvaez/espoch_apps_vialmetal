@@ -86,8 +86,7 @@ export async function updateWorkEnd(id, body) {
          `UPDATE work_vehicles SET km_end = ${item.km_end} WHERE id_work_vehicle=${item.id_work_vehicle}`
       )
       const V = await db.query(
-         `UPDATE work_vehicles SET km_end = ${item.km_end} WHERE id_work_vehicle=${item.id_work_vehicle}`
-         
+         `UPDATE work_vehicles SET km_end = ${item.km_end} WHERE id_work_vehicle=${item.id_vehicle}`         
       )
       const V1 = await db.query(`UPDATE vehicles SET mileage = ${item.km_end} WHERE id_vehicle=${item.id_vehicle}`)
       resultV[i] = V.recordsets[0]

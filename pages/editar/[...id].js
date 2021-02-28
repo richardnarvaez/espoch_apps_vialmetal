@@ -163,7 +163,7 @@ function TarjetaMaterial({ data, cambiarvalor }) {
             <small id="emailHelp" class="form-text text-muted">
                Cantidad en litros
             </small>
-            <p>Precio</p>
+            <p>Precio </p>
             <input
                id="price_liter"
                className="form-control"
@@ -204,6 +204,7 @@ function TarjetaTool({ data, cambiarvalor }) {
                className="form-control"
                value={data.quantity}
                onChange={cambiarvalor}
+               required pattern="[0-9]"
             />
             <small id="emailHelp" class="form-text text-muted">
                Cantidad de Herramientas
@@ -214,6 +215,7 @@ function TarjetaTool({ data, cambiarvalor }) {
                className="form-control"
                value={data.price_use}
                onChange={cambiarvalor}
+               required pattern="[0-9]"
             />
             <small id="emailHelp" class="form-text text-muted">
                Precio por desgaste
